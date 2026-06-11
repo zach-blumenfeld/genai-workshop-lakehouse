@@ -1,23 +1,32 @@
 #!/usr/bin/env bash
 # Codespace setup for the AI on Your Lakehouse workshop.
-set -e
+# Each step is independent - one failure must not block the others.
 
-pip install -r requirements.txt
+echo "--- Python dependencies"
+pip install -r requirements.txt || echo "WARN: pip install failed - run it manually"
 
-# The agentic Neo4j CLI + the agent skills that teach coding agents to use it
-curl -sSfL https://neo4j.sh/install.sh | bash
-export PATH="$HOME/.local/bin:$PATH"
-neo4j-cli skill install || true
+echo "--- Neo4j CLI + agent skills"
+if curl -sSfL https://neo4j.sh/install.sh | bash; then
+  export PATH="$HOME/.local/bin:$PATH"
+  echo 'export PATH="$HOME/.local/bin:$PATH"' >> "$HOME/.bashrc"
+  neo4j-cli skill install || echo "WARN: skill install failed - run 'neo4j-cli skill install' manually"
+else
+  echo "WARN: neo4j-cli install failed - run: curl -sSfL https://neo4j.sh/install.sh | bash"
+fi
 
-# Claude Code - the coding agent used in the workshop (any skills-capable agent works)
-npm install -g @anthropic-ai/claude-code
+echo "--- Claude Code"
+npm install -g @anthropic-ai/claude-code || echo "WARN: claude install failed - run: npm install -g @anthropic-ai/claude-code"
 
-# Connection template - the workshop lesson provides the values
+echo "--- Environment file"
 [ -f .env ] || cp .env.example .env
 
 echo ""
-echo "Setup complete. Next steps (from the workshop lesson):"
+echo "Setup check:"
+command -v neo4j-cli >/dev/null && echo "  neo4j-cli: OK" || echo "  neo4j-cli: MISSING"
+command -v claude >/dev/null && echo "  claude:    OK" || echo "  claude:    MISSING"
+echo ""
+echo "Next steps (from the workshop lesson):"
 echo "  1. Paste your sandbox credentials into .env"
 echo "  2. python load/load_graph.py"
 echo "  3. uvicorn api.parts_api:app --port 8800   (second terminal)"
-echo "  4. claude   (and let the skill in skill/ do the talking)"
+echo "  4. claude   (third terminal)"
