@@ -1,0 +1,16 @@
+{
+  "name": "AI on Your Lakehouse — AutoFix workshop",
+  "image": "mcr.microsoft.com/devcontainers/python:3.12",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {}
+  },
+  "forwardPorts": [8800],
+  "postCreateCommand": ".devcontainer/post-create.sh",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "python.defaultInterpreterPath": "/usr/local/bin/python"
+      }
+    }
+  }
+}
