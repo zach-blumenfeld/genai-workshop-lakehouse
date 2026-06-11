@@ -10,7 +10,7 @@ npm install -g @anthropic-ai/claude-code || echo "WARN: claude install failed - 
 mkdir -p "$HOME/.claude"
 
 echo "--- Neo4j CLI + agent skills"
-if curl -sSfL https://neo4j.sh/install.sh | bash; then
+if curl -sSfL https://neo4j.sh/install.sh | NEO4J_CLI_AUTO_INSTALL_SKILL=0 bash < /dev/null; then
   export PATH="$HOME/.local/bin:$PATH"
   echo 'export PATH="$HOME/.local/bin:$PATH"' >> "$HOME/.bashrc"
   neo4j-cli skill install --agent claude-code --rw \
