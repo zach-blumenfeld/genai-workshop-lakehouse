@@ -21,6 +21,9 @@ fi
 
 echo "--- Environment file"
 [ -f .env ] || cp .env.example .env
+# Export .env into every shell so neo4j-cli, scripts, and Claude Code all see it
+LINE='set -a; [ -f /workspaces/genai-workshop-lakehouse/.env ] && . /workspaces/genai-workshop-lakehouse/.env; set +a'
+grep -qF "$LINE" "$HOME/.bashrc" || echo "$LINE" >> "$HOME/.bashrc"
 
 echo ""
 echo "Setup check:"
