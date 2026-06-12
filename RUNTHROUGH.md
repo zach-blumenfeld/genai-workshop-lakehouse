@@ -1,9 +1,9 @@
 # Participant run-through — exact steps
 
 ## 1. Open the course
-http://localhost:3000/courses/genai-workshop-lakehouse/ — enroll, start Module 1,
+http://localhost:3000/courses/workshop-lakehouse/ — enroll, start Module 1,
 follow every page in order. (After the PR merges this becomes
-graphacademy.neo4j.com/courses/genai-workshop-lakehouse/ — same pages.)
+graphacademy.neo4j.com/courses/workshop-lakehouse/ — same pages.)
 If it shows "Coming Soon": flip `:status:` to `active` in course.adoc locally.
 
 ## 2. Lesson "Your Environment" — do what it says

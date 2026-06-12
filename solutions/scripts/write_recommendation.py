@@ -4,7 +4,7 @@ Usage:
   python solutions/scripts/write_recommendation.py events/wo-2026-0117.json \
       repair "Replace all coils with IC-2042-B per TSB-21-114; bundle recall RC-2021-04" \
       --part IC-2042-B --recall RC-2021-04 \
-      --grounding S-TSB21114-3,S-RC202104-2 --order-id PO-0001
+      --grounding 'technical-library/bulletins/tsb-21-114.pdf#repair-procedure,technical-library/recalls/rc-2021-04.pdf#remedy' --order-id PO-0001
 """
 
 import argparse
@@ -18,7 +18,7 @@ parser.add_argument("action", choices=["repair", "escalate"])
 parser.add_argument("summary")
 parser.add_argument("--part")
 parser.add_argument("--recall")
-parser.add_argument("--grounding", help="comma-separated Section ids")
+parser.add_argument("--grounding", help="comma-separated Section URIs")
 parser.add_argument("--order-id")
 args = parser.parse_args()
 
@@ -72,7 +72,7 @@ if args.recall:
 if args.grounding:
     query(
         "MATCH (r:Recommendation {id: $rec}) "
-        "UNWIND $ids AS sid MATCH (s:Section {id: sid}) "
+        "UNWIND $ids AS sid MATCH (s:Section {uri: sid}) "
         "MERGE (r)-[:GROUNDED_IN]->(s)",
         rec=rec_id, ids=args.grounding.split(","),
     )
@@ -94,7 +94,7 @@ trail = query(
     OPTIONAL MATCH (r)-[:PLACED_ORDER]->(o:PartsOrder)
     RETURN v.vin AS vin, r.action AS action, r.summary AS summary,
            p.partNumber AS part, rc.id AS recall,
-           collect(DISTINCT s.id) AS grounding, o.id AS order
+           collect(DISTINCT s.uri) AS grounding, o.id AS order
     """,
     wo=event["wo_id"],
 )

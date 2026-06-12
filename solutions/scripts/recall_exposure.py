@@ -17,7 +17,7 @@ vin = sys.argv[1]
 
 CYPHER = """
 MATCH (v:Vehicle {vin: $vin})
-MATCH (r:RecallNotice {model: v.model})-[:HAS_SECTION*]->(sec:Section)
+MATCH (r:RecallNotice {model: v.model})-[:HAS*]->(sec:Section)
       -[:REFERENCES_PART]->(remedy:Part)
 WHERE NOT (remedy)-[:SUPERSEDED_BY]->()
   AND NOT EXISTS {
@@ -25,7 +25,7 @@ WHERE NOT (remedy)-[:SUPERSEDED_BY]->()
   }
 RETURN DISTINCT r.id AS recall, r.title AS title,
        remedy.partNumber AS remedyPart,
-       collect(DISTINCT sec.id) AS groundingSections
+       collect(DISTINCT sec.uri) AS groundingSections
 """
 
 print(json.dumps(query(CYPHER, vin=vin), indent=2, default=str))

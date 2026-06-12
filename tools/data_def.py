@@ -81,31 +81,31 @@ sections = [
     ("S-TSB21114-2", "TSB-21-114", "", 2, "Cause",
      "The original ignition coil IC-2042-A insulation can degrade under repeated heat cycles, causing intermittent misfire that returns after replacement with the same part."),
     ("S-TSB21114-3", "TSB-21-114", "", 3, "Repair Procedure",
-     "Replace all coils with revised ignition coil IC-2042-B, which supersedes IC-2042-A. Replace spark plug set SP-1108 if beyond half service life. Do not reinstall IC-2042-A from stock."),
+     "Replace all coils with revised ignition coil IC-2042-B, which supersedes IC-2042-A. Replace spark plug set SP-1108 if beyond half service life. Do not reinstall IC-2042-A from stock. The connector failure mode is addressed by safety recall RC-2021-04."),
 
     # TSB-22-031 - Front Brake Judder After Pad Replacement
     ("S-TSB22031-1", "TSB-22-031", "", 1, "Condition",
      "Heron vehicles return with steering wheel vibration under braking within months of a front pad replacement using brake pad kit BP-7720."),
     ("S-TSB22031-2", "TSB-22-031", "", 2, "Repair Procedure",
-     "Replace front rotors BR-7731 in pairs together with brake pad kit BP-7720. Pad-only repairs on worn rotors cause the judder to return."),
+     "Replace front rotors BR-7731 in pairs together with brake pad kit BP-7720. Pad-only repairs on worn rotors cause the judder to return. Torque specifications are listed in the Heron Service Manual, MAN-HER-2."),
 
     # TSB-20-087 - Intermittent Wheel Speed Sensor Faults
     ("S-TSB20087-1", "TSB-20-087", "", 1, "Condition",
      "Heron and Osprey vehicles set intermittent codes C0035 or U0121, often with no fault found on retest."),
     ("S-TSB20087-2", "TSB-20-087", "", 2, "Repair Procedure",
-     "Replace wheel speed sensor WSS-3300 and secure the revised harness clip. Do not replace the ABS module for these codes."),
+     "Replace wheel speed sensor WSS-3300 and secure the revised harness clip. Do not replace the ABS module for these codes. Harness routing diagrams are in the Heron Service Manual, MAN-HER-2."),
 
     # TSB-23-052 - Battery Drain and Low System Voltage
     ("S-TSB23052-1", "TSB-23-052", "", 1, "Condition",
      "Falcon vehicles present with code P0562, dim lights at idle, or repeat flat batteries."),
     ("S-TSB23052-2", "TSB-23-052", "", 2, "Repair Procedure",
-     "Test alternator ALT-8810 under load before fitting battery BAT-1200. Battery-only repairs do not correct the underlying low-output alternator."),
+     "Test alternator ALT-8810 under load before fitting battery BAT-1200. Battery-only repairs do not correct the underlying low-output alternator. The load test procedure is in the Falcon Service Manual, MAN-FAL-3."),
 
     # TSB-19-008 - Catalyst Efficiency Code After Software Update
     ("S-TSB19008-1", "TSB-19-008", "", 1, "Condition",
      "Falcon vehicles set code P0420 following an earlier engine calibration update, with no driveability complaint."),
     ("S-TSB19008-2", "TSB-19-008", "", 2, "Repair Procedure",
-     "Apply the revised calibration. Replace catalytic converter CAT-5500 only if efficiency remains below threshold after the update."),
+     "Apply the revised calibration. Replace catalytic converter CAT-5500 only if efficiency remains below threshold after the update. Oxygen sensor comparison steps are in the Falcon Service Manual, MAN-FAL-3."),
 
     # RC-2021-04 - Ignition Coil Connector Overheating
     ("S-RC202104-1", "RC-2021-04", "", 1, "Defect Description",
@@ -115,7 +115,7 @@ sections = [
 
     # RC-2022-09 - Brake Hose Abrasion
     ("S-RC202209-1", "RC-2022-09", "", 1, "Defect Description",
-     "On certain Heron vehicles, the front brake hose BH-7745 can contact the strut bracket, abrading the hose and risking brake fluid loss."),
+     "On certain Heron vehicles, the front brake hose BH-7745 can contact the strut bracket, abrading the hose and risking brake fluid loss. Inspection points are described in the Heron Service Manual, MAN-HER-2."),
     ("S-RC202209-2", "RC-2022-09", "", 2, "Remedy",
      "Dealers will inspect and replace brake hose BH-7745 with a revised routing clip free of charge."),
 ]

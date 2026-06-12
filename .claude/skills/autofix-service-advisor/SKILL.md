@@ -1,6 +1,6 @@
 ---
 name: autofix-service-advisor
-description: Decide and act on AutoFix work orders using the lakehouse graph - ground every recommendation in documents, rank fixes by real repair outcomes, bundle open recalls, and order parts through the AutoFix parts API. Use when a work order opens or a technician asks what to do about a vehicle symptom.
+description: Decide and act on AutoFix work orders using the lakehouse graph - navigate the technical library by shape (outline, search, themes), ground every recommendation in documents, rank fixes by real repair outcomes, bundle open recalls, and order parts through the AutoFix parts API. Use when a work order opens or a technician asks what to do about a vehicle symptom.
 ---
 
 # AutoFix Service Advisor
@@ -12,31 +12,44 @@ the graph - never in general automotive knowledge alone.
 ## The graph
 
 One Neo4j database spans both halves of the lakehouse
-(connection from `.env`; query ad hoc with `neo4j-cli query '...'`):
+(connection from `.env`; ad-hoc queries via `neo4j-cli query '...'`):
 
-- Documents: `(Document:Manual|Bulletin|RecallNotice)-[:HAS_SECTION*]->(Section)`
-  with `(Section)-[:REFERENCES_PART]->(Part)` and `(Section)-[:REFERENCES_CODE]->(DTC)`,
-  and derived `(Section)-[:LINKS_TO {sharedKeys, strength}]-(Section)` between documents
+- Technical library (parsed from PDFs in cloud storage), ki-style containment:
+  `(Library)-[:HAS]->(Folder)-[:HAS]->(Document)-[:HAS]->(Section)-[:HAS]->(Section)`
+  - URIs are hierarchical slugs: `technical-library/bulletins/tsb-21-114.pdf#condition`
+    - any subtree is a URI prefix; **copy URIs from tool output, never fabricate them**
+  - `Section.content` is the section's own text plus `uri:` pointers to its
+    children - deeper content exists wherever you see a `uri:` line
+  - `(Section)-[:NEXT_SECTION]->(Section)` threads reading order
+  - `(Section)-[:REFERENCES_PART]->(Part)` and `-[:REFERENCES_CODE]->(DTC)`
+  - `(Section)-[:LINKS_TO {citation:true}]->(Document)` - explicit citations
+  - `(Section)-[:LINKS_TO {derived:true, sharedKeys, strength}]->(Section)` -
+    sections in different documents sharing a part or code
+  - `Document.id` is the printed code (`TSB-21-114`); `Document.themeId` is
+    set by themes.py and is only stable within one run
 - Warehouse: `(Vehicle)-[:HAS_WORK_ORDER]->(WorkOrder)-[:DIAGNOSED]->(DTC)`,
   `(WorkOrder)-[:REPLACED {qty}]->(Part)`, `(WorkOrder)-[:PERFORMED]->(Procedure)`,
-  `(Part)-[:SUPERSEDED_BY]->(Part)`; `WorkOrder.comeback = true` means the vehicle
-  returned with the same problem
-- Themes: every `Section.communityId` groups document sections into repair themes
+  `(Part)-[:SUPERSEDED_BY]->(Part)`; `WorkOrder.comeback = true` means the
+  vehicle returned with the same problem
 
 ## Tools
 
 Run each script with `python skill/scripts/<name>.py <args>`.
 
-### Navigation (Module 2)
+### Shapes (Modules 2-3) - navigate and view context
 
-- `applicable_docs.py <code>` - every document covering a trouble code, with sections
-- `doc_toc.py <doc_id>` - a document's table of contents; read a section's text with
-  `neo4j-cli query "MATCH (s:Section {id: '<id>'}) RETURN s.text"`
-
-### Themes (Module 3)
-
-- `run_leiden.py [gamma]` - detect themes (default gamma 0.5); writes `Section.communityId`
-- `theme_cards.py` - one card per theme: sections, documents, defining keys
+- `outline.py [<uri>] [--depth N]` - the library as a table of contents;
+  `→` rows are outbound links. Drill by re-running with any URI from the
+  output. Spec: `docs/outline-format.md`
+- `search.py "<query>" [--under <uri-prefix>] [-k N]` - ranked full-text
+  hits; `--under` scopes to a subtree. Lucene operators pass through.
+  **Semantic expansion is your job:** the index is lexical, so when results
+  look thin, rewrite with OR-alternates you know -
+  `search.py 'misfire OR "rough idle" OR stumble OR P0301'`
+- `themes.py [--gamma G] [--min-docs N]` - evidence blocks for the library's
+  repair themes (the tool never names them - you do, from the shared
+  targets and member titles). Higher gamma = more, finer themes.
+  Spec: `docs/theme-format.md`
 
 ### Judgment and actions (Module 4)
 
@@ -55,9 +68,10 @@ the specs are the contract; db.py has the connection helper.
 
 2. recall_exposure.py <vin>
    Every RecallNotice whose model matches the vehicle's model, where the
-   recall's sections reference a remedy Part that this vehicle has NEVER
-   had replaced on any work order. Return recall id, title, and remedy
-   partNumber. Empty result = no exposure.
+   recall's sections reference a remedy Part (one that is not superseded)
+   that this vehicle has NEVER had replaced on any work order. Return
+   recall id, title, remedy partNumber, and the grounding section URIs.
+   Empty result = no exposure.
 
 3. order_part.py <wo_id> <part_number> [qty]
    POST to {PARTS_API_URL}/orders with header X-API-Key: {PARTS_API_KEY}
@@ -66,25 +80,37 @@ the specs are the contract; db.py has the connection helper.
    API names, do not retry automatically.
 
 4. write_recommendation.py <event_file> <action> <summary> [--part P]
-       [--recall R] [--grounding S1,S2] [--order-id PO]
+       [--recall R] [--grounding URI1,URI2] [--order-id PO]
    Record the decision in the graph, idempotently (MERGE on ids):
-   - MERGE the WorkOrder from the event JSON {wo_id, vin, opened,
-     odometer, complaint, dtc_code}; set status 'open'; link
+   - MERGE the WorkOrder from the event JSON; set status 'open'; link
      (Vehicle)-[:HAS_WORK_ORDER]->, and [:DIAGNOSED]-> the DTC if present
    - CREATE (wo)-[:HAS_RECOMMENDATION]->(r:Recommendation {id: wo_id + '-R1',
      action, summary, createdAt: datetime()})
    - action is 'repair' or 'escalate'
    - --part -> (r)-[:RECOMMENDS_PART]->(Part)
-   - --recall -> (r)-[:BUNDLES_RECALL]->(RecallNotice)
-   - --grounding -> (r)-[:GROUNDED_IN]->(Section) for each section id
+   - --recall -> (r)-[:BUNDLES_RECALL]->(RecallNotice by id)
+   - --grounding -> (r)-[:GROUNDED_IN]->(Section by uri) for each URI
    - --order-id -> (r)-[:PLACED_ORDER]->(o:PartsOrder {id, status: 'submitted'})
 ==================================================================== -->
+
+## Working shape-first
+
+When you need context, pick the shape before writing any query:
+
+1. **What's there?** -> outline (navigate the tree, follow `→` links)
+2. **Where is X discussed?** -> search (scope with `--under`, expand
+   synonyms yourself)
+3. **What are the patterns?** -> themes (then drill members via outline)
+4. **What worked / what applies to this vehicle?** -> the judgment tools
+
+Read a section's full text with
+`neo4j-cli query "MATCH (s:Section {uri: '<uri>'}) RETURN s.content"`.
 
 ## Policy
 
 Apply these rules in order when handling a work order event:
 
-1. **Ground first.** Identify applicable documents for the code (or for the
+1. **Ground first.** Identify applicable documents for the code (or the
    complaint's theme when there is no code). A recommendation with no
    `GROUNDED_IN` section is invalid.
 2. **Evidence beats guidance.** When documents disagree (a manual predates a
@@ -100,11 +126,11 @@ Apply these rules in order when handling a work order event:
    recommend the diagnostic procedure the guidance names, set action
    'escalate', and say what evidence is missing.
 6. **Leave a trail.** Every decision ends with write_recommendation.py -
-   the graph is the audit log.
+   the graph is the audit log; ground it with section URIs.
 
 ## Handling an event
 
 Given an event file (events/*.json): read it, apply the policy, act
 (order parts only for 'repair' actions), write the recommendation, then
 report: the decision, the evidence (counts, comebacks), the grounding
-sections, and any order placed.
+section URIs, and any order placed.

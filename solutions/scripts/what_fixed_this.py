@@ -12,8 +12,8 @@ vin, code = sys.argv[1], sys.argv[2]
 
 CYPHER = """
 MATCH (v:Vehicle {vin: $vin}), (c:DTC {code: $code})
-MATCH (doc:Document)-[:HAS_SECTION*]->(:Section)-[:REFERENCES_CODE]->(c)
-MATCH (doc)-[:HAS_SECTION*]->(:Section)-[:REFERENCES_PART]->(part:Part)
+MATCH (doc:Document)-[:HAS*]->(:Section)-[:REFERENCES_CODE]->(c)
+MATCH (doc)-[:HAS*]->(:Section)-[:REFERENCES_PART]->(part:Part)
 MATCH (other:Vehicle {model: v.model, engine: v.engine})
       -[:HAS_WORK_ORDER]->(wo:WorkOrder)-[:DIAGNOSED]->(c)
 MATCH (wo)-[:REPLACED]->(part)
