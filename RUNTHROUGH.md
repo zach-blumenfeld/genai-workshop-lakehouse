@@ -1,52 +1,56 @@
-# Participant run-through — exact steps
+# Participant run-through — exact steps (shape-first version)
 
-## 1. Open the course
-http://localhost:3000/courses/workshop-lakehouse/ — enroll, start Module 1,
-follow every page in order. (After the PR merges this becomes
-graphacademy.neo4j.com/courses/workshop-lakehouse/ — same pages.)
-If it shows "Coming Soon": flip `:status:` to `active` in course.adoc locally.
+The course webpage is the entry point and tells you every step.
+This file covers only the prep block and the local substitutions.
 
-## 2. Lesson "Your Environment" — do what it says
-- Click **Open in GitHub Codespace** → real cloud terminal, everything preinstalled (build takes a few minutes)
-- THE ONE SUBSTITUTION: where the page shows database credentials, instead create a
-  free **Graph Data Science blank sandbox** at https://sandbox.neo4j.com and paste
-  THOSE credentials into `.env` (your local DB is unreachable from a cloud Codespace;
-  in production GA provisions this sandbox for the participant)
-- Continue exactly as the page says: `python load/load_graph.py`, then
-  `uvicorn api.parts_api:app --port 8800` in a second terminal
-  (404s for `/` or favicon in its log are normal - the API only serves /orders; leave it running.
-  401 "x-api-key" when hitting it from a browser is also normal: scripts/agent send the key
-  from .env automatically; for manual /docs testing the key is autofix-workshop-key)
-- `claude` in a third terminal (one-time sign-in) and run the smoke-test question
-  (if `claude: command not found`: `npm install -g @anthropic-ai/claude-code`;
-  if `neo4j-cli` missing: `curl -sSfL https://neo4j.sh/install.sh | bash && export PATH="$HOME/.local/bin:$PATH"`)
+## Prep (once)
 
-## 2b. REQUIRED after creating your sandbox — repoint the Check Database buttons
-The local course's verify buttons check your LOCAL db, but your work lives in the
-cloud sandbox. Fix (once): edit `~/dev/courses/docker-compose.override.yaml` and
-replace the four SANDBOX_DEV_INSTANCE_* lines under `app:` with your sandbox values:
-
-```yaml
-      SANDBOX_DEV_INSTANCE_HOST: <sandbox IP, no scheme>
-      SANDBOX_DEV_INSTANCE_PORT: <bolt port>
-      SANDBOX_DEV_INSTANCE_USERNAME: neo4j
-      SANDBOX_DEV_INSTANCE_PASSWORD: <sandbox password>
+```bash
+cd ~/dev/genai-workshop-lakehouse && source .venv/bin/activate
+neo4j-cli query --uri neo4j://localhost:7690 --username neo4j --password workshop123 "MATCH (n) DETACH DELETE n" --rw
+neo4j-cli query --uri neo4j://localhost:7690 --username neo4j --password workshop123 "DROP INDEX content_search IF EXISTS" --rw
 ```
 
-Then: `cd ~/dev/courses && docker compose up -d app` and hard-refresh the course page.
-Now Check Database buttons (and the embedded sandbox pane) hit the same database
-your Codespace writes to.
+## START HERE
 
-## 3. Modules 2-5 — no substitutions
-Follow the lesson pages exactly: fill the blanks (M2, M3), build from spec (M4),
-hand the events to Claude, click the Check Database buttons, take the quiz.
+**http://localhost:3000/courses/workshop-lakehouse/** — enroll, open Module 1,
+follow every page in order. (Flip `:status:` to `active` in course.adoc
+locally if it shows "Coming Soon" — don't commit.)
 
-## Restart clean (full reset, no partial fixes)
-1. Delete the Codespace: https://github.com/codespaces → ... menu on it → Delete
-2. Wipe the cloud sandbox (or just keep it - the load script is safe to re-run):
-   from any terminal with its creds: `MATCH (n) DETACH DELETE n`
-3. Re-enter at step 1 (the course page) and click the Codespace button again -
-   the setup script is fixed, so a fresh Codespace builds complete
+## Local substitutions
+
+1. **Codespace button** → until the env repo push lands, your Codespace is
+   this folder: `~/dev/genai-workshop-lakehouse` with the venv active.
+   (After the push, the button works for real — delete + recreate to test it.)
+2. **Credentials block in "Your Environment"** → the page renders working
+   local-sandbox credentials; paste them into `.env` exactly as shown.
+   If running a real cloud Codespace instead, use a sandbox.neo4j.com
+   **Graph Data Science blank sandbox** (cloud-reachable, has GDS).
+
+## What the flow looks like now (so nothing surprises you)
+
+- **Module 1:** `python load/load_graph.py` parses the PDFs into the
+  Library tree (folders, citations, fulltext index) and merges the
+  warehouse. Start the API: `uvicorn api.parts_api:app --port 8800`.
+  Smoke test in `claude`.
+- **Module 2 (shape-first):** read `docs/outline-format.md` FIRST — it is
+  the spec. Then fill the `BUILD FROM SPEC` blocks in
+  `skill/scripts/outline.py` and `search.py` with Claude. Test:
+  `python skill/scripts/outline.py` and
+  `python skill/scripts/search.py 'misfire OR "rough idle"'`.
+- **Module 3:** read `docs/theme-format.md`, build the projection block in
+  `skill/scripts/themes.py`, run it, then `--gamma 2.0` for the dial moment.
+- **Module 4:** build the four judgment/action tools from the specs in
+  `skill/SKILL.md`, then: `Work order event: events/wo-2026-0117.json.
+  Handle it per the skill.` Grounding now uses **section URIs** (copy from
+  outline output). Second event must escalate.
+- Check Database buttons verify your local sandbox throughout.
+
+## If a lesson page 404s
+The local app caches its route map - `cd ~/dev/courses && docker compose restart app`, wait ~30s, refresh.
 
 ## If stuck
-`solutions/scripts/` in the Codespace has every completed script.
+
+`solutions/scripts/` has every completed tool. Themes need GDS - your local
+sandbox has it. A crashed themes run leaves no debris (the script drops its
+projection).
