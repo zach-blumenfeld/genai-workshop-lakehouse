@@ -13,7 +13,7 @@ import sys
 import requests
 from dotenv import load_dotenv
 
-load_dotenv()
+load_dotenv(override=True)  # .env is the source of truth, even over exported vars
 
 wo_id, part_number = sys.argv[1], sys.argv[2]
 qty = int(sys.argv[3]) if len(sys.argv) > 3 else 1
