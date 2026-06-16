@@ -6,7 +6,7 @@ Actionable work lives in **GitHub issues prefixed `lakehouse-workshop:`** (label
 
 - **Course content:** `neo4j-graphacademy/courses` → `asciidoc/courses/workshop-lakehouse/` (live, `:status: draft`, prod URL serves it)
 - **Build environment:** `zach-blumenfeld/genai-workshop-lakehouse` (this repo — Codespace, pipeline, skill, specs)
-- **Status:** shape-first version shipped (`v1.47.12`); **neocarta/BigQuery restructure in progress**
+- **Status:** shape-first version shipped (`v1.47.12`); **neocarta/BigQuery restructure built on branch `lakehouse-connections-m2` (federated finale, runnable) - pending review/merge**
 
 ---
 
@@ -125,12 +125,14 @@ import in M3 is **documents only**.
 
 | Piece | State |
 |-------|-------|
-| Shape-first version (trees, themes, finale, skill, Codespace) | **shipped** `v1.47.12` |
-| Data pipeline | **to change** — remove warehouse-instance load (docs-only) |
-| M2 Connections (BigQuery + neocarta) | **new** |
-| M5 judgment tools | **to change** — federate (Neo4j grounding + BigQuery SQL) |
-| Module reorder | **to do** |
-| neo4j-cli optional section | **new** |
+| Shape-first version (trees, themes, skill, Codespace) | **shipped** `v1.47.12` |
+| BigQuery warehouse + DDL/access (`bigquery/`) | **done**, pushed (env repo) |
+| M2 Connections (neocarta `build_connections.py` + `join_paths`) | **done**, on branch + env repo |
+| Docs-only pipeline (warehouse load removed) | **done** |
+| Federated finale (`what_fixed_this`/`recall_exposure` over Neo4j+BigQuery) | **done**, validated |
+| Module reorder + M1/M5/M6 reframe + optional neo4j-cli | **done**, QA green |
+| BigQuery read auth in Codespace (shared SA key) | **remaining** — #581 |
+| PR, prod release, org move, artwork, reviews, `:status: active` | **deferred** |
 
 ---
 

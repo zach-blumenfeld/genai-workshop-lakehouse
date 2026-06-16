@@ -29,21 +29,21 @@ locally if it shows "Coming Soon" — don't commit.)
 
 ## What the flow looks like now (so nothing surprises you)
 
-- **Module 1:** `python load/load_graph.py` parses the PDFs into the
-  Library tree (folders, citations, fulltext index) and merges the
-  warehouse. Start the API: `uvicorn api.parts_api:app --port 8800`.
-  Smoke test in `claude`.
-- **Module 2 (shape-first):** read `docs/outline-format.md` FIRST — it is
-  the spec. Then fill the `BUILD FROM SPEC` blocks in
-  `skill/scripts/outline.py` and `search.py` with Claude. Test:
-  `python skill/scripts/outline.py` and
-  `python skill/scripts/search.py 'misfire OR "rough idle"'`.
-- **Module 3:** read `docs/theme-format.md`, build the projection block in
-  `skill/scripts/themes.py`, run it, then `--gamma 2.0` for the dial moment.
-- **Module 4:** build the four judgment/action tools from the specs in
-  `skill/SKILL.md`, then: `Work order event: events/wo-2026-0117.json.
-  Handle it per the skill.` Grounding now uses **section URIs** (copy from
-  outline output). Second event must escalate.
+- **Module 1 (Setup):** wire BigQuery (read) + Neo4j in `.env`; `python load/load_graph.py`
+  loads **documents only** (warehouse rows stay in BigQuery). Start the API:
+  `uvicorn api.parts_api:app --port 8800`. Smoke test in `claude`.
+- **Module 2 (Connections):** read `docs/connections-format.md`, then
+  `python connections/build_connections.py` runs neocarta over BigQuery -> the
+  metadata/join-path graph. Fill the `BUILD FROM SPEC` block in
+  `skill/scripts/join_paths.py`; test `python skill/scripts/join_paths.py work_orders`.
+- **Module 3 (Trees):** read `docs/outline-format.md`; fill the blocks in
+  `skill/scripts/outline.py` and `search.py`. Test `python skill/scripts/outline.py`.
+- **Module 4 (Themes):** read `docs/theme-format.md`; fill `skill/scripts/themes.py`;
+  run it, then `--gamma 2.0` for the dial. Optional: the neo4j-cli lesson.
+- **Module 5 (Finale):** build the four judgment/action tools from the specs in
+  `skill/SKILL.md` - the two judgment tools **federate** (Neo4j grounding +
+  BigQuery SQL via `bq.py`). Then: `Work order event: events/wo-2026-0117.json.
+  Handle it per the skill.` Second event (`wo-2026-0118.json`) must escalate.
 - Check Database buttons verify your local sandbox throughout.
 
 ## If a lesson page 404s
