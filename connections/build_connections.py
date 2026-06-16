@@ -13,10 +13,14 @@ Connection + dataset come from .env:
   NEO4J_URI / NEO4J_USERNAME / NEO4J_PASSWORD / NEO4J_DATABASE
   GCP_PROJECT_ID        (billing project; the shared workshop project)
   BIGQUERY_DATASET_ID   (defaults to autofix_service)
+  BIGQUERY_SA_KEY_B64   (the workshop read-only key from the slides; if unset,
+                         your own gcloud login is used)
 
 Run:  python connections/build_connections.py
 """
 
+import base64
+import json
 import os
 
 from dotenv import load_dotenv
@@ -31,13 +35,25 @@ PROJECT = os.environ["GCP_PROJECT_ID"]
 DATASET = os.environ.get("BIGQUERY_DATASET_ID", "autofix_service")
 
 
+def bq_client(project):
+    """Workshop read-only service account if BIGQUERY_SA_KEY_B64 is set,
+    otherwise your own gcloud credentials."""
+    b64 = os.environ.get("BIGQUERY_SA_KEY_B64")
+    if b64:
+        from google.oauth2 import service_account
+        info = json.loads(base64.b64decode(b64))
+        creds = service_account.Credentials.from_service_account_info(info)
+        return bigquery.Client(project=project, credentials=creds)
+    return bigquery.Client(project=project)
+
+
 def main():
     driver = GraphDatabase.driver(
         os.environ["NEO4J_URI"],
         auth=(os.environ["NEO4J_USERNAME"], os.environ["NEO4J_PASSWORD"]),
     )
     database = os.environ.get("NEO4J_DATABASE", "neo4j")
-    client = bigquery.Client(project=PROJECT)
+    client = bq_client(PROJECT)
 
     print(f"Reading {PROJECT}.{DATASET} metadata -> Neo4j ({database})...")
     # Schema only — no embeddings (the FK graph is the join map; the warehouse
