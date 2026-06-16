@@ -8,11 +8,13 @@ One command builds the workshop's starting graph:
    containment (single HAS relationship type), with hierarchical URIs,
    Rule-1 section content, NEXT_SECTION reading order, part/code
    references, and explicit citation links.
-2. Reads the warehouse tables (CSV today, Databricks tomorrow) and merges
-   them onto the same Part and DTC nodes the documents reference.
-3. Derives LINKS_TO {derived:true} between sections in different documents
+2. Derives LINKS_TO {derived:true} between sections in different documents
    that share a part or code; citations land as LINKS_TO {citation:true}.
-4. Creates the content_search fulltext index for hierarchical search.
+3. Creates the content_search fulltext index for hierarchical search.
+
+Part and DTC nodes come only from document references; the warehouse rows
+live in BigQuery (the finale federates against them). The parts catalog is
+still read as the vocabulary for extracting part numbers from PDF text.
 
 Connection from .env: NEO4J_URI, NEO4J_USERNAME, NEO4J_PASSWORD.
 Themes are NOT computed here - surfacing them is Module 3 (themes.py).
@@ -37,9 +39,6 @@ CONSTRAINTS = [
     "CREATE CONSTRAINT section_uri IF NOT EXISTS FOR (s:Section) REQUIRE s.uri IS UNIQUE",
     "CREATE CONSTRAINT part_number IF NOT EXISTS FOR (p:Part) REQUIRE p.partNumber IS UNIQUE",
     "CREATE CONSTRAINT dtc_code IF NOT EXISTS FOR (c:DTC) REQUIRE c.code IS UNIQUE",
-    "CREATE CONSTRAINT vehicle_vin IF NOT EXISTS FOR (v:Vehicle) REQUIRE v.vin IS UNIQUE",
-    "CREATE CONSTRAINT work_order_id IF NOT EXISTS FOR (w:WorkOrder) REQUIRE w.id IS UNIQUE",
-    "CREATE CONSTRAINT procedure_id IF NOT EXISTS FOR (p:Procedure) REQUIRE p.id IS UNIQUE",
 ]
 
 FULLTEXT_INDEX = """
@@ -136,54 +135,6 @@ MERGE (s1)-[l:LINKS_TO]->(s2)
 SET l.derived = true, l.sharedKeys = sharedKeys, l.strength = size(sharedKeys)
 """
 
-WAREHOUSE = {
-    "parts": """
-        UNWIND $rows AS row
-        MERGE (p:Part {partNumber: row.part_number})
-        SET p.name = row.name
-        WITH p, row WHERE row.superseded_by <> ''
-        MERGE (new:Part {partNumber: row.superseded_by})
-        MERGE (p)-[:SUPERSEDED_BY]->(new)
-    """,
-    "dtc_codes": """
-        UNWIND $rows AS row
-        MERGE (c:DTC {code: row.code})
-        SET c.description = row.description
-    """,
-    "procedures": """
-        UNWIND $rows AS row
-        MERGE (p:Procedure {id: row.procedure_id})
-        SET p.name = row.name, p.laborHours = toFloat(row.labor_hours)
-    """,
-    "vehicles": """
-        UNWIND $rows AS row
-        MERGE (v:Vehicle {vin: row.vin})
-        SET v.make = row.make, v.model = row.model,
-            v.year = toInteger(row.year), v.engine = row.engine
-    """,
-    "work_orders": """
-        UNWIND $rows AS row
-        MERGE (w:WorkOrder {id: row.wo_id})
-        SET w.opened = date(row.opened), w.odometer = toInteger(row.odometer),
-            w.complaint = row.complaint, w.comeback = (row.comeback = 'true')
-        WITH w, row
-        MATCH (v:Vehicle {vin: row.vin})
-        MERGE (v)-[:HAS_WORK_ORDER]->(w)
-        WITH w, row
-        MATCH (p:Procedure {id: row.procedure_id})
-        MERGE (w)-[:PERFORMED]->(p)
-        WITH w, row WHERE row.dtc_code <> ''
-        MATCH (c:DTC {code: row.dtc_code})
-        MERGE (w)-[:DIAGNOSED]->(c)
-    """,
-    "work_order_parts": """
-        UNWIND $rows AS row
-        MATCH (w:WorkOrder {id: row.wo_id})
-        MATCH (p:Part {partNumber: row.part_number})
-        MERGE (w)-[r:REPLACED]->(p)
-        SET r.qty = toInteger(row.qty)
-    """,
-}
 
 
 def main():
@@ -217,26 +168,21 @@ def main():
         session.run(LOAD_CODE_REFS, refs=refs)
         session.run(LOAD_CITATIONS, citations=citations)
         session.run(DERIVE_LINKS)
-        for table, stmt in WAREHOUSE.items():
-            rows = list(source.rows(table))
-            session.run(stmt, rows=rows)
-            print(f"warehouse.{table}: {len(rows)} rows merged")
         counts = session.run(
             "RETURN COUNT {(:Library)} AS lib, COUNT {(:Folder)} AS folders, "
             "COUNT {(:Document)} AS docs, COUNT {(:Section)} AS sections, "
             "COUNT {()-[:HAS]->()} AS has, COUNT {()-[:NEXT_SECTION]->()} AS next, "
             "COUNT {()-[:LINKS_TO {citation: true}]->()} AS citations, "
             "COUNT {()-[:LINKS_TO {derived: true}]->()} AS derived, "
-            "COUNT {(:Vehicle)} AS vehicles, COUNT {(:WorkOrder)} AS workOrders, "
-            "COUNT {(:Part)} AS parts"
+            "COUNT {(:Part)} AS parts, COUNT {(:DTC)} AS codes"
         ).single()
         print(
             f"Graph ready: {counts['lib']} library, {counts['folders']} folders, "
             f"{counts['docs']} documents, {counts['sections']} sections | "
             f"HAS {counts['has']}, NEXT_SECTION {counts['next']}, "
             f"citations {counts['citations']}, derived links {counts['derived']} | "
-            f"{counts['vehicles']} vehicles, {counts['workOrders']} work orders, "
-            f"{counts['parts']} parts"
+            f"{counts['parts']} parts, {counts['codes']} codes referenced "
+            f"(warehouse rows stay in BigQuery)"
         )
     driver.close()
 

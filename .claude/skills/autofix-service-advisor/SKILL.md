@@ -11,8 +11,10 @@ the graph - never in general automotive knowledge alone.
 
 ## The graph
 
-One Neo4j database spans both halves of the lakehouse
-(connection from `.env`; ad-hoc queries via `neo4j-cli query '...'`):
+Neo4j holds the document graph (trees, themes) and the warehouse's *connections
+metadata* (from neocarta). The warehouse **rows** live in BigQuery and are
+queried with SQL - they are never migrated. Connection from `.env`; ad-hoc Neo4j
+queries via `neo4j-cli query '...'`, ad-hoc BigQuery via `bq query`.
 
 - Technical library (parsed from PDFs in cloud storage), ki-style containment:
   `(Library)-[:HAS]->(Folder)-[:HAS]->(Document)-[:HAS]->(Section)-[:HAS]->(Section)`
@@ -58,27 +60,35 @@ Run each script with `python skill/scripts/<name>.py <args>`.
   targets and member titles). Higher gamma = more, finer themes.
   Spec: `docs/theme-format.md`
 
-### Judgment and actions (Module 4)
+### Judgment and actions (Module 5) - federate Neo4j + BigQuery
 
 <!-- ====================== WRITE FROM SPEC ============================
-These four tools do not exist yet. Build them with your coding agent -
-the specs are the contract; db.py has the connection helper.
+These four tools do not exist yet. Build them with your coding agent - the
+specs are the contract. db.py runs Neo4j (grounding); bq.py runs BigQuery
+(live warehouse rows) - `from bq import bq_query, table`. The two judgment
+tools FEDERATE: they ground in the document graph (Neo4j) and read the facts
+from BigQuery, then join in Python. The warehouse rows are never in Neo4j.
+The join keys you need - which warehouse columns join to which - come from
+the connections graph (join_paths.py / the metadata graph from Module 2).
 
 1. what_fixed_this.py <vin> <code>
-   For vehicles with the same model AND engine as <vin>, find work orders
-   diagnosed with <code> and the parts they replaced. Return one row per
-   (document, part) where the part is referenced by a document that also
-   covers the code: guidance title, partNumber, part name, timesUsed
-   (distinct work orders), comebacks (how many of those work orders have
-   comeback = true). Order by comebacks ascending, then timesUsed
-   descending - the first row is the evidence-backed fix.
+   Step 1 (Neo4j): documents that cover <code> and the parts they reference -
+   candidate parts, each with its guidance (document titles) and grounding
+   section URIs.
+   Step 2 (BigQuery): the vin's model and engine; then for those candidate
+   parts, on same-model+engine vehicles whose work orders are diagnosed with
+   <code>, COUNT(DISTINCT wo_id) AS timesUsed and COUNTIF(comeback) AS
+   comebacks (join work_orders -> vehicles -> work_order_parts -> parts).
+   Step 3 (Python): keep only parts with real outcomes, attach guidance and
+   grounding, sort by comebacks ascending then timesUsed descending. The
+   first row is the evidence-backed fix; an empty result means escalate.
 
 2. recall_exposure.py <vin>
-   Every RecallNotice whose model matches the vehicle's model, where the
-   recall's sections reference a remedy Part (one that is not superseded)
-   that this vehicle has NEVER had replaced on any work order. Return
-   recall id, title, remedy partNumber, and the grounding section URIs.
-   Empty result = no exposure.
+   BigQuery: the vin's model. Neo4j: RecallNotices for that model and the
+   remedy parts their sections reference, with grounding section URIs.
+   BigQuery again: drop remedies that are superseded (parts.superseded_by IS
+   NOT NULL) or that this vin has already had replaced. Return the recalls in
+   scope and not yet applied. Empty result = no exposure.
 
 3. order_part.py <wo_id> <part_number> [qty]
    POST to {PARTS_API_URL}/orders with header X-API-Key: {PARTS_API_KEY}
@@ -123,9 +133,10 @@ Apply these rules in order when handling a work order event:
 2. **Evidence beats guidance.** When documents disagree (a manual predates a
    bulletin), rank candidate parts by real outcomes: zero comebacks wins.
    Cite the newer document.
-3. **Never order a superseded part.** Check `SUPERSEDED_BY` before ordering;
-   if the parts API rejects an order as superseded, order the named
-   replacement instead and note the supersession in the summary.
+3. **Never order a superseded part.** Supersession lives in BigQuery
+   (`parts.superseded_by`) and the parts API enforces it: if an order is
+   rejected as superseded, order the named replacement instead and note it
+   in the summary.
 4. **Always check recall exposure.** If the vehicle is in scope for an open
    recall it never received, bundle the recall remedy into the recommendation.
 5. **Escalate when evidence is thin.** If no part shows at least two

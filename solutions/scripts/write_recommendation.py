@@ -29,8 +29,9 @@ query(
     MERGE (w:WorkOrder {id: $e.wo_id})
     SET w.opened = date($e.opened), w.odometer = toInteger($e.odometer),
         w.complaint = $e.complaint, w.status = 'open'
-    WITH w
-    MATCH (v:Vehicle {vin: $e.vin})
+    // Vehicle rows live in BigQuery; stub a node so the decision trail is
+    // self-contained and auditable in the graph.
+    MERGE (v:Vehicle {vin: $e.vin})
     MERGE (v)-[:HAS_WORK_ORDER]->(w)
     """,
     e=event,
