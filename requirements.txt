@@ -5,3 +5,5 @@ uvicorn>=0.29
 pypdf>=4.0
 requests>=2.31
 reportlab>=4.0
+neocarta>=0.7
+google-cloud-bigquery>=3.0

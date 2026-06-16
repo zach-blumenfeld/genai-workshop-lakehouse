@@ -27,17 +27,24 @@ One Neo4j database spans both halves of the lakehouse
     sections in different documents sharing a part or code
   - `Document.id` is the printed code (`TSB-21-114`); `Document.themeId` is
     set by themes.py and is only stable within one run
-- Warehouse: `(Vehicle)-[:HAS_WORK_ORDER]->(WorkOrder)-[:DIAGNOSED]->(DTC)`,
-  `(WorkOrder)-[:REPLACED {qty}]->(Part)`, `(WorkOrder)-[:PERFORMED]->(Procedure)`,
-  `(Part)-[:SUPERSEDED_BY]->(Part)`; `WorkOrder.comeback = true` means the
-  vehicle returned with the same problem
+- Connections — the warehouse's *metadata* (built by neocarta from BigQuery; the
+  rows themselves stay in BigQuery and are queried with SQL):
+  `(:Database)-[:HAS_SCHEMA]->(:Schema)-[:HAS_TABLE]->(:Table)-[:HAS_COLUMN]->(:Column)`,
+  `(:Column)-[:REFERENCES]->(:Column)` per foreign key (the join paths),
+  `(:Column)-[:HAS_VALUE]->(:Value)` sample values. Read this to know how to join
+  warehouse tables; query the live rows with BigQuery SQL in the finale.
+  `WorkOrder.comeback = true` in the rows means the vehicle returned with the
+  same problem.
 
 ## Tools
 
 Run each script with `python skill/scripts/<name>.py <args>`.
 
-### Shapes (Modules 2-3) - navigate and view context
+### Shapes - navigate and view context
 
+- `join_paths.py <table>` - the warehouse tables a table joins to, and on which
+  key, from the connections graph. Chain neighbors to compose a multi-table
+  join; this grounds the SQL you send to BigQuery. Spec: `docs/connections-format.md`
 - `outline.py [<uri>] [--depth N]` - the library as a table of contents;
   `→` rows are outbound links. Drill by re-running with any URI from the
   output. Spec: `docs/outline-format.md`
