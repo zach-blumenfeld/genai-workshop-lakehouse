@@ -156,7 +156,7 @@ import in M3 is **documents only**.
 |-------|-------|
 | Shape-first version (trees, themes, skill, Codespace) | **shipped** `v1.47.12` |
 | BigQuery warehouse + DDL/access (`bigquery/`) | **done**, pushed (env repo) |
-| M2 Connections (neocarta `build_connections.py` + `join_paths`) | **done**, on branch + env repo |
+| M2 Connections (neocarta `build_connections.py` + agentic `connections` MCP) | **done**, on branch + env repo |
 | Docs-only pipeline (warehouse load removed) | **done** |
 | Federated finale (`what_fixed_this`/`recall_exposure` over Neo4j+BigQuery) | **done**, validated |
 | Module reorder + M1/M5/M6 reframe + optional neo4j-cli | **done**, QA green |

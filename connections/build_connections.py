@@ -70,7 +70,7 @@ def main():
         tables = s.run("MATCH (t:Table) RETURN count(t) AS n").single()["n"]
     driver.close()
     print(f"Connections graph ready: {tables} tables, {refs} REFERENCES (join paths).")
-    print("Explore it: python skill/scripts/join_paths.py work_orders")
+    print("Your agent reads this through the connections MCP (get_full_metadata_schema).")
 
 
 if __name__ == "__main__":

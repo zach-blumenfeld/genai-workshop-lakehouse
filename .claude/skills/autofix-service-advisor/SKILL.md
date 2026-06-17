@@ -25,8 +25,8 @@ return each table with its columns, types, example values, and **foreign-key
 references**. The pattern for any warehouse question is: **retrieve the relevant
 schema from the `connections` MCP, write the SQL from those foreign-key refs, run
 it with `run_sql.py`.** You do not guess joins and you do not hand-maintain a join
-map - the graph supplies it. (`join_paths.py` is the same idea as a standalone
-script you built in Module 2; at runtime the MCP gives you the whole picture.)
+map - the `connections` MCP hands over the schema and foreign keys, and you write
+the SQL from them.
 
 - Technical library (parsed from PDFs in cloud storage), ki-style containment:
   `(Library)-[:HAS]->(Folder)-[:HAS]->(Document)-[:HAS]->(Section)-[:HAS]->(Section)`
@@ -56,9 +56,10 @@ Run each script with `python skill/scripts/<name>.py <args>`.
 
 ### Shapes - navigate and view context
 
-- `join_paths.py <table>` - the warehouse tables a table joins to, and on which
-  key, from the connections graph. Chain neighbors to compose a multi-table
-  join; this grounds the SQL you send to BigQuery. Spec: `docs/connections-format.md`
+The warehouse connections shape is the `connections` MCP (see **The graph** above) -
+retrieve the schema and foreign keys from it, do not script a join map. The document
+shapes are tools you run:
+
 - `outline.py [<uri>] [--depth N]` - the library as a table of contents;
   `→` rows are outbound links. Drill by re-running with any URI from the
   output. Spec: `docs/outline-format.md`
