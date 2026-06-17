@@ -104,6 +104,35 @@ the dial a security-conscious team weighs (pain #4).
 
 ---
 
+## Positioning vs Text2SQL / Databricks Genie
+
+Stress-tested red-team/blue-team (2026-06-09):
+`~/Documents/content-research-wiki/outputs/autorepair-thesis-stress-test.md`. **Read it before
+making competitive claims in the lessons.** The headline: do **not** frame this as "Genie/Text2SQL
+*can't*." In 2026 Databricks ships the Mosaic AI Agent Framework + managed MCP (AI Search, Genie,
+SQL, UC Functions) that *can* orchestrate vector+SQL across the doc↔table boundary, and Genie takes
+declarative joins + metric views for pinned deterministic paths. A "the tools can't" pitch gets
+destroyed by a sharp attendee. Win on **trust, not capability**.
+
+- **The problem half is bulletproof — cite independent benchmarks, not vendor numbers:**
+  - **Falcon (arXiv 2510.24762, Oct 2025): 78.57% error rate on queries touching 4+ tables** — the
+    exact shape of the finale join (`work_orders → vehicles → work_order_parts → parts`). The single
+    strongest stat; used in M2 L1/L2 and M5 L1.
+  - Spider 2.0 (ICLR'25): frontier models ~10–17% on *enterprise* Text2SQL (vs ~86% academic);
+    agentic "lite" tops ~73%.
+  - Weller et al. 2025: a single dense embedding *geometrically* cannot represent arbitrary
+    connected sets — vector returns the wrong *shape* (backs the trees/themes half).
+- **The graph's honest edge = determinism + auditability + one traversal**, vs. an orchestrated
+  tool-chain that re-derives the join each query and is ~70–80% reliable. Modeled once, inspectable.
+- **The cross-modal point is the real moat:** bulletin *applicability* is not a column — it is text
+  the graph turns into a traversable edge. The counter to "just declare a metric view then": that is
+  the same modeling work; the graph does it once *and* holds the unstructured side.
+- Where this shows up in the course: M2 L1 "the tool guesses" NOTE + M2 L2 `path_query.py` payoff
+  (deterministic path → SQL → live rows) + M5 L1 "but can a Databricks agent not orchestrate this?"
+  NOTE.
+
+---
+
 ## Module outline (2 hr, target)
 
 | M | Module | Shape | Mode | ~min |
