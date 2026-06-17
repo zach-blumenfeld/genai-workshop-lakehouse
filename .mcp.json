@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "connections": {
+      "command": ".venv/bin/neocarta-mcp",
+      "args": [],
+      "env": {}
+    }
+  }
+}

@@ -16,6 +16,16 @@ metadata* (from neocarta). The warehouse **rows** live in BigQuery and are
 queried with SQL - they are never migrated. Connection from `.env`; ad-hoc Neo4j
 queries via `neo4j-cli query '...'`, ad-hoc BigQuery via `bq query`.
 
+**How you query the warehouse (Text2SQL, grounded by the connections graph).**
+The `connections` MCP server (neocarta) exposes the metadata graph as tools -
+`list_schemas`, `list_tables_by_schema`, and `get_full_metadata_schema`, which
+return each table with its columns, types, example values, and **foreign-key
+references**. The pattern for any warehouse question is: **retrieve the relevant
+schema from the `connections` MCP, write the SQL from those foreign-key refs, run
+it with `bq query`.** You do not guess joins and you do not hand-maintain a join
+map - the graph supplies it. (`join_paths.py` is the same idea as a standalone
+script you built in Module 2; at runtime the MCP gives you the whole picture.)
+
 - Technical library (parsed from PDFs in cloud storage), ki-style containment:
   `(Library)-[:HAS]->(Folder)-[:HAS]->(Document)-[:HAS]->(Section)-[:HAS]->(Section)`
   - URIs are hierarchical slugs: `technical-library/bulletins/tsb-21-114.pdf#condition`
