@@ -1,7 +1,7 @@
 {
   "mcpServers": {
     "connections": {
-      "command": ".venv/bin/neocarta-mcp",
+      "command": "./run-mcp.sh",
       "args": [],
       "env": {}
     }
