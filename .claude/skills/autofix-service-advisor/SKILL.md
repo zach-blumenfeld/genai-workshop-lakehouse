@@ -14,7 +14,9 @@ the graph - never in general automotive knowledge alone.
 Neo4j holds the document graph (trees, themes) and the warehouse's *connections
 metadata* (from neocarta). The warehouse **rows** live in BigQuery and are
 queried with SQL - they are never migrated. Connection from `.env`; ad-hoc Neo4j
-queries via `neo4j-cli query '...'`, ad-hoc BigQuery via `bq query`.
+queries via `neo4j-cli query '...'`, ad-hoc BigQuery via
+`python skill/scripts/run_sql.py '<SQL>'` (it uses the workshop's read key; the
+`bq` CLI only works if you have your own gcloud login).
 
 **How you query the warehouse (Text2SQL, grounded by the connections graph).**
 The `connections` MCP server (neocarta) exposes the metadata graph as tools -
@@ -22,7 +24,7 @@ The `connections` MCP server (neocarta) exposes the metadata graph as tools -
 return each table with its columns, types, example values, and **foreign-key
 references**. The pattern for any warehouse question is: **retrieve the relevant
 schema from the `connections` MCP, write the SQL from those foreign-key refs, run
-it with `bq query`.** You do not guess joins and you do not hand-maintain a join
+it with `run_sql.py`.** You do not guess joins and you do not hand-maintain a join
 map - the graph supplies it. (`join_paths.py` is the same idea as a standalone
 script you built in Module 2; at runtime the MCP gives you the whole picture.)
 
@@ -70,55 +72,60 @@ Run each script with `python skill/scripts/<name>.py <args>`.
   targets and member titles). Higher gamma = more, finer themes.
   Spec: `docs/theme-format.md`
 
-### Judgment and actions (Module 5) - federate Neo4j + BigQuery
+### Judgment - federate live with Text2SQL (Module 5)
 
-<!-- ====================== WRITE FROM SPEC ============================
-These four tools do not exist yet. Build them with your coding agent - the
-specs are the contract. db.py runs Neo4j (grounding); bq.py runs BigQuery
-(live warehouse rows) - `from bq import bq_query, table`. The two judgment
-tools FEDERATE: they ground in the document graph (Neo4j) and read the facts
-from BigQuery, then join in Python. The warehouse rows are never in Neo4j.
-The join keys you need - which warehouse columns join to which - come from
-the connections graph (join_paths.py / the metadata graph from Module 2).
+Judgment is **agentic**, not a pre-written script: you hold the policy and you
+write the SQL. The warehouse rows are never in Neo4j. The pattern for every
+warehouse fact:
 
-1. what_fixed_this.py <vin> <code>
-   Step 1 (Neo4j): documents that cover <code> and the parts they reference -
-   candidate parts, each with its guidance (document titles) and grounding
-   section URIs.
-   Step 2 (BigQuery): the vin's model and engine; then for those candidate
-   parts, on same-model+engine vehicles whose work orders are diagnosed with
-   <code>, COUNT(DISTINCT wo_id) AS timesUsed and COUNTIF(comeback) AS
-   comebacks (join work_orders -> vehicles -> work_order_parts -> parts).
-   Step 3 (Python): keep only parts with real outcomes, attach guidance and
-   grounding, sort by comebacks ascending then timesUsed descending. The
-   first row is the evidence-backed fix; an empty result means escalate.
+1. **Schema from the `connections` MCP.** Call `get_full_metadata_schema` (or
+   `list_tables_by_schema`) to get the tables, columns, and **foreign-key
+   references** - the join paths. Never guess a join; read it from the graph.
+2. **Ground in the document graph (Neo4j).** Use the shapes + `neo4j-cli query`
+   to find the documents and parts that apply, with grounding section URIs.
+3. **Write the SQL and run it** with `python skill/scripts/run_sql.py '<SQL>'`,
+   joining along the FK refs from step 1.
+4. **Join + rank in your reasoning**, then act and record.
 
-2. recall_exposure.py <vin>
-   BigQuery: the vin's model. Neo4j: RecallNotices for that model and the
-   remedy parts their sections reference, with grounding section URIs.
-   BigQuery again: drop remedies that are superseded (parts.superseded_by IS
-   NOT NULL) or that this vin has already had replaced. Return the recalls in
-   scope and not yet applied. Empty result = no exposure.
+Two judgment flows you run this way:
 
-3. order_part.py <wo_id> <part_number> [qty]
-   POST to {PARTS_API_URL}/orders with header X-API-Key: {PARTS_API_KEY}
-   and body {wo_id, part_number, qty}. Print the response. If the API
-   answers 409 the part is superseded - surface the replacement part the
-   API names, do not retry automatically.
+**Evidence-ranked fix** - "what fixed `<code>` on vehicles like `<vin>`?"
 
-4. write_recommendation.py <event_file> <action> <summary> [--part P]
-       [--recall R] [--grounding URI1,URI2] [--order-id PO]
-   Record the decision in the graph, idempotently (MERGE on ids):
-   - MERGE the WorkOrder from the event JSON; set status 'open'; link
-     (Vehicle)-[:HAS_WORK_ORDER]->, and [:DIAGNOSED]-> the DTC if present
-   - CREATE (wo)-[:HAS_RECOMMENDATION]->(r:Recommendation {id: wo_id + '-R1',
-     action, summary, createdAt: datetime()})
-   - action is 'repair' or 'escalate'
-   - --part -> (r)-[:RECOMMENDS_PART]->(Part)
-   - --recall -> (r)-[:BUNDLES_RECALL]->(RecallNotice by id)
-   - --grounding -> (r)-[:GROUNDED_IN]->(Section by uri) for each URI
-   - --order-id -> (r)-[:PLACED_ORDER]->(o:PartsOrder {id, status: 'submitted'})
-==================================================================== -->
+- Neo4j: documents that cover `<code>` and the parts they reference - candidate
+  parts, each with its guidance (document titles) and grounding section URIs.
+- BigQuery: the vin's model and engine; then for those candidate parts, on
+  same-model+engine vehicles whose work orders are diagnosed with `<code>`,
+  `COUNT(DISTINCT wo_id) AS timesUsed` and `COUNTIF(comeback) AS comebacks`
+  (join `work_orders -> vehicles -> work_order_parts -> parts`, per the FK refs).
+- Rank: keep only parts with real outcomes, attach guidance and grounding, sort
+  by comebacks ascending then timesUsed descending. The first is the
+  evidence-backed fix; an empty result means escalate.
+
+**Recall exposure** - "what open recall has this `<vin>` not had?"
+
+- BigQuery: the vin's model. Neo4j: RecallNotices for that model and the remedy
+  parts their sections reference, with grounding section URIs.
+- BigQuery: drop remedies that are superseded (`parts.superseded_by IS NOT NULL`)
+  or that this vin has already had replaced. Return recalls in scope and not yet
+  applied. Empty result = no exposure.
+
+Deterministic Python versions of both flows are in `solutions/scripts/`
+(`what_fixed_this.py`, `recall_exposure.py`) if you want to see the federation as
+code - but at runtime you retrieve the schema and write the SQL yourself.
+
+### Actions - provided tools
+
+Two actions have fixed contracts, so they are scripts you run, not SQL you write:
+
+- `order_part.py <wo_id> <part_number> [qty]` - POST to `{PARTS_API_URL}/orders`
+  with header `X-API-Key: {PARTS_API_KEY}` and body `{wo_id, part_number, qty}`.
+  If the API answers 409 the part is superseded - surface the replacement part
+  the API names; do not retry automatically.
+- `write_recommendation.py <event_file> <action> <summary> [--part P] [--recall R]
+  [--grounding URI1,URI2] [--order-id PO]` - record the decision in the graph
+  idempotently: MERGE the WorkOrder + Vehicle, CREATE the `Recommendation`
+  (`<wo_id>-R1`, action `repair` or `escalate`), and link `RECOMMENDS_PART`,
+  `BUNDLES_RECALL`, `GROUNDED_IN` (Section by uri), `PLACED_ORDER`. The audit trail.
 
 ## Working shape-first
 
