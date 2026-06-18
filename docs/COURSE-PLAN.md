@@ -131,6 +131,25 @@ destroyed by a sharp attendee. Win on **trust, not capability**.
   (deterministic path → SQL → live rows) + M5 L1 "but can a Databricks agent not orchestrate this?"
   NOTE.
 
+### Positioning vs OSI / semantic-layer standards (for OSI-aware learners)
+
+Some participants arrive with **OSI / dbt / Databricks Metric Views** in their heads and will ask
+where the course fits. Handle it in **one framing**, then move on — do **not** teach the OSI spec
+(that turns the course into a spec tutorial that chases revisions).
+
+- **What OSI/semantic layers standardize:** the *meaning* layer — metrics, dimensions, synonyms.
+  A commodity *interface*, not where our value lives.
+- **What this course is about:** the *connections shape* (structure + join paths) and **agent grounding**
+  on top of it — the layer OSI does **not** specify, and which works even on the **far more common
+  warehouse that has no semantic layer at all**.
+- **The one-liner for "but I already have OSI":** *"OSI carries the meaning; the graph is where
+  cross-source reasoning and agent retrieval happen — including for the warehouses with no curated
+  semantic layer. neocarta ingests OSI if you have it; the course is about the graph you build from it
+  and beyond it."*
+- **Principle (keeps us off the standards treadmill):** adopt the standard thinly at the boundary
+  (ingest/transpile), innovate above it (graph, derivation, agent activation). Acknowledging OSI ≠
+  teaching or chasing it.
+
 ---
 
 ## Module outline (2 hr, target)
