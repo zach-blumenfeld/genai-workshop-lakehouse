@@ -1,5 +1,42 @@
 # Course Plan — AI on Your Lakehouse: Context Comes in Shapes, Not Queries
 
+## Abstract
+
+*Official course description (source of truth: `course.adoc` — keep in sync).*
+
+**Caption:** Give your agent the shapes its answers need — across documents in Neo4j and a warehouse in BigQuery.
+
+Your agent can reach your data but still can't use it reliably. Vector search and Text2SQL each hand it
+a slice, but not the view to know what is truly relevant and how to connect the right information.
+Without that, answers come back confident but wrong. That is not a model or query problem — it is a
+context problem, and thinking in terms of *shapes* is what cracks it.
+
+In this hands-on workshop, you give an agent three reusable shapes — and learn a second axis: *where
+each shape should live*.
+
+- **Connections (Paths)** — how the warehouse tables join, read from BigQuery by neocarta
+- **Table of Contents (Trees)** — navigate the documents
+- **Themes (Communities)** — surface patterns nobody named
+
+You will work with data from AutoFix Group, a fictional national auto-repair chain: service manuals,
+bulletins, and recall notices as PDFs in cloud storage, and vehicles, work orders, parts, and
+procedures in a BigQuery warehouse. The two halves share part numbers and diagnostic trouble codes —
+and that overlap is what you build on.
+
+You build the shapes the way you would on the job: in a hosted Codespace, you and your coding agent
+author a *service-advisor skill* — tools and policy, module by module — and finish by handing it a live
+work order. The agent grounds the symptom in the documents, reads the real repair history from
+BigQuery, picks the evidence-backed fix, catches an open recall, orders the part through an API, and
+leaves an auditable trail in the graph.
+
+At the heart of it is the question Text2SQL gets quietly wrong — "what fixed this code on cars like
+this one?" — answered by *federating*: the documents are a graph in Neo4j, the warehouse rows stay in
+BigQuery, and the agent crosses the boundary on the shared key. Nothing is migrated that does not need
+to be. The pattern is BigQuery-first but portable: swap the connector and the same shapes work on
+Snowflake, Databricks, or anywhere your data lives.
+
+---
+
 **Source of truth.** Update this doc when goals, architecture, or outline change.
 Actionable work lives in **GitHub issues prefixed `lakehouse-workshop:`** (label
 `lakehouse-workshop`), not in this file — see [Work tracking](#work-tracking).
