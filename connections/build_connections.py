@@ -6,8 +6,7 @@ Column-[:REFERENCES]->Column from the foreign keys) into your Neo4j sandbox.
 
 This is the connections shape: the join-path map an agent reads to route a
 question to the right tables and write correct SQL. The warehouse *rows* stay
-in BigQuery — only this metadata crosses over (see docs/COURSE-PLAN.md ->
-Architecture for why that passes the four-pains test).
+in BigQuery — only this metadata crosses over.
 
 Connection + dataset come from .env:
   NEO4J_URI / NEO4J_USERNAME / NEO4J_PASSWORD / NEO4J_DATABASE
@@ -56,8 +55,7 @@ def main():
     client = bq_client(PROJECT)
 
     print(f"Reading {PROJECT}.{DATASET} metadata -> Neo4j ({database})...")
-    # Schema only — no embeddings (the FK graph is the join map; the warehouse
-    # has six tables, small enough that the agent reads the whole shape).
+    # Schema only — no embeddings (the FK graph is the join map; the warehouse has six tables.
     BigQuerySchemaConnector(
         client=client,
         project_id=PROJECT,
