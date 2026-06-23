@@ -1,31 +1,1701 @@
 vin,make,model,year,engine
-CM-FAL-2019-0102,Cascadia Motors,Falcon,2019,2.0T
-CM-FAL-2019-0233,Cascadia Motors,Falcon,2019,2.0T
-CM-FAL-2019-0260,Cascadia Motors,Falcon,2019,1.6
-CM-FAL-2018-0031,Cascadia Motors,Falcon,2018,1.6
-CM-FAL-2018-0077,Cascadia Motors,Falcon,2018,1.6
-CM-FAL-2020-0317,Cascadia Motors,Falcon,2020,2.0T
-CM-FAL-2020-0451,Cascadia Motors,Falcon,2020,2.0T
-CM-FAL-2020-0468,Cascadia Motors,Falcon,2020,2.0T
-CM-FAL-2021-0529,Cascadia Motors,Falcon,2021,2.0T
-CM-FAL-2021-0583,Cascadia Motors,Falcon,2021,2.0T
-CM-FAL-2021-0610,Cascadia Motors,Falcon,2021,2.0T
-CM-FAL-2022-0712,Cascadia Motors,Falcon,2022,2.0T
-CM-FAL-2022-0745,Cascadia Motors,Falcon,2022,2.0T
-CM-FAL-2023-0801,Cascadia Motors,Falcon,2023,2.0T
-CM-HER-2019-1104,Cascadia Motors,Heron,2019,2.5
-CM-HER-2019-1121,Cascadia Motors,Heron,2019,2.5
-CM-HER-2020-1166,Cascadia Motors,Heron,2020,2.5
-CM-HER-2020-1203,Cascadia Motors,Heron,2020,2.5
-CM-HER-2021-1262,Cascadia Motors,Heron,2021,2.5
-CM-HER-2021-1290,Cascadia Motors,Heron,2021,2.5
-CM-HER-2022-1349,Cascadia Motors,Heron,2022,2.5
-CM-HER-2022-1372,Cascadia Motors,Heron,2022,2.5
-CM-HER-2023-1408,Cascadia Motors,Heron,2023,2.5
-CM-HER-2024-1450,Cascadia Motors,Heron,2024,2.5
-CM-OSP-2020-2055,Cascadia Motors,Osprey,2020,3.5 V6
-CM-OSP-2021-2101,Cascadia Motors,Osprey,2021,3.5 V6
-CM-OSP-2022-2149,Cascadia Motors,Osprey,2022,3.5 V6
-CM-OSP-2022-2160,Cascadia Motors,Osprey,2022,3.5 V6
-CM-OSP-2023-2204,Cascadia Motors,Osprey,2023,3.5 V6
-CM-OSP-2024-2251,Cascadia Motors,Osprey,2024,3.5 V6
+FAL20T20210000,Cascadia Motors,Falcon,2021,2.0T
+FAL20T20200001,Cascadia Motors,Falcon,2020,2.0T
+FAL20T20220002,Cascadia Motors,Falcon,2022,2.0T
+FAL20T20190003,Cascadia Motors,Falcon,2019,2.0T
+FAL20T20190004,Cascadia Motors,Falcon,2019,2.0T
+FAL20T20230005,Cascadia Motors,Falcon,2023,2.0T
+FAL20T20190006,Cascadia Motors,Falcon,2019,2.0T
+FAL20T20210007,Cascadia Motors,Falcon,2021,2.0T
+FAL20T20230008,Cascadia Motors,Falcon,2023,2.0T
+FAL20T20190009,Cascadia Motors,Falcon,2019,2.0T
+FAL20T20230010,Cascadia Motors,Falcon,2023,2.0T
+FAL20T20200011,Cascadia Motors,Falcon,2020,2.0T
+FAL20T20190012,Cascadia Motors,Falcon,2019,2.0T
+FAL20T20190013,Cascadia Motors,Falcon,2019,2.0T
+FAL20T20220014,Cascadia Motors,Falcon,2022,2.0T
+FAL20T20220015,Cascadia Motors,Falcon,2022,2.0T
+FAL20T20190016,Cascadia Motors,Falcon,2019,2.0T
+FAL20T20200017,Cascadia Motors,Falcon,2020,2.0T
+FAL20T20190018,Cascadia Motors,Falcon,2019,2.0T
+FAL20T20230019,Cascadia Motors,Falcon,2023,2.0T
+FAL20T20220020,Cascadia Motors,Falcon,2022,2.0T
+FAL20T20190021,Cascadia Motors,Falcon,2019,2.0T
+FAL20T20230022,Cascadia Motors,Falcon,2023,2.0T
+FAL20T20190023,Cascadia Motors,Falcon,2019,2.0T
+FAL20T20200024,Cascadia Motors,Falcon,2020,2.0T
+FAL20T20230025,Cascadia Motors,Falcon,2023,2.0T
+FAL20T20190026,Cascadia Motors,Falcon,2019,2.0T
+FAL20T20230027,Cascadia Motors,Falcon,2023,2.0T
+FAL20T20230028,Cascadia Motors,Falcon,2023,2.0T
+FAL20T20220029,Cascadia Motors,Falcon,2022,2.0T
+FAL20T20190030,Cascadia Motors,Falcon,2019,2.0T
+FAL20T20200031,Cascadia Motors,Falcon,2020,2.0T
+FAL20T20190032,Cascadia Motors,Falcon,2019,2.0T
+FAL20T20230033,Cascadia Motors,Falcon,2023,2.0T
+FAL20T20200034,Cascadia Motors,Falcon,2020,2.0T
+FAL20T20210035,Cascadia Motors,Falcon,2021,2.0T
+FAL20T20220036,Cascadia Motors,Falcon,2022,2.0T
+FAL20T20200037,Cascadia Motors,Falcon,2020,2.0T
+FAL20T20230038,Cascadia Motors,Falcon,2023,2.0T
+FAL20T20190039,Cascadia Motors,Falcon,2019,2.0T
+FAL20T20230040,Cascadia Motors,Falcon,2023,2.0T
+FAL20T20210041,Cascadia Motors,Falcon,2021,2.0T
+FAL20T20230042,Cascadia Motors,Falcon,2023,2.0T
+FAL20T20200043,Cascadia Motors,Falcon,2020,2.0T
+FAL20T20190044,Cascadia Motors,Falcon,2019,2.0T
+FAL20T20230045,Cascadia Motors,Falcon,2023,2.0T
+FAL20T20230046,Cascadia Motors,Falcon,2023,2.0T
+FAL20T20200047,Cascadia Motors,Falcon,2020,2.0T
+FAL20T20210048,Cascadia Motors,Falcon,2021,2.0T
+FAL20T20190049,Cascadia Motors,Falcon,2019,2.0T
+FAL20T20230050,Cascadia Motors,Falcon,2023,2.0T
+FAL20T20190051,Cascadia Motors,Falcon,2019,2.0T
+FAL20T20230052,Cascadia Motors,Falcon,2023,2.0T
+FAL20T20190053,Cascadia Motors,Falcon,2019,2.0T
+FAL20T20230054,Cascadia Motors,Falcon,2023,2.0T
+FAL20T20200055,Cascadia Motors,Falcon,2020,2.0T
+FAL20T20220056,Cascadia Motors,Falcon,2022,2.0T
+FAL20T20230057,Cascadia Motors,Falcon,2023,2.0T
+FAL20T20220058,Cascadia Motors,Falcon,2022,2.0T
+FAL20T20210059,Cascadia Motors,Falcon,2021,2.0T
+FAL20T20220060,Cascadia Motors,Falcon,2022,2.0T
+FAL20T20230061,Cascadia Motors,Falcon,2023,2.0T
+FAL20T20220062,Cascadia Motors,Falcon,2022,2.0T
+FAL20T20210063,Cascadia Motors,Falcon,2021,2.0T
+FAL20T20210064,Cascadia Motors,Falcon,2021,2.0T
+FAL20T20200065,Cascadia Motors,Falcon,2020,2.0T
+FAL20T20200066,Cascadia Motors,Falcon,2020,2.0T
+FAL20T20200067,Cascadia Motors,Falcon,2020,2.0T
+FAL20T20190068,Cascadia Motors,Falcon,2019,2.0T
+FAL20T20230069,Cascadia Motors,Falcon,2023,2.0T
+FAL20T20210070,Cascadia Motors,Falcon,2021,2.0T
+FAL20T20230071,Cascadia Motors,Falcon,2023,2.0T
+FAL20T20220072,Cascadia Motors,Falcon,2022,2.0T
+FAL20T20210073,Cascadia Motors,Falcon,2021,2.0T
+FAL20T20220074,Cascadia Motors,Falcon,2022,2.0T
+FAL20T20210075,Cascadia Motors,Falcon,2021,2.0T
+FAL20T20230076,Cascadia Motors,Falcon,2023,2.0T
+FAL20T20190077,Cascadia Motors,Falcon,2019,2.0T
+FAL20T20190078,Cascadia Motors,Falcon,2019,2.0T
+FAL20T20230079,Cascadia Motors,Falcon,2023,2.0T
+FAL20T20220080,Cascadia Motors,Falcon,2022,2.0T
+FAL20T20200081,Cascadia Motors,Falcon,2020,2.0T
+FAL20T20210082,Cascadia Motors,Falcon,2021,2.0T
+FAL20T20200083,Cascadia Motors,Falcon,2020,2.0T
+FAL20T20220084,Cascadia Motors,Falcon,2022,2.0T
+FAL20T20220085,Cascadia Motors,Falcon,2022,2.0T
+FAL20T20190086,Cascadia Motors,Falcon,2019,2.0T
+FAL20T20190087,Cascadia Motors,Falcon,2019,2.0T
+FAL20T20230088,Cascadia Motors,Falcon,2023,2.0T
+FAL20T20230089,Cascadia Motors,Falcon,2023,2.0T
+FAL20T20210090,Cascadia Motors,Falcon,2021,2.0T
+FAL20T20210091,Cascadia Motors,Falcon,2021,2.0T
+FAL20T20210092,Cascadia Motors,Falcon,2021,2.0T
+FAL20T20230093,Cascadia Motors,Falcon,2023,2.0T
+FAL20T20220094,Cascadia Motors,Falcon,2022,2.0T
+FAL20T20230095,Cascadia Motors,Falcon,2023,2.0T
+FAL20T20220096,Cascadia Motors,Falcon,2022,2.0T
+FAL20T20190097,Cascadia Motors,Falcon,2019,2.0T
+FAL20T20190098,Cascadia Motors,Falcon,2019,2.0T
+FAL20T20210099,Cascadia Motors,Falcon,2021,2.0T
+FAL1620220100,Cascadia Motors,Falcon,2022,1.6
+FAL1620190101,Cascadia Motors,Falcon,2019,1.6
+FAL1620190102,Cascadia Motors,Falcon,2019,1.6
+FAL1620210103,Cascadia Motors,Falcon,2021,1.6
+FAL1620230104,Cascadia Motors,Falcon,2023,1.6
+FAL1620220105,Cascadia Motors,Falcon,2022,1.6
+FAL1620210106,Cascadia Motors,Falcon,2021,1.6
+FAL1620220107,Cascadia Motors,Falcon,2022,1.6
+FAL1620210108,Cascadia Motors,Falcon,2021,1.6
+FAL1620190109,Cascadia Motors,Falcon,2019,1.6
+FAL1620220110,Cascadia Motors,Falcon,2022,1.6
+FAL1620210111,Cascadia Motors,Falcon,2021,1.6
+FAL1620200112,Cascadia Motors,Falcon,2020,1.6
+FAL1620230113,Cascadia Motors,Falcon,2023,1.6
+FAL1620190114,Cascadia Motors,Falcon,2019,1.6
+FAL1620220115,Cascadia Motors,Falcon,2022,1.6
+FAL1620190116,Cascadia Motors,Falcon,2019,1.6
+FAL1620200117,Cascadia Motors,Falcon,2020,1.6
+FAL1620210118,Cascadia Motors,Falcon,2021,1.6
+FAL1620200119,Cascadia Motors,Falcon,2020,1.6
+FAL1620200120,Cascadia Motors,Falcon,2020,1.6
+FAL1620220121,Cascadia Motors,Falcon,2022,1.6
+FAL1620220122,Cascadia Motors,Falcon,2022,1.6
+FAL1620220123,Cascadia Motors,Falcon,2022,1.6
+FAL1620190124,Cascadia Motors,Falcon,2019,1.6
+FAL1620200125,Cascadia Motors,Falcon,2020,1.6
+FAL1620220126,Cascadia Motors,Falcon,2022,1.6
+FAL1620220127,Cascadia Motors,Falcon,2022,1.6
+FAL1620230128,Cascadia Motors,Falcon,2023,1.6
+FAL1620210129,Cascadia Motors,Falcon,2021,1.6
+FAL1620200130,Cascadia Motors,Falcon,2020,1.6
+FAL1620220131,Cascadia Motors,Falcon,2022,1.6
+FAL1620230132,Cascadia Motors,Falcon,2023,1.6
+FAL1620210133,Cascadia Motors,Falcon,2021,1.6
+FAL1620220134,Cascadia Motors,Falcon,2022,1.6
+FAL1620210135,Cascadia Motors,Falcon,2021,1.6
+FAL1620220136,Cascadia Motors,Falcon,2022,1.6
+FAL1620200137,Cascadia Motors,Falcon,2020,1.6
+FAL1620200138,Cascadia Motors,Falcon,2020,1.6
+FAL1620190139,Cascadia Motors,Falcon,2019,1.6
+FAL1620200140,Cascadia Motors,Falcon,2020,1.6
+FAL1620200141,Cascadia Motors,Falcon,2020,1.6
+FAL1620200142,Cascadia Motors,Falcon,2020,1.6
+FAL1620200143,Cascadia Motors,Falcon,2020,1.6
+FAL1620190144,Cascadia Motors,Falcon,2019,1.6
+FAL1620220145,Cascadia Motors,Falcon,2022,1.6
+FAL1620230146,Cascadia Motors,Falcon,2023,1.6
+FAL1620200147,Cascadia Motors,Falcon,2020,1.6
+FAL1620210148,Cascadia Motors,Falcon,2021,1.6
+FAL1620210149,Cascadia Motors,Falcon,2021,1.6
+FAL1620190150,Cascadia Motors,Falcon,2019,1.6
+FAL1620200151,Cascadia Motors,Falcon,2020,1.6
+FAL1620220152,Cascadia Motors,Falcon,2022,1.6
+FAL1620230153,Cascadia Motors,Falcon,2023,1.6
+FAL1620210154,Cascadia Motors,Falcon,2021,1.6
+FAL1620230155,Cascadia Motors,Falcon,2023,1.6
+FAL1620230156,Cascadia Motors,Falcon,2023,1.6
+FAL1620210157,Cascadia Motors,Falcon,2021,1.6
+FAL1620200158,Cascadia Motors,Falcon,2020,1.6
+FAL1620230159,Cascadia Motors,Falcon,2023,1.6
+FAL1620230160,Cascadia Motors,Falcon,2023,1.6
+FAL1620190161,Cascadia Motors,Falcon,2019,1.6
+FAL1620220162,Cascadia Motors,Falcon,2022,1.6
+FAL1620230163,Cascadia Motors,Falcon,2023,1.6
+FAL1620220164,Cascadia Motors,Falcon,2022,1.6
+FAL1620220165,Cascadia Motors,Falcon,2022,1.6
+FAL1620220166,Cascadia Motors,Falcon,2022,1.6
+FAL1620220167,Cascadia Motors,Falcon,2022,1.6
+FAL1620190168,Cascadia Motors,Falcon,2019,1.6
+FAL1620220169,Cascadia Motors,Falcon,2022,1.6
+FAL1620220170,Cascadia Motors,Falcon,2022,1.6
+FAL1620190171,Cascadia Motors,Falcon,2019,1.6
+FAL1620200172,Cascadia Motors,Falcon,2020,1.6
+FAL1620190173,Cascadia Motors,Falcon,2019,1.6
+FAL1620200174,Cascadia Motors,Falcon,2020,1.6
+FAL1620220175,Cascadia Motors,Falcon,2022,1.6
+FAL1620200176,Cascadia Motors,Falcon,2020,1.6
+FAL1620190177,Cascadia Motors,Falcon,2019,1.6
+FAL1620210178,Cascadia Motors,Falcon,2021,1.6
+FAL1620230179,Cascadia Motors,Falcon,2023,1.6
+FAL1620190180,Cascadia Motors,Falcon,2019,1.6
+FAL1620190181,Cascadia Motors,Falcon,2019,1.6
+FAL1620190182,Cascadia Motors,Falcon,2019,1.6
+FAL1620230183,Cascadia Motors,Falcon,2023,1.6
+FAL1620200184,Cascadia Motors,Falcon,2020,1.6
+FAL1620230185,Cascadia Motors,Falcon,2023,1.6
+FAL1620190186,Cascadia Motors,Falcon,2019,1.6
+FAL1620210187,Cascadia Motors,Falcon,2021,1.6
+FAL1620230188,Cascadia Motors,Falcon,2023,1.6
+FAL1620190189,Cascadia Motors,Falcon,2019,1.6
+FAL1620190190,Cascadia Motors,Falcon,2019,1.6
+FAL1620200191,Cascadia Motors,Falcon,2020,1.6
+FAL1620230192,Cascadia Motors,Falcon,2023,1.6
+FAL1620220193,Cascadia Motors,Falcon,2022,1.6
+FAL1620200194,Cascadia Motors,Falcon,2020,1.6
+FAL1620210195,Cascadia Motors,Falcon,2021,1.6
+FAL1620210196,Cascadia Motors,Falcon,2021,1.6
+FAL1620230197,Cascadia Motors,Falcon,2023,1.6
+FAL1620210198,Cascadia Motors,Falcon,2021,1.6
+FAL1620220199,Cascadia Motors,Falcon,2022,1.6
+HER2520190200,Cascadia Motors,Heron,2019,2.5
+HER2520190201,Cascadia Motors,Heron,2019,2.5
+HER2520220202,Cascadia Motors,Heron,2022,2.5
+HER2520220203,Cascadia Motors,Heron,2022,2.5
+HER2520220204,Cascadia Motors,Heron,2022,2.5
+HER2520220205,Cascadia Motors,Heron,2022,2.5
+HER2520210206,Cascadia Motors,Heron,2021,2.5
+HER2520190207,Cascadia Motors,Heron,2019,2.5
+HER2520200208,Cascadia Motors,Heron,2020,2.5
+HER2520190209,Cascadia Motors,Heron,2019,2.5
+HER2520210210,Cascadia Motors,Heron,2021,2.5
+HER2520210211,Cascadia Motors,Heron,2021,2.5
+HER2520220212,Cascadia Motors,Heron,2022,2.5
+HER2520200213,Cascadia Motors,Heron,2020,2.5
+HER2520230214,Cascadia Motors,Heron,2023,2.5
+HER2520190215,Cascadia Motors,Heron,2019,2.5
+HER2520200216,Cascadia Motors,Heron,2020,2.5
+HER2520230217,Cascadia Motors,Heron,2023,2.5
+HER2520210218,Cascadia Motors,Heron,2021,2.5
+HER2520200219,Cascadia Motors,Heron,2020,2.5
+HER2520230220,Cascadia Motors,Heron,2023,2.5
+HER2520190221,Cascadia Motors,Heron,2019,2.5
+HER2520230222,Cascadia Motors,Heron,2023,2.5
+HER2520210223,Cascadia Motors,Heron,2021,2.5
+HER2520190224,Cascadia Motors,Heron,2019,2.5
+HER2520210225,Cascadia Motors,Heron,2021,2.5
+HER2520230226,Cascadia Motors,Heron,2023,2.5
+HER2520210227,Cascadia Motors,Heron,2021,2.5
+HER2520200228,Cascadia Motors,Heron,2020,2.5
+HER2520210229,Cascadia Motors,Heron,2021,2.5
+HER2520200230,Cascadia Motors,Heron,2020,2.5
+HER2520230231,Cascadia Motors,Heron,2023,2.5
+HER2520230232,Cascadia Motors,Heron,2023,2.5
+HER2520230233,Cascadia Motors,Heron,2023,2.5
+HER2520210234,Cascadia Motors,Heron,2021,2.5
+HER2520200235,Cascadia Motors,Heron,2020,2.5
+HER2520230236,Cascadia Motors,Heron,2023,2.5
+HER2520200237,Cascadia Motors,Heron,2020,2.5
+HER2520200238,Cascadia Motors,Heron,2020,2.5
+HER2520220239,Cascadia Motors,Heron,2022,2.5
+HER2520200240,Cascadia Motors,Heron,2020,2.5
+HER2520200241,Cascadia Motors,Heron,2020,2.5
+HER2520230242,Cascadia Motors,Heron,2023,2.5
+HER2520220243,Cascadia Motors,Heron,2022,2.5
+HER2520210244,Cascadia Motors,Heron,2021,2.5
+HER2520190245,Cascadia Motors,Heron,2019,2.5
+HER2520190246,Cascadia Motors,Heron,2019,2.5
+HER2520210247,Cascadia Motors,Heron,2021,2.5
+HER2520220248,Cascadia Motors,Heron,2022,2.5
+HER2520210249,Cascadia Motors,Heron,2021,2.5
+HER2520200250,Cascadia Motors,Heron,2020,2.5
+HER2520230251,Cascadia Motors,Heron,2023,2.5
+HER2520210252,Cascadia Motors,Heron,2021,2.5
+HER2520220253,Cascadia Motors,Heron,2022,2.5
+HER2520210254,Cascadia Motors,Heron,2021,2.5
+HER2520210255,Cascadia Motors,Heron,2021,2.5
+HER2520190256,Cascadia Motors,Heron,2019,2.5
+HER2520200257,Cascadia Motors,Heron,2020,2.5
+HER2520190258,Cascadia Motors,Heron,2019,2.5
+HER2520200259,Cascadia Motors,Heron,2020,2.5
+HER2520220260,Cascadia Motors,Heron,2022,2.5
+HER2520200261,Cascadia Motors,Heron,2020,2.5
+HER2520210262,Cascadia Motors,Heron,2021,2.5
+HER2520200263,Cascadia Motors,Heron,2020,2.5
+HER2520220264,Cascadia Motors,Heron,2022,2.5
+HER2520230265,Cascadia Motors,Heron,2023,2.5
+HER2520230266,Cascadia Motors,Heron,2023,2.5
+HER2520190267,Cascadia Motors,Heron,2019,2.5
+HER2520220268,Cascadia Motors,Heron,2022,2.5
+HER2520210269,Cascadia Motors,Heron,2021,2.5
+HER2520190270,Cascadia Motors,Heron,2019,2.5
+HER2520190271,Cascadia Motors,Heron,2019,2.5
+HER2520220272,Cascadia Motors,Heron,2022,2.5
+HER2520200273,Cascadia Motors,Heron,2020,2.5
+HER2520220274,Cascadia Motors,Heron,2022,2.5
+HER2520200275,Cascadia Motors,Heron,2020,2.5
+HER2520220276,Cascadia Motors,Heron,2022,2.5
+HER2520210277,Cascadia Motors,Heron,2021,2.5
+HER2520190278,Cascadia Motors,Heron,2019,2.5
+HER2520220279,Cascadia Motors,Heron,2022,2.5
+HER2520220280,Cascadia Motors,Heron,2022,2.5
+HER2520220281,Cascadia Motors,Heron,2022,2.5
+HER2520190282,Cascadia Motors,Heron,2019,2.5
+HER2520200283,Cascadia Motors,Heron,2020,2.5
+HER2520200284,Cascadia Motors,Heron,2020,2.5
+HER2520200285,Cascadia Motors,Heron,2020,2.5
+HER2520190286,Cascadia Motors,Heron,2019,2.5
+HER2520200287,Cascadia Motors,Heron,2020,2.5
+HER2520230288,Cascadia Motors,Heron,2023,2.5
+HER2520220289,Cascadia Motors,Heron,2022,2.5
+HER2520200290,Cascadia Motors,Heron,2020,2.5
+HER2520230291,Cascadia Motors,Heron,2023,2.5
+HER2520230292,Cascadia Motors,Heron,2023,2.5
+HER2520220293,Cascadia Motors,Heron,2022,2.5
+HER2520210294,Cascadia Motors,Heron,2021,2.5
+HER2520200295,Cascadia Motors,Heron,2020,2.5
+HER2520230296,Cascadia Motors,Heron,2023,2.5
+HER2520230297,Cascadia Motors,Heron,2023,2.5
+HER2520200298,Cascadia Motors,Heron,2020,2.5
+HER2520190299,Cascadia Motors,Heron,2019,2.5
+OSP35V20190300,Cascadia Motors,Osprey,2019,3.5 V6
+OSP35V20190301,Cascadia Motors,Osprey,2019,3.5 V6
+OSP35V20230302,Cascadia Motors,Osprey,2023,3.5 V6
+OSP35V20200303,Cascadia Motors,Osprey,2020,3.5 V6
+OSP35V20220304,Cascadia Motors,Osprey,2022,3.5 V6
+OSP35V20200305,Cascadia Motors,Osprey,2020,3.5 V6
+OSP35V20200306,Cascadia Motors,Osprey,2020,3.5 V6
+OSP35V20190307,Cascadia Motors,Osprey,2019,3.5 V6
+OSP35V20210308,Cascadia Motors,Osprey,2021,3.5 V6
+OSP35V20200309,Cascadia Motors,Osprey,2020,3.5 V6
+OSP35V20210310,Cascadia Motors,Osprey,2021,3.5 V6
+OSP35V20230311,Cascadia Motors,Osprey,2023,3.5 V6
+OSP35V20200312,Cascadia Motors,Osprey,2020,3.5 V6
+OSP35V20230313,Cascadia Motors,Osprey,2023,3.5 V6
+OSP35V20210314,Cascadia Motors,Osprey,2021,3.5 V6
+OSP35V20210315,Cascadia Motors,Osprey,2021,3.5 V6
+OSP35V20230316,Cascadia Motors,Osprey,2023,3.5 V6
+OSP35V20220317,Cascadia Motors,Osprey,2022,3.5 V6
+OSP35V20200318,Cascadia Motors,Osprey,2020,3.5 V6
+OSP35V20190319,Cascadia Motors,Osprey,2019,3.5 V6
+OSP35V20210320,Cascadia Motors,Osprey,2021,3.5 V6
+OSP35V20220321,Cascadia Motors,Osprey,2022,3.5 V6
+OSP35V20230322,Cascadia Motors,Osprey,2023,3.5 V6
+OSP35V20230323,Cascadia Motors,Osprey,2023,3.5 V6
+OSP35V20220324,Cascadia Motors,Osprey,2022,3.5 V6
+OSP35V20230325,Cascadia Motors,Osprey,2023,3.5 V6
+OSP35V20200326,Cascadia Motors,Osprey,2020,3.5 V6
+OSP35V20230327,Cascadia Motors,Osprey,2023,3.5 V6
+OSP35V20200328,Cascadia Motors,Osprey,2020,3.5 V6
+OSP35V20230329,Cascadia Motors,Osprey,2023,3.5 V6
+OSP35V20230330,Cascadia Motors,Osprey,2023,3.5 V6
+OSP35V20190331,Cascadia Motors,Osprey,2019,3.5 V6
+OSP35V20220332,Cascadia Motors,Osprey,2022,3.5 V6
+OSP35V20200333,Cascadia Motors,Osprey,2020,3.5 V6
+OSP35V20230334,Cascadia Motors,Osprey,2023,3.5 V6
+OSP35V20190335,Cascadia Motors,Osprey,2019,3.5 V6
+OSP35V20200336,Cascadia Motors,Osprey,2020,3.5 V6
+OSP35V20200337,Cascadia Motors,Osprey,2020,3.5 V6
+OSP35V20200338,Cascadia Motors,Osprey,2020,3.5 V6
+OSP35V20220339,Cascadia Motors,Osprey,2022,3.5 V6
+OSP35V20230340,Cascadia Motors,Osprey,2023,3.5 V6
+OSP35V20190341,Cascadia Motors,Osprey,2019,3.5 V6
+OSP35V20230342,Cascadia Motors,Osprey,2023,3.5 V6
+OSP35V20190343,Cascadia Motors,Osprey,2019,3.5 V6
+OSP35V20210344,Cascadia Motors,Osprey,2021,3.5 V6
+OSP35V20230345,Cascadia Motors,Osprey,2023,3.5 V6
+OSP35V20230346,Cascadia Motors,Osprey,2023,3.5 V6
+OSP35V20230347,Cascadia Motors,Osprey,2023,3.5 V6
+OSP35V20220348,Cascadia Motors,Osprey,2022,3.5 V6
+OSP35V20190349,Cascadia Motors,Osprey,2019,3.5 V6
+OSP35V20230350,Cascadia Motors,Osprey,2023,3.5 V6
+OSP35V20190351,Cascadia Motors,Osprey,2019,3.5 V6
+OSP35V20200352,Cascadia Motors,Osprey,2020,3.5 V6
+OSP35V20200353,Cascadia Motors,Osprey,2020,3.5 V6
+OSP35V20210354,Cascadia Motors,Osprey,2021,3.5 V6
+OSP35V20190355,Cascadia Motors,Osprey,2019,3.5 V6
+OSP35V20190356,Cascadia Motors,Osprey,2019,3.5 V6
+OSP35V20230357,Cascadia Motors,Osprey,2023,3.5 V6
+OSP35V20220358,Cascadia Motors,Osprey,2022,3.5 V6
+OSP35V20230359,Cascadia Motors,Osprey,2023,3.5 V6
+OSP35V20190360,Cascadia Motors,Osprey,2019,3.5 V6
+OSP35V20190361,Cascadia Motors,Osprey,2019,3.5 V6
+OSP35V20220362,Cascadia Motors,Osprey,2022,3.5 V6
+OSP35V20210363,Cascadia Motors,Osprey,2021,3.5 V6
+OSP35V20230364,Cascadia Motors,Osprey,2023,3.5 V6
+OSP35V20230365,Cascadia Motors,Osprey,2023,3.5 V6
+OSP35V20230366,Cascadia Motors,Osprey,2023,3.5 V6
+OSP35V20230367,Cascadia Motors,Osprey,2023,3.5 V6
+OSP35V20200368,Cascadia Motors,Osprey,2020,3.5 V6
+OSP35V20210369,Cascadia Motors,Osprey,2021,3.5 V6
+OSP35V20220370,Cascadia Motors,Osprey,2022,3.5 V6
+OSP35V20230371,Cascadia Motors,Osprey,2023,3.5 V6
+OSP35V20230372,Cascadia Motors,Osprey,2023,3.5 V6
+OSP35V20220373,Cascadia Motors,Osprey,2022,3.5 V6
+OSP35V20230374,Cascadia Motors,Osprey,2023,3.5 V6
+OSP35V20200375,Cascadia Motors,Osprey,2020,3.5 V6
+OSP35V20230376,Cascadia Motors,Osprey,2023,3.5 V6
+OSP35V20210377,Cascadia Motors,Osprey,2021,3.5 V6
+OSP35V20230378,Cascadia Motors,Osprey,2023,3.5 V6
+OSP35V20200379,Cascadia Motors,Osprey,2020,3.5 V6
+OSP35V20220380,Cascadia Motors,Osprey,2022,3.5 V6
+OSP35V20200381,Cascadia Motors,Osprey,2020,3.5 V6
+OSP35V20220382,Cascadia Motors,Osprey,2022,3.5 V6
+OSP35V20190383,Cascadia Motors,Osprey,2019,3.5 V6
+OSP35V20220384,Cascadia Motors,Osprey,2022,3.5 V6
+OSP35V20220385,Cascadia Motors,Osprey,2022,3.5 V6
+OSP35V20210386,Cascadia Motors,Osprey,2021,3.5 V6
+OSP35V20190387,Cascadia Motors,Osprey,2019,3.5 V6
+OSP35V20200388,Cascadia Motors,Osprey,2020,3.5 V6
+OSP35V20220389,Cascadia Motors,Osprey,2022,3.5 V6
+OSP35V20190390,Cascadia Motors,Osprey,2019,3.5 V6
+OSP35V20200391,Cascadia Motors,Osprey,2020,3.5 V6
+OSP35V20210392,Cascadia Motors,Osprey,2021,3.5 V6
+OSP35V20190393,Cascadia Motors,Osprey,2019,3.5 V6
+OSP35V20200394,Cascadia Motors,Osprey,2020,3.5 V6
+OSP35V20210395,Cascadia Motors,Osprey,2021,3.5 V6
+OSP35V20200396,Cascadia Motors,Osprey,2020,3.5 V6
+OSP35V20210397,Cascadia Motors,Osprey,2021,3.5 V6
+OSP35V20200398,Cascadia Motors,Osprey,2020,3.5 V6
+OSP35V20220399,Cascadia Motors,Osprey,2022,3.5 V6
+KES15T20200400,Cascadia Motors,Kestrel,2020,1.5T
+KES15T20190401,Cascadia Motors,Kestrel,2019,1.5T
+KES15T20220402,Cascadia Motors,Kestrel,2022,1.5T
+KES15T20220403,Cascadia Motors,Kestrel,2022,1.5T
+KES15T20200404,Cascadia Motors,Kestrel,2020,1.5T
+KES15T20200405,Cascadia Motors,Kestrel,2020,1.5T
+KES15T20200406,Cascadia Motors,Kestrel,2020,1.5T
+KES15T20220407,Cascadia Motors,Kestrel,2022,1.5T
+KES15T20230408,Cascadia Motors,Kestrel,2023,1.5T
+KES15T20220409,Cascadia Motors,Kestrel,2022,1.5T
+KES15T20210410,Cascadia Motors,Kestrel,2021,1.5T
+KES15T20220411,Cascadia Motors,Kestrel,2022,1.5T
+KES15T20200412,Cascadia Motors,Kestrel,2020,1.5T
+KES15T20210413,Cascadia Motors,Kestrel,2021,1.5T
+KES15T20210414,Cascadia Motors,Kestrel,2021,1.5T
+KES15T20190415,Cascadia Motors,Kestrel,2019,1.5T
+KES15T20210416,Cascadia Motors,Kestrel,2021,1.5T
+KES15T20190417,Cascadia Motors,Kestrel,2019,1.5T
+KES15T20210418,Cascadia Motors,Kestrel,2021,1.5T
+KES15T20230419,Cascadia Motors,Kestrel,2023,1.5T
+KES15T20220420,Cascadia Motors,Kestrel,2022,1.5T
+KES15T20220421,Cascadia Motors,Kestrel,2022,1.5T
+KES15T20190422,Cascadia Motors,Kestrel,2019,1.5T
+KES15T20220423,Cascadia Motors,Kestrel,2022,1.5T
+KES15T20210424,Cascadia Motors,Kestrel,2021,1.5T
+KES15T20230425,Cascadia Motors,Kestrel,2023,1.5T
+KES15T20230426,Cascadia Motors,Kestrel,2023,1.5T
+KES15T20210427,Cascadia Motors,Kestrel,2021,1.5T
+KES15T20230428,Cascadia Motors,Kestrel,2023,1.5T
+KES15T20190429,Cascadia Motors,Kestrel,2019,1.5T
+KES15T20190430,Cascadia Motors,Kestrel,2019,1.5T
+KES15T20200431,Cascadia Motors,Kestrel,2020,1.5T
+KES15T20190432,Cascadia Motors,Kestrel,2019,1.5T
+KES15T20190433,Cascadia Motors,Kestrel,2019,1.5T
+KES15T20210434,Cascadia Motors,Kestrel,2021,1.5T
+KES15T20210435,Cascadia Motors,Kestrel,2021,1.5T
+KES15T20190436,Cascadia Motors,Kestrel,2019,1.5T
+KES15T20200437,Cascadia Motors,Kestrel,2020,1.5T
+KES15T20210438,Cascadia Motors,Kestrel,2021,1.5T
+KES15T20200439,Cascadia Motors,Kestrel,2020,1.5T
+KES15T20220440,Cascadia Motors,Kestrel,2022,1.5T
+KES15T20210441,Cascadia Motors,Kestrel,2021,1.5T
+KES15T20220442,Cascadia Motors,Kestrel,2022,1.5T
+KES15T20200443,Cascadia Motors,Kestrel,2020,1.5T
+KES15T20230444,Cascadia Motors,Kestrel,2023,1.5T
+KES15T20230445,Cascadia Motors,Kestrel,2023,1.5T
+KES15T20230446,Cascadia Motors,Kestrel,2023,1.5T
+KES15T20220447,Cascadia Motors,Kestrel,2022,1.5T
+KES15T20210448,Cascadia Motors,Kestrel,2021,1.5T
+KES15T20190449,Cascadia Motors,Kestrel,2019,1.5T
+KES15T20210450,Cascadia Motors,Kestrel,2021,1.5T
+KES15T20190451,Cascadia Motors,Kestrel,2019,1.5T
+KES15T20200452,Cascadia Motors,Kestrel,2020,1.5T
+KES15T20220453,Cascadia Motors,Kestrel,2022,1.5T
+KES15T20190454,Cascadia Motors,Kestrel,2019,1.5T
+KES15T20210455,Cascadia Motors,Kestrel,2021,1.5T
+KES15T20190456,Cascadia Motors,Kestrel,2019,1.5T
+KES15T20190457,Cascadia Motors,Kestrel,2019,1.5T
+KES15T20210458,Cascadia Motors,Kestrel,2021,1.5T
+KES15T20190459,Cascadia Motors,Kestrel,2019,1.5T
+KES15T20230460,Cascadia Motors,Kestrel,2023,1.5T
+KES15T20200461,Cascadia Motors,Kestrel,2020,1.5T
+KES15T20190462,Cascadia Motors,Kestrel,2019,1.5T
+KES15T20210463,Cascadia Motors,Kestrel,2021,1.5T
+KES15T20190464,Cascadia Motors,Kestrel,2019,1.5T
+KES15T20220465,Cascadia Motors,Kestrel,2022,1.5T
+KES15T20190466,Cascadia Motors,Kestrel,2019,1.5T
+KES15T20210467,Cascadia Motors,Kestrel,2021,1.5T
+KES15T20230468,Cascadia Motors,Kestrel,2023,1.5T
+KES15T20220469,Cascadia Motors,Kestrel,2022,1.5T
+KES15T20210470,Cascadia Motors,Kestrel,2021,1.5T
+KES15T20230471,Cascadia Motors,Kestrel,2023,1.5T
+KES15T20200472,Cascadia Motors,Kestrel,2020,1.5T
+KES15T20190473,Cascadia Motors,Kestrel,2019,1.5T
+KES15T20230474,Cascadia Motors,Kestrel,2023,1.5T
+KES15T20200475,Cascadia Motors,Kestrel,2020,1.5T
+KES15T20190476,Cascadia Motors,Kestrel,2019,1.5T
+KES15T20200477,Cascadia Motors,Kestrel,2020,1.5T
+KES15T20210478,Cascadia Motors,Kestrel,2021,1.5T
+KES15T20190479,Cascadia Motors,Kestrel,2019,1.5T
+KES15T20200480,Cascadia Motors,Kestrel,2020,1.5T
+KES15T20200481,Cascadia Motors,Kestrel,2020,1.5T
+KES15T20210482,Cascadia Motors,Kestrel,2021,1.5T
+KES15T20210483,Cascadia Motors,Kestrel,2021,1.5T
+KES15T20230484,Cascadia Motors,Kestrel,2023,1.5T
+KES15T20200485,Cascadia Motors,Kestrel,2020,1.5T
+KES15T20210486,Cascadia Motors,Kestrel,2021,1.5T
+KES15T20220487,Cascadia Motors,Kestrel,2022,1.5T
+KES15T20230488,Cascadia Motors,Kestrel,2023,1.5T
+KES15T20200489,Cascadia Motors,Kestrel,2020,1.5T
+KES15T20210490,Cascadia Motors,Kestrel,2021,1.5T
+KES15T20210491,Cascadia Motors,Kestrel,2021,1.5T
+KES15T20190492,Cascadia Motors,Kestrel,2019,1.5T
+KES15T20210493,Cascadia Motors,Kestrel,2021,1.5T
+KES15T20190494,Cascadia Motors,Kestrel,2019,1.5T
+KES15T20190495,Cascadia Motors,Kestrel,2019,1.5T
+KES15T20190496,Cascadia Motors,Kestrel,2019,1.5T
+KES15T20230497,Cascadia Motors,Kestrel,2023,1.5T
+KES15T20230498,Cascadia Motors,Kestrel,2023,1.5T
+KES15T20200499,Cascadia Motors,Kestrel,2020,1.5T
+KES20H20230500,Cascadia Motors,Kestrel,2023,2.0 Hybrid
+KES20H20220501,Cascadia Motors,Kestrel,2022,2.0 Hybrid
+KES20H20200502,Cascadia Motors,Kestrel,2020,2.0 Hybrid
+KES20H20220503,Cascadia Motors,Kestrel,2022,2.0 Hybrid
+KES20H20190504,Cascadia Motors,Kestrel,2019,2.0 Hybrid
+KES20H20220505,Cascadia Motors,Kestrel,2022,2.0 Hybrid
+KES20H20220506,Cascadia Motors,Kestrel,2022,2.0 Hybrid
+KES20H20230507,Cascadia Motors,Kestrel,2023,2.0 Hybrid
+KES20H20220508,Cascadia Motors,Kestrel,2022,2.0 Hybrid
+KES20H20230509,Cascadia Motors,Kestrel,2023,2.0 Hybrid
+KES20H20210510,Cascadia Motors,Kestrel,2021,2.0 Hybrid
+KES20H20200511,Cascadia Motors,Kestrel,2020,2.0 Hybrid
+KES20H20200512,Cascadia Motors,Kestrel,2020,2.0 Hybrid
+KES20H20210513,Cascadia Motors,Kestrel,2021,2.0 Hybrid
+KES20H20200514,Cascadia Motors,Kestrel,2020,2.0 Hybrid
+KES20H20200515,Cascadia Motors,Kestrel,2020,2.0 Hybrid
+KES20H20220516,Cascadia Motors,Kestrel,2022,2.0 Hybrid
+KES20H20210517,Cascadia Motors,Kestrel,2021,2.0 Hybrid
+KES20H20190518,Cascadia Motors,Kestrel,2019,2.0 Hybrid
+KES20H20200519,Cascadia Motors,Kestrel,2020,2.0 Hybrid
+KES20H20190520,Cascadia Motors,Kestrel,2019,2.0 Hybrid
+KES20H20190521,Cascadia Motors,Kestrel,2019,2.0 Hybrid
+KES20H20210522,Cascadia Motors,Kestrel,2021,2.0 Hybrid
+KES20H20220523,Cascadia Motors,Kestrel,2022,2.0 Hybrid
+KES20H20200524,Cascadia Motors,Kestrel,2020,2.0 Hybrid
+KES20H20190525,Cascadia Motors,Kestrel,2019,2.0 Hybrid
+KES20H20190526,Cascadia Motors,Kestrel,2019,2.0 Hybrid
+KES20H20220527,Cascadia Motors,Kestrel,2022,2.0 Hybrid
+KES20H20230528,Cascadia Motors,Kestrel,2023,2.0 Hybrid
+KES20H20210529,Cascadia Motors,Kestrel,2021,2.0 Hybrid
+KES20H20230530,Cascadia Motors,Kestrel,2023,2.0 Hybrid
+KES20H20200531,Cascadia Motors,Kestrel,2020,2.0 Hybrid
+KES20H20210532,Cascadia Motors,Kestrel,2021,2.0 Hybrid
+KES20H20190533,Cascadia Motors,Kestrel,2019,2.0 Hybrid
+KES20H20220534,Cascadia Motors,Kestrel,2022,2.0 Hybrid
+KES20H20200535,Cascadia Motors,Kestrel,2020,2.0 Hybrid
+KES20H20200536,Cascadia Motors,Kestrel,2020,2.0 Hybrid
+KES20H20210537,Cascadia Motors,Kestrel,2021,2.0 Hybrid
+KES20H20220538,Cascadia Motors,Kestrel,2022,2.0 Hybrid
+KES20H20190539,Cascadia Motors,Kestrel,2019,2.0 Hybrid
+KES20H20210540,Cascadia Motors,Kestrel,2021,2.0 Hybrid
+KES20H20210541,Cascadia Motors,Kestrel,2021,2.0 Hybrid
+KES20H20210542,Cascadia Motors,Kestrel,2021,2.0 Hybrid
+KES20H20230543,Cascadia Motors,Kestrel,2023,2.0 Hybrid
+KES20H20210544,Cascadia Motors,Kestrel,2021,2.0 Hybrid
+KES20H20200545,Cascadia Motors,Kestrel,2020,2.0 Hybrid
+KES20H20190546,Cascadia Motors,Kestrel,2019,2.0 Hybrid
+KES20H20210547,Cascadia Motors,Kestrel,2021,2.0 Hybrid
+KES20H20200548,Cascadia Motors,Kestrel,2020,2.0 Hybrid
+KES20H20210549,Cascadia Motors,Kestrel,2021,2.0 Hybrid
+KES20H20200550,Cascadia Motors,Kestrel,2020,2.0 Hybrid
+KES20H20190551,Cascadia Motors,Kestrel,2019,2.0 Hybrid
+KES20H20210552,Cascadia Motors,Kestrel,2021,2.0 Hybrid
+KES20H20220553,Cascadia Motors,Kestrel,2022,2.0 Hybrid
+KES20H20190554,Cascadia Motors,Kestrel,2019,2.0 Hybrid
+KES20H20220555,Cascadia Motors,Kestrel,2022,2.0 Hybrid
+KES20H20210556,Cascadia Motors,Kestrel,2021,2.0 Hybrid
+KES20H20230557,Cascadia Motors,Kestrel,2023,2.0 Hybrid
+KES20H20200558,Cascadia Motors,Kestrel,2020,2.0 Hybrid
+KES20H20200559,Cascadia Motors,Kestrel,2020,2.0 Hybrid
+KES20H20230560,Cascadia Motors,Kestrel,2023,2.0 Hybrid
+KES20H20190561,Cascadia Motors,Kestrel,2019,2.0 Hybrid
+KES20H20190562,Cascadia Motors,Kestrel,2019,2.0 Hybrid
+KES20H20210563,Cascadia Motors,Kestrel,2021,2.0 Hybrid
+KES20H20190564,Cascadia Motors,Kestrel,2019,2.0 Hybrid
+KES20H20200565,Cascadia Motors,Kestrel,2020,2.0 Hybrid
+KES20H20220566,Cascadia Motors,Kestrel,2022,2.0 Hybrid
+KES20H20230567,Cascadia Motors,Kestrel,2023,2.0 Hybrid
+KES20H20190568,Cascadia Motors,Kestrel,2019,2.0 Hybrid
+KES20H20220569,Cascadia Motors,Kestrel,2022,2.0 Hybrid
+KES20H20190570,Cascadia Motors,Kestrel,2019,2.0 Hybrid
+KES20H20210571,Cascadia Motors,Kestrel,2021,2.0 Hybrid
+KES20H20210572,Cascadia Motors,Kestrel,2021,2.0 Hybrid
+KES20H20200573,Cascadia Motors,Kestrel,2020,2.0 Hybrid
+KES20H20190574,Cascadia Motors,Kestrel,2019,2.0 Hybrid
+KES20H20230575,Cascadia Motors,Kestrel,2023,2.0 Hybrid
+KES20H20230576,Cascadia Motors,Kestrel,2023,2.0 Hybrid
+KES20H20200577,Cascadia Motors,Kestrel,2020,2.0 Hybrid
+KES20H20230578,Cascadia Motors,Kestrel,2023,2.0 Hybrid
+KES20H20220579,Cascadia Motors,Kestrel,2022,2.0 Hybrid
+KES20H20210580,Cascadia Motors,Kestrel,2021,2.0 Hybrid
+KES20H20220581,Cascadia Motors,Kestrel,2022,2.0 Hybrid
+KES20H20200582,Cascadia Motors,Kestrel,2020,2.0 Hybrid
+KES20H20210583,Cascadia Motors,Kestrel,2021,2.0 Hybrid
+KES20H20230584,Cascadia Motors,Kestrel,2023,2.0 Hybrid
+KES20H20200585,Cascadia Motors,Kestrel,2020,2.0 Hybrid
+KES20H20190586,Cascadia Motors,Kestrel,2019,2.0 Hybrid
+KES20H20230587,Cascadia Motors,Kestrel,2023,2.0 Hybrid
+KES20H20220588,Cascadia Motors,Kestrel,2022,2.0 Hybrid
+KES20H20230589,Cascadia Motors,Kestrel,2023,2.0 Hybrid
+KES20H20200590,Cascadia Motors,Kestrel,2020,2.0 Hybrid
+KES20H20230591,Cascadia Motors,Kestrel,2023,2.0 Hybrid
+KES20H20230592,Cascadia Motors,Kestrel,2023,2.0 Hybrid
+KES20H20230593,Cascadia Motors,Kestrel,2023,2.0 Hybrid
+KES20H20190594,Cascadia Motors,Kestrel,2019,2.0 Hybrid
+KES20H20230595,Cascadia Motors,Kestrel,2023,2.0 Hybrid
+KES20H20200596,Cascadia Motors,Kestrel,2020,2.0 Hybrid
+KES20H20190597,Cascadia Motors,Kestrel,2019,2.0 Hybrid
+KES20H20190598,Cascadia Motors,Kestrel,2019,2.0 Hybrid
+KES20H20190599,Cascadia Motors,Kestrel,2019,2.0 Hybrid
+HAR30T20200600,Cascadia Motors,Harrier,2020,3.0 TD
+HAR30T20210601,Cascadia Motors,Harrier,2021,3.0 TD
+HAR30T20190602,Cascadia Motors,Harrier,2019,3.0 TD
+HAR30T20220603,Cascadia Motors,Harrier,2022,3.0 TD
+HAR30T20220604,Cascadia Motors,Harrier,2022,3.0 TD
+HAR30T20230605,Cascadia Motors,Harrier,2023,3.0 TD
+HAR30T20190606,Cascadia Motors,Harrier,2019,3.0 TD
+HAR30T20190607,Cascadia Motors,Harrier,2019,3.0 TD
+HAR30T20230608,Cascadia Motors,Harrier,2023,3.0 TD
+HAR30T20200609,Cascadia Motors,Harrier,2020,3.0 TD
+HAR30T20220610,Cascadia Motors,Harrier,2022,3.0 TD
+HAR30T20210611,Cascadia Motors,Harrier,2021,3.0 TD
+HAR30T20190612,Cascadia Motors,Harrier,2019,3.0 TD
+HAR30T20220613,Cascadia Motors,Harrier,2022,3.0 TD
+HAR30T20190614,Cascadia Motors,Harrier,2019,3.0 TD
+HAR30T20230615,Cascadia Motors,Harrier,2023,3.0 TD
+HAR30T20230616,Cascadia Motors,Harrier,2023,3.0 TD
+HAR30T20190617,Cascadia Motors,Harrier,2019,3.0 TD
+HAR30T20230618,Cascadia Motors,Harrier,2023,3.0 TD
+HAR30T20190619,Cascadia Motors,Harrier,2019,3.0 TD
+HAR30T20220620,Cascadia Motors,Harrier,2022,3.0 TD
+HAR30T20210621,Cascadia Motors,Harrier,2021,3.0 TD
+HAR30T20190622,Cascadia Motors,Harrier,2019,3.0 TD
+HAR30T20210623,Cascadia Motors,Harrier,2021,3.0 TD
+HAR30T20200624,Cascadia Motors,Harrier,2020,3.0 TD
+HAR30T20200625,Cascadia Motors,Harrier,2020,3.0 TD
+HAR30T20200626,Cascadia Motors,Harrier,2020,3.0 TD
+HAR30T20220627,Cascadia Motors,Harrier,2022,3.0 TD
+HAR30T20220628,Cascadia Motors,Harrier,2022,3.0 TD
+HAR30T20220629,Cascadia Motors,Harrier,2022,3.0 TD
+HAR30T20190630,Cascadia Motors,Harrier,2019,3.0 TD
+HAR30T20220631,Cascadia Motors,Harrier,2022,3.0 TD
+HAR30T20210632,Cascadia Motors,Harrier,2021,3.0 TD
+HAR30T20190633,Cascadia Motors,Harrier,2019,3.0 TD
+HAR30T20230634,Cascadia Motors,Harrier,2023,3.0 TD
+HAR30T20200635,Cascadia Motors,Harrier,2020,3.0 TD
+HAR30T20190636,Cascadia Motors,Harrier,2019,3.0 TD
+HAR30T20230637,Cascadia Motors,Harrier,2023,3.0 TD
+HAR30T20200638,Cascadia Motors,Harrier,2020,3.0 TD
+HAR30T20210639,Cascadia Motors,Harrier,2021,3.0 TD
+HAR30T20210640,Cascadia Motors,Harrier,2021,3.0 TD
+HAR30T20210641,Cascadia Motors,Harrier,2021,3.0 TD
+HAR30T20230642,Cascadia Motors,Harrier,2023,3.0 TD
+HAR30T20230643,Cascadia Motors,Harrier,2023,3.0 TD
+HAR30T20200644,Cascadia Motors,Harrier,2020,3.0 TD
+HAR30T20190645,Cascadia Motors,Harrier,2019,3.0 TD
+HAR30T20220646,Cascadia Motors,Harrier,2022,3.0 TD
+HAR30T20190647,Cascadia Motors,Harrier,2019,3.0 TD
+HAR30T20220648,Cascadia Motors,Harrier,2022,3.0 TD
+HAR30T20210649,Cascadia Motors,Harrier,2021,3.0 TD
+HAR30T20190650,Cascadia Motors,Harrier,2019,3.0 TD
+HAR30T20200651,Cascadia Motors,Harrier,2020,3.0 TD
+HAR30T20220652,Cascadia Motors,Harrier,2022,3.0 TD
+HAR30T20210653,Cascadia Motors,Harrier,2021,3.0 TD
+HAR30T20230654,Cascadia Motors,Harrier,2023,3.0 TD
+HAR30T20210655,Cascadia Motors,Harrier,2021,3.0 TD
+HAR30T20220656,Cascadia Motors,Harrier,2022,3.0 TD
+HAR30T20220657,Cascadia Motors,Harrier,2022,3.0 TD
+HAR30T20220658,Cascadia Motors,Harrier,2022,3.0 TD
+HAR30T20190659,Cascadia Motors,Harrier,2019,3.0 TD
+HAR30T20230660,Cascadia Motors,Harrier,2023,3.0 TD
+HAR30T20200661,Cascadia Motors,Harrier,2020,3.0 TD
+HAR30T20210662,Cascadia Motors,Harrier,2021,3.0 TD
+HAR30T20190663,Cascadia Motors,Harrier,2019,3.0 TD
+HAR30T20220664,Cascadia Motors,Harrier,2022,3.0 TD
+HAR30T20190665,Cascadia Motors,Harrier,2019,3.0 TD
+HAR30T20210666,Cascadia Motors,Harrier,2021,3.0 TD
+HAR30T20220667,Cascadia Motors,Harrier,2022,3.0 TD
+HAR30T20190668,Cascadia Motors,Harrier,2019,3.0 TD
+HAR30T20230669,Cascadia Motors,Harrier,2023,3.0 TD
+HAR30T20220670,Cascadia Motors,Harrier,2022,3.0 TD
+HAR30T20210671,Cascadia Motors,Harrier,2021,3.0 TD
+HAR30T20220672,Cascadia Motors,Harrier,2022,3.0 TD
+HAR30T20200673,Cascadia Motors,Harrier,2020,3.0 TD
+HAR30T20200674,Cascadia Motors,Harrier,2020,3.0 TD
+HAR30T20190675,Cascadia Motors,Harrier,2019,3.0 TD
+HAR30T20230676,Cascadia Motors,Harrier,2023,3.0 TD
+HAR30T20190677,Cascadia Motors,Harrier,2019,3.0 TD
+HAR30T20200678,Cascadia Motors,Harrier,2020,3.0 TD
+HAR30T20230679,Cascadia Motors,Harrier,2023,3.0 TD
+HAR30T20210680,Cascadia Motors,Harrier,2021,3.0 TD
+HAR30T20210681,Cascadia Motors,Harrier,2021,3.0 TD
+HAR30T20200682,Cascadia Motors,Harrier,2020,3.0 TD
+HAR30T20230683,Cascadia Motors,Harrier,2023,3.0 TD
+HAR30T20230684,Cascadia Motors,Harrier,2023,3.0 TD
+HAR30T20210685,Cascadia Motors,Harrier,2021,3.0 TD
+HAR30T20190686,Cascadia Motors,Harrier,2019,3.0 TD
+HAR30T20210687,Cascadia Motors,Harrier,2021,3.0 TD
+HAR30T20200688,Cascadia Motors,Harrier,2020,3.0 TD
+HAR30T20220689,Cascadia Motors,Harrier,2022,3.0 TD
+HAR30T20220690,Cascadia Motors,Harrier,2022,3.0 TD
+HAR30T20220691,Cascadia Motors,Harrier,2022,3.0 TD
+HAR30T20190692,Cascadia Motors,Harrier,2019,3.0 TD
+HAR30T20200693,Cascadia Motors,Harrier,2020,3.0 TD
+HAR30T20190694,Cascadia Motors,Harrier,2019,3.0 TD
+HAR30T20220695,Cascadia Motors,Harrier,2022,3.0 TD
+HAR30T20220696,Cascadia Motors,Harrier,2022,3.0 TD
+HAR30T20220697,Cascadia Motors,Harrier,2022,3.0 TD
+HAR30T20210698,Cascadia Motors,Harrier,2021,3.0 TD
+HAR30T20200699,Cascadia Motors,Harrier,2020,3.0 TD
+HAR35V20220700,Cascadia Motors,Harrier,2022,3.5 V6
+HAR35V20210701,Cascadia Motors,Harrier,2021,3.5 V6
+HAR35V20220702,Cascadia Motors,Harrier,2022,3.5 V6
+HAR35V20210703,Cascadia Motors,Harrier,2021,3.5 V6
+HAR35V20190704,Cascadia Motors,Harrier,2019,3.5 V6
+HAR35V20210705,Cascadia Motors,Harrier,2021,3.5 V6
+HAR35V20190706,Cascadia Motors,Harrier,2019,3.5 V6
+HAR35V20210707,Cascadia Motors,Harrier,2021,3.5 V6
+HAR35V20210708,Cascadia Motors,Harrier,2021,3.5 V6
+HAR35V20220709,Cascadia Motors,Harrier,2022,3.5 V6
+HAR35V20190710,Cascadia Motors,Harrier,2019,3.5 V6
+HAR35V20200711,Cascadia Motors,Harrier,2020,3.5 V6
+HAR35V20190712,Cascadia Motors,Harrier,2019,3.5 V6
+HAR35V20210713,Cascadia Motors,Harrier,2021,3.5 V6
+HAR35V20210714,Cascadia Motors,Harrier,2021,3.5 V6
+HAR35V20210715,Cascadia Motors,Harrier,2021,3.5 V6
+HAR35V20190716,Cascadia Motors,Harrier,2019,3.5 V6
+HAR35V20220717,Cascadia Motors,Harrier,2022,3.5 V6
+HAR35V20220718,Cascadia Motors,Harrier,2022,3.5 V6
+HAR35V20230719,Cascadia Motors,Harrier,2023,3.5 V6
+HAR35V20190720,Cascadia Motors,Harrier,2019,3.5 V6
+HAR35V20210721,Cascadia Motors,Harrier,2021,3.5 V6
+HAR35V20220722,Cascadia Motors,Harrier,2022,3.5 V6
+HAR35V20210723,Cascadia Motors,Harrier,2021,3.5 V6
+HAR35V20190724,Cascadia Motors,Harrier,2019,3.5 V6
+HAR35V20210725,Cascadia Motors,Harrier,2021,3.5 V6
+HAR35V20190726,Cascadia Motors,Harrier,2019,3.5 V6
+HAR35V20190727,Cascadia Motors,Harrier,2019,3.5 V6
+HAR35V20210728,Cascadia Motors,Harrier,2021,3.5 V6
+HAR35V20200729,Cascadia Motors,Harrier,2020,3.5 V6
+HAR35V20200730,Cascadia Motors,Harrier,2020,3.5 V6
+HAR35V20210731,Cascadia Motors,Harrier,2021,3.5 V6
+HAR35V20220732,Cascadia Motors,Harrier,2022,3.5 V6
+HAR35V20230733,Cascadia Motors,Harrier,2023,3.5 V6
+HAR35V20210734,Cascadia Motors,Harrier,2021,3.5 V6
+HAR35V20200735,Cascadia Motors,Harrier,2020,3.5 V6
+HAR35V20210736,Cascadia Motors,Harrier,2021,3.5 V6
+HAR35V20220737,Cascadia Motors,Harrier,2022,3.5 V6
+HAR35V20190738,Cascadia Motors,Harrier,2019,3.5 V6
+HAR35V20220739,Cascadia Motors,Harrier,2022,3.5 V6
+HAR35V20230740,Cascadia Motors,Harrier,2023,3.5 V6
+HAR35V20230741,Cascadia Motors,Harrier,2023,3.5 V6
+HAR35V20200742,Cascadia Motors,Harrier,2020,3.5 V6
+HAR35V20190743,Cascadia Motors,Harrier,2019,3.5 V6
+HAR35V20190744,Cascadia Motors,Harrier,2019,3.5 V6
+HAR35V20220745,Cascadia Motors,Harrier,2022,3.5 V6
+HAR35V20220746,Cascadia Motors,Harrier,2022,3.5 V6
+HAR35V20230747,Cascadia Motors,Harrier,2023,3.5 V6
+HAR35V20200748,Cascadia Motors,Harrier,2020,3.5 V6
+HAR35V20210749,Cascadia Motors,Harrier,2021,3.5 V6
+HAR35V20220750,Cascadia Motors,Harrier,2022,3.5 V6
+HAR35V20190751,Cascadia Motors,Harrier,2019,3.5 V6
+HAR35V20230752,Cascadia Motors,Harrier,2023,3.5 V6
+HAR35V20200753,Cascadia Motors,Harrier,2020,3.5 V6
+HAR35V20200754,Cascadia Motors,Harrier,2020,3.5 V6
+HAR35V20220755,Cascadia Motors,Harrier,2022,3.5 V6
+HAR35V20220756,Cascadia Motors,Harrier,2022,3.5 V6
+HAR35V20210757,Cascadia Motors,Harrier,2021,3.5 V6
+HAR35V20210758,Cascadia Motors,Harrier,2021,3.5 V6
+HAR35V20210759,Cascadia Motors,Harrier,2021,3.5 V6
+HAR35V20210760,Cascadia Motors,Harrier,2021,3.5 V6
+HAR35V20210761,Cascadia Motors,Harrier,2021,3.5 V6
+HAR35V20220762,Cascadia Motors,Harrier,2022,3.5 V6
+HAR35V20200763,Cascadia Motors,Harrier,2020,3.5 V6
+HAR35V20210764,Cascadia Motors,Harrier,2021,3.5 V6
+HAR35V20220765,Cascadia Motors,Harrier,2022,3.5 V6
+HAR35V20230766,Cascadia Motors,Harrier,2023,3.5 V6
+HAR35V20220767,Cascadia Motors,Harrier,2022,3.5 V6
+HAR35V20190768,Cascadia Motors,Harrier,2019,3.5 V6
+HAR35V20200769,Cascadia Motors,Harrier,2020,3.5 V6
+HAR35V20200770,Cascadia Motors,Harrier,2020,3.5 V6
+HAR35V20190771,Cascadia Motors,Harrier,2019,3.5 V6
+HAR35V20200772,Cascadia Motors,Harrier,2020,3.5 V6
+HAR35V20230773,Cascadia Motors,Harrier,2023,3.5 V6
+HAR35V20220774,Cascadia Motors,Harrier,2022,3.5 V6
+HAR35V20230775,Cascadia Motors,Harrier,2023,3.5 V6
+HAR35V20200776,Cascadia Motors,Harrier,2020,3.5 V6
+HAR35V20220777,Cascadia Motors,Harrier,2022,3.5 V6
+HAR35V20210778,Cascadia Motors,Harrier,2021,3.5 V6
+HAR35V20220779,Cascadia Motors,Harrier,2022,3.5 V6
+HAR35V20220780,Cascadia Motors,Harrier,2022,3.5 V6
+HAR35V20200781,Cascadia Motors,Harrier,2020,3.5 V6
+HAR35V20230782,Cascadia Motors,Harrier,2023,3.5 V6
+HAR35V20200783,Cascadia Motors,Harrier,2020,3.5 V6
+HAR35V20200784,Cascadia Motors,Harrier,2020,3.5 V6
+HAR35V20190785,Cascadia Motors,Harrier,2019,3.5 V6
+HAR35V20200786,Cascadia Motors,Harrier,2020,3.5 V6
+HAR35V20210787,Cascadia Motors,Harrier,2021,3.5 V6
+HAR35V20230788,Cascadia Motors,Harrier,2023,3.5 V6
+HAR35V20190789,Cascadia Motors,Harrier,2019,3.5 V6
+HAR35V20210790,Cascadia Motors,Harrier,2021,3.5 V6
+HAR35V20200791,Cascadia Motors,Harrier,2020,3.5 V6
+HAR35V20210792,Cascadia Motors,Harrier,2021,3.5 V6
+HAR35V20210793,Cascadia Motors,Harrier,2021,3.5 V6
+HAR35V20230794,Cascadia Motors,Harrier,2023,3.5 V6
+HAR35V20200795,Cascadia Motors,Harrier,2020,3.5 V6
+HAR35V20190796,Cascadia Motors,Harrier,2019,3.5 V6
+HAR35V20220797,Cascadia Motors,Harrier,2022,3.5 V6
+HAR35V20220798,Cascadia Motors,Harrier,2022,3.5 V6
+HAR35V20220799,Cascadia Motors,Harrier,2022,3.5 V6
+MAREV120230800,Cascadia Motors,Marlin EV,2023,EV-150
+MAREV120200801,Cascadia Motors,Marlin EV,2020,EV-150
+MAREV120220802,Cascadia Motors,Marlin EV,2022,EV-150
+MAREV120210803,Cascadia Motors,Marlin EV,2021,EV-150
+MAREV120210804,Cascadia Motors,Marlin EV,2021,EV-150
+MAREV120190805,Cascadia Motors,Marlin EV,2019,EV-150
+MAREV120220806,Cascadia Motors,Marlin EV,2022,EV-150
+MAREV120210807,Cascadia Motors,Marlin EV,2021,EV-150
+MAREV120230808,Cascadia Motors,Marlin EV,2023,EV-150
+MAREV120210809,Cascadia Motors,Marlin EV,2021,EV-150
+MAREV120200810,Cascadia Motors,Marlin EV,2020,EV-150
+MAREV120230811,Cascadia Motors,Marlin EV,2023,EV-150
+MAREV120230812,Cascadia Motors,Marlin EV,2023,EV-150
+MAREV120200813,Cascadia Motors,Marlin EV,2020,EV-150
+MAREV120190814,Cascadia Motors,Marlin EV,2019,EV-150
+MAREV120210815,Cascadia Motors,Marlin EV,2021,EV-150
+MAREV120200816,Cascadia Motors,Marlin EV,2020,EV-150
+MAREV120220817,Cascadia Motors,Marlin EV,2022,EV-150
+MAREV120220818,Cascadia Motors,Marlin EV,2022,EV-150
+MAREV120220819,Cascadia Motors,Marlin EV,2022,EV-150
+MAREV120220820,Cascadia Motors,Marlin EV,2022,EV-150
+MAREV120210821,Cascadia Motors,Marlin EV,2021,EV-150
+MAREV120190822,Cascadia Motors,Marlin EV,2019,EV-150
+MAREV120200823,Cascadia Motors,Marlin EV,2020,EV-150
+MAREV120190824,Cascadia Motors,Marlin EV,2019,EV-150
+MAREV120220825,Cascadia Motors,Marlin EV,2022,EV-150
+MAREV120220826,Cascadia Motors,Marlin EV,2022,EV-150
+MAREV120230827,Cascadia Motors,Marlin EV,2023,EV-150
+MAREV120220828,Cascadia Motors,Marlin EV,2022,EV-150
+MAREV120190829,Cascadia Motors,Marlin EV,2019,EV-150
+MAREV120190830,Cascadia Motors,Marlin EV,2019,EV-150
+MAREV120220831,Cascadia Motors,Marlin EV,2022,EV-150
+MAREV120230832,Cascadia Motors,Marlin EV,2023,EV-150
+MAREV120220833,Cascadia Motors,Marlin EV,2022,EV-150
+MAREV120220834,Cascadia Motors,Marlin EV,2022,EV-150
+MAREV120200835,Cascadia Motors,Marlin EV,2020,EV-150
+MAREV120190836,Cascadia Motors,Marlin EV,2019,EV-150
+MAREV120200837,Cascadia Motors,Marlin EV,2020,EV-150
+MAREV120200838,Cascadia Motors,Marlin EV,2020,EV-150
+MAREV120200839,Cascadia Motors,Marlin EV,2020,EV-150
+MAREV120230840,Cascadia Motors,Marlin EV,2023,EV-150
+MAREV120190841,Cascadia Motors,Marlin EV,2019,EV-150
+MAREV120220842,Cascadia Motors,Marlin EV,2022,EV-150
+MAREV120190843,Cascadia Motors,Marlin EV,2019,EV-150
+MAREV120230844,Cascadia Motors,Marlin EV,2023,EV-150
+MAREV120190845,Cascadia Motors,Marlin EV,2019,EV-150
+MAREV120190846,Cascadia Motors,Marlin EV,2019,EV-150
+MAREV120200847,Cascadia Motors,Marlin EV,2020,EV-150
+MAREV120200848,Cascadia Motors,Marlin EV,2020,EV-150
+MAREV120230849,Cascadia Motors,Marlin EV,2023,EV-150
+MAREV120190850,Cascadia Motors,Marlin EV,2019,EV-150
+MAREV120210851,Cascadia Motors,Marlin EV,2021,EV-150
+MAREV120200852,Cascadia Motors,Marlin EV,2020,EV-150
+MAREV120210853,Cascadia Motors,Marlin EV,2021,EV-150
+MAREV120230854,Cascadia Motors,Marlin EV,2023,EV-150
+MAREV120220855,Cascadia Motors,Marlin EV,2022,EV-150
+MAREV120190856,Cascadia Motors,Marlin EV,2019,EV-150
+MAREV120190857,Cascadia Motors,Marlin EV,2019,EV-150
+MAREV120190858,Cascadia Motors,Marlin EV,2019,EV-150
+MAREV120210859,Cascadia Motors,Marlin EV,2021,EV-150
+MAREV120230860,Cascadia Motors,Marlin EV,2023,EV-150
+MAREV120230861,Cascadia Motors,Marlin EV,2023,EV-150
+MAREV120200862,Cascadia Motors,Marlin EV,2020,EV-150
+MAREV120220863,Cascadia Motors,Marlin EV,2022,EV-150
+MAREV120210864,Cascadia Motors,Marlin EV,2021,EV-150
+MAREV120200865,Cascadia Motors,Marlin EV,2020,EV-150
+MAREV120230866,Cascadia Motors,Marlin EV,2023,EV-150
+MAREV120190867,Cascadia Motors,Marlin EV,2019,EV-150
+MAREV120190868,Cascadia Motors,Marlin EV,2019,EV-150
+MAREV120230869,Cascadia Motors,Marlin EV,2023,EV-150
+MAREV120210870,Cascadia Motors,Marlin EV,2021,EV-150
+MAREV120220871,Cascadia Motors,Marlin EV,2022,EV-150
+MAREV120210872,Cascadia Motors,Marlin EV,2021,EV-150
+MAREV120210873,Cascadia Motors,Marlin EV,2021,EV-150
+MAREV120200874,Cascadia Motors,Marlin EV,2020,EV-150
+MAREV120220875,Cascadia Motors,Marlin EV,2022,EV-150
+MAREV120230876,Cascadia Motors,Marlin EV,2023,EV-150
+MAREV120200877,Cascadia Motors,Marlin EV,2020,EV-150
+MAREV120230878,Cascadia Motors,Marlin EV,2023,EV-150
+MAREV120200879,Cascadia Motors,Marlin EV,2020,EV-150
+MAREV120190880,Cascadia Motors,Marlin EV,2019,EV-150
+MAREV120220881,Cascadia Motors,Marlin EV,2022,EV-150
+MAREV120210882,Cascadia Motors,Marlin EV,2021,EV-150
+MAREV120190883,Cascadia Motors,Marlin EV,2019,EV-150
+MAREV120190884,Cascadia Motors,Marlin EV,2019,EV-150
+MAREV120200885,Cascadia Motors,Marlin EV,2020,EV-150
+MAREV120220886,Cascadia Motors,Marlin EV,2022,EV-150
+MAREV120220887,Cascadia Motors,Marlin EV,2022,EV-150
+MAREV120190888,Cascadia Motors,Marlin EV,2019,EV-150
+MAREV120210889,Cascadia Motors,Marlin EV,2021,EV-150
+MAREV120200890,Cascadia Motors,Marlin EV,2020,EV-150
+MAREV120220891,Cascadia Motors,Marlin EV,2022,EV-150
+MAREV120210892,Cascadia Motors,Marlin EV,2021,EV-150
+MAREV120200893,Cascadia Motors,Marlin EV,2020,EV-150
+MAREV120220894,Cascadia Motors,Marlin EV,2022,EV-150
+MAREV120190895,Cascadia Motors,Marlin EV,2019,EV-150
+MAREV120210896,Cascadia Motors,Marlin EV,2021,EV-150
+MAREV120220897,Cascadia Motors,Marlin EV,2022,EV-150
+MAREV120210898,Cascadia Motors,Marlin EV,2021,EV-150
+MAREV120220899,Cascadia Motors,Marlin EV,2022,EV-150
+MAREV220200900,Cascadia Motors,Marlin EV,2020,EV-200
+MAREV220190901,Cascadia Motors,Marlin EV,2019,EV-200
+MAREV220210902,Cascadia Motors,Marlin EV,2021,EV-200
+MAREV220230903,Cascadia Motors,Marlin EV,2023,EV-200
+MAREV220190904,Cascadia Motors,Marlin EV,2019,EV-200
+MAREV220200905,Cascadia Motors,Marlin EV,2020,EV-200
+MAREV220220906,Cascadia Motors,Marlin EV,2022,EV-200
+MAREV220200907,Cascadia Motors,Marlin EV,2020,EV-200
+MAREV220210908,Cascadia Motors,Marlin EV,2021,EV-200
+MAREV220200909,Cascadia Motors,Marlin EV,2020,EV-200
+MAREV220200910,Cascadia Motors,Marlin EV,2020,EV-200
+MAREV220220911,Cascadia Motors,Marlin EV,2022,EV-200
+MAREV220200912,Cascadia Motors,Marlin EV,2020,EV-200
+MAREV220210913,Cascadia Motors,Marlin EV,2021,EV-200
+MAREV220210914,Cascadia Motors,Marlin EV,2021,EV-200
+MAREV220190915,Cascadia Motors,Marlin EV,2019,EV-200
+MAREV220230916,Cascadia Motors,Marlin EV,2023,EV-200
+MAREV220220917,Cascadia Motors,Marlin EV,2022,EV-200
+MAREV220230918,Cascadia Motors,Marlin EV,2023,EV-200
+MAREV220200919,Cascadia Motors,Marlin EV,2020,EV-200
+MAREV220200920,Cascadia Motors,Marlin EV,2020,EV-200
+MAREV220220921,Cascadia Motors,Marlin EV,2022,EV-200
+MAREV220220922,Cascadia Motors,Marlin EV,2022,EV-200
+MAREV220190923,Cascadia Motors,Marlin EV,2019,EV-200
+MAREV220230924,Cascadia Motors,Marlin EV,2023,EV-200
+MAREV220200925,Cascadia Motors,Marlin EV,2020,EV-200
+MAREV220220926,Cascadia Motors,Marlin EV,2022,EV-200
+MAREV220190927,Cascadia Motors,Marlin EV,2019,EV-200
+MAREV220200928,Cascadia Motors,Marlin EV,2020,EV-200
+MAREV220190929,Cascadia Motors,Marlin EV,2019,EV-200
+MAREV220230930,Cascadia Motors,Marlin EV,2023,EV-200
+MAREV220200931,Cascadia Motors,Marlin EV,2020,EV-200
+MAREV220220932,Cascadia Motors,Marlin EV,2022,EV-200
+MAREV220190933,Cascadia Motors,Marlin EV,2019,EV-200
+MAREV220190934,Cascadia Motors,Marlin EV,2019,EV-200
+MAREV220200935,Cascadia Motors,Marlin EV,2020,EV-200
+MAREV220220936,Cascadia Motors,Marlin EV,2022,EV-200
+MAREV220220937,Cascadia Motors,Marlin EV,2022,EV-200
+MAREV220210938,Cascadia Motors,Marlin EV,2021,EV-200
+MAREV220190939,Cascadia Motors,Marlin EV,2019,EV-200
+MAREV220190940,Cascadia Motors,Marlin EV,2019,EV-200
+MAREV220200941,Cascadia Motors,Marlin EV,2020,EV-200
+MAREV220210942,Cascadia Motors,Marlin EV,2021,EV-200
+MAREV220200943,Cascadia Motors,Marlin EV,2020,EV-200
+MAREV220200944,Cascadia Motors,Marlin EV,2020,EV-200
+MAREV220230945,Cascadia Motors,Marlin EV,2023,EV-200
+MAREV220220946,Cascadia Motors,Marlin EV,2022,EV-200
+MAREV220190947,Cascadia Motors,Marlin EV,2019,EV-200
+MAREV220210948,Cascadia Motors,Marlin EV,2021,EV-200
+MAREV220220949,Cascadia Motors,Marlin EV,2022,EV-200
+MAREV220210950,Cascadia Motors,Marlin EV,2021,EV-200
+MAREV220210951,Cascadia Motors,Marlin EV,2021,EV-200
+MAREV220220952,Cascadia Motors,Marlin EV,2022,EV-200
+MAREV220200953,Cascadia Motors,Marlin EV,2020,EV-200
+MAREV220190954,Cascadia Motors,Marlin EV,2019,EV-200
+MAREV220190955,Cascadia Motors,Marlin EV,2019,EV-200
+MAREV220190956,Cascadia Motors,Marlin EV,2019,EV-200
+MAREV220210957,Cascadia Motors,Marlin EV,2021,EV-200
+MAREV220190958,Cascadia Motors,Marlin EV,2019,EV-200
+MAREV220210959,Cascadia Motors,Marlin EV,2021,EV-200
+MAREV220220960,Cascadia Motors,Marlin EV,2022,EV-200
+MAREV220190961,Cascadia Motors,Marlin EV,2019,EV-200
+MAREV220230962,Cascadia Motors,Marlin EV,2023,EV-200
+MAREV220200963,Cascadia Motors,Marlin EV,2020,EV-200
+MAREV220220964,Cascadia Motors,Marlin EV,2022,EV-200
+MAREV220210965,Cascadia Motors,Marlin EV,2021,EV-200
+MAREV220210966,Cascadia Motors,Marlin EV,2021,EV-200
+MAREV220220967,Cascadia Motors,Marlin EV,2022,EV-200
+MAREV220190968,Cascadia Motors,Marlin EV,2019,EV-200
+MAREV220190969,Cascadia Motors,Marlin EV,2019,EV-200
+MAREV220220970,Cascadia Motors,Marlin EV,2022,EV-200
+MAREV220200971,Cascadia Motors,Marlin EV,2020,EV-200
+MAREV220210972,Cascadia Motors,Marlin EV,2021,EV-200
+MAREV220230973,Cascadia Motors,Marlin EV,2023,EV-200
+MAREV220220974,Cascadia Motors,Marlin EV,2022,EV-200
+MAREV220200975,Cascadia Motors,Marlin EV,2020,EV-200
+MAREV220210976,Cascadia Motors,Marlin EV,2021,EV-200
+MAREV220210977,Cascadia Motors,Marlin EV,2021,EV-200
+MAREV220220978,Cascadia Motors,Marlin EV,2022,EV-200
+MAREV220190979,Cascadia Motors,Marlin EV,2019,EV-200
+MAREV220220980,Cascadia Motors,Marlin EV,2022,EV-200
+MAREV220200981,Cascadia Motors,Marlin EV,2020,EV-200
+MAREV220220982,Cascadia Motors,Marlin EV,2022,EV-200
+MAREV220190983,Cascadia Motors,Marlin EV,2019,EV-200
+MAREV220220984,Cascadia Motors,Marlin EV,2022,EV-200
+MAREV220190985,Cascadia Motors,Marlin EV,2019,EV-200
+MAREV220220986,Cascadia Motors,Marlin EV,2022,EV-200
+MAREV220190987,Cascadia Motors,Marlin EV,2019,EV-200
+MAREV220190988,Cascadia Motors,Marlin EV,2019,EV-200
+MAREV220210989,Cascadia Motors,Marlin EV,2021,EV-200
+MAREV220200990,Cascadia Motors,Marlin EV,2020,EV-200
+MAREV220190991,Cascadia Motors,Marlin EV,2019,EV-200
+MAREV220230992,Cascadia Motors,Marlin EV,2023,EV-200
+MAREV220210993,Cascadia Motors,Marlin EV,2021,EV-200
+MAREV220210994,Cascadia Motors,Marlin EV,2021,EV-200
+MAREV220210995,Cascadia Motors,Marlin EV,2021,EV-200
+MAREV220210996,Cascadia Motors,Marlin EV,2021,EV-200
+MAREV220230997,Cascadia Motors,Marlin EV,2023,EV-200
+MAREV220190998,Cascadia Motors,Marlin EV,2019,EV-200
+MAREV220210999,Cascadia Motors,Marlin EV,2021,EV-200
+SUM50V20211000,Northwind Trucks,Summit,2021,5.0 V8
+SUM50V20211001,Northwind Trucks,Summit,2021,5.0 V8
+SUM50V20211002,Northwind Trucks,Summit,2021,5.0 V8
+SUM50V20191003,Northwind Trucks,Summit,2019,5.0 V8
+SUM50V20231004,Northwind Trucks,Summit,2023,5.0 V8
+SUM50V20191005,Northwind Trucks,Summit,2019,5.0 V8
+SUM50V20191006,Northwind Trucks,Summit,2019,5.0 V8
+SUM50V20201007,Northwind Trucks,Summit,2020,5.0 V8
+SUM50V20191008,Northwind Trucks,Summit,2019,5.0 V8
+SUM50V20221009,Northwind Trucks,Summit,2022,5.0 V8
+SUM50V20221010,Northwind Trucks,Summit,2022,5.0 V8
+SUM50V20221011,Northwind Trucks,Summit,2022,5.0 V8
+SUM50V20211012,Northwind Trucks,Summit,2021,5.0 V8
+SUM50V20221013,Northwind Trucks,Summit,2022,5.0 V8
+SUM50V20221014,Northwind Trucks,Summit,2022,5.0 V8
+SUM50V20201015,Northwind Trucks,Summit,2020,5.0 V8
+SUM50V20221016,Northwind Trucks,Summit,2022,5.0 V8
+SUM50V20201017,Northwind Trucks,Summit,2020,5.0 V8
+SUM50V20191018,Northwind Trucks,Summit,2019,5.0 V8
+SUM50V20211019,Northwind Trucks,Summit,2021,5.0 V8
+SUM50V20201020,Northwind Trucks,Summit,2020,5.0 V8
+SUM50V20231021,Northwind Trucks,Summit,2023,5.0 V8
+SUM50V20201022,Northwind Trucks,Summit,2020,5.0 V8
+SUM50V20211023,Northwind Trucks,Summit,2021,5.0 V8
+SUM50V20211024,Northwind Trucks,Summit,2021,5.0 V8
+SUM50V20221025,Northwind Trucks,Summit,2022,5.0 V8
+SUM50V20211026,Northwind Trucks,Summit,2021,5.0 V8
+SUM50V20231027,Northwind Trucks,Summit,2023,5.0 V8
+SUM50V20191028,Northwind Trucks,Summit,2019,5.0 V8
+SUM50V20231029,Northwind Trucks,Summit,2023,5.0 V8
+SUM50V20201030,Northwind Trucks,Summit,2020,5.0 V8
+SUM50V20221031,Northwind Trucks,Summit,2022,5.0 V8
+SUM50V20201032,Northwind Trucks,Summit,2020,5.0 V8
+SUM50V20201033,Northwind Trucks,Summit,2020,5.0 V8
+SUM50V20221034,Northwind Trucks,Summit,2022,5.0 V8
+SUM50V20191035,Northwind Trucks,Summit,2019,5.0 V8
+SUM50V20191036,Northwind Trucks,Summit,2019,5.0 V8
+SUM50V20221037,Northwind Trucks,Summit,2022,5.0 V8
+SUM50V20231038,Northwind Trucks,Summit,2023,5.0 V8
+SUM50V20231039,Northwind Trucks,Summit,2023,5.0 V8
+SUM50V20211040,Northwind Trucks,Summit,2021,5.0 V8
+SUM50V20201041,Northwind Trucks,Summit,2020,5.0 V8
+SUM50V20221042,Northwind Trucks,Summit,2022,5.0 V8
+SUM50V20191043,Northwind Trucks,Summit,2019,5.0 V8
+SUM50V20191044,Northwind Trucks,Summit,2019,5.0 V8
+SUM50V20211045,Northwind Trucks,Summit,2021,5.0 V8
+SUM50V20231046,Northwind Trucks,Summit,2023,5.0 V8
+SUM50V20191047,Northwind Trucks,Summit,2019,5.0 V8
+SUM50V20201048,Northwind Trucks,Summit,2020,5.0 V8
+SUM50V20191049,Northwind Trucks,Summit,2019,5.0 V8
+SUM50V20221050,Northwind Trucks,Summit,2022,5.0 V8
+SUM50V20221051,Northwind Trucks,Summit,2022,5.0 V8
+SUM50V20221052,Northwind Trucks,Summit,2022,5.0 V8
+SUM50V20201053,Northwind Trucks,Summit,2020,5.0 V8
+SUM50V20201054,Northwind Trucks,Summit,2020,5.0 V8
+SUM50V20201055,Northwind Trucks,Summit,2020,5.0 V8
+SUM50V20221056,Northwind Trucks,Summit,2022,5.0 V8
+SUM50V20221057,Northwind Trucks,Summit,2022,5.0 V8
+SUM50V20231058,Northwind Trucks,Summit,2023,5.0 V8
+SUM50V20201059,Northwind Trucks,Summit,2020,5.0 V8
+SUM50V20231060,Northwind Trucks,Summit,2023,5.0 V8
+SUM50V20191061,Northwind Trucks,Summit,2019,5.0 V8
+SUM50V20211062,Northwind Trucks,Summit,2021,5.0 V8
+SUM50V20211063,Northwind Trucks,Summit,2021,5.0 V8
+SUM50V20211064,Northwind Trucks,Summit,2021,5.0 V8
+SUM50V20231065,Northwind Trucks,Summit,2023,5.0 V8
+SUM50V20211066,Northwind Trucks,Summit,2021,5.0 V8
+SUM50V20211067,Northwind Trucks,Summit,2021,5.0 V8
+SUM50V20211068,Northwind Trucks,Summit,2021,5.0 V8
+SUM50V20211069,Northwind Trucks,Summit,2021,5.0 V8
+SUM50V20201070,Northwind Trucks,Summit,2020,5.0 V8
+SUM50V20221071,Northwind Trucks,Summit,2022,5.0 V8
+SUM50V20201072,Northwind Trucks,Summit,2020,5.0 V8
+SUM50V20201073,Northwind Trucks,Summit,2020,5.0 V8
+SUM50V20201074,Northwind Trucks,Summit,2020,5.0 V8
+SUM50V20201075,Northwind Trucks,Summit,2020,5.0 V8
+SUM50V20201076,Northwind Trucks,Summit,2020,5.0 V8
+SUM50V20211077,Northwind Trucks,Summit,2021,5.0 V8
+SUM50V20231078,Northwind Trucks,Summit,2023,5.0 V8
+SUM50V20201079,Northwind Trucks,Summit,2020,5.0 V8
+SUM50V20211080,Northwind Trucks,Summit,2021,5.0 V8
+SUM50V20191081,Northwind Trucks,Summit,2019,5.0 V8
+SUM50V20221082,Northwind Trucks,Summit,2022,5.0 V8
+SUM50V20211083,Northwind Trucks,Summit,2021,5.0 V8
+SUM50V20201084,Northwind Trucks,Summit,2020,5.0 V8
+SUM50V20231085,Northwind Trucks,Summit,2023,5.0 V8
+SUM50V20231086,Northwind Trucks,Summit,2023,5.0 V8
+SUM50V20201087,Northwind Trucks,Summit,2020,5.0 V8
+SUM50V20191088,Northwind Trucks,Summit,2019,5.0 V8
+SUM50V20221089,Northwind Trucks,Summit,2022,5.0 V8
+SUM50V20191090,Northwind Trucks,Summit,2019,5.0 V8
+SUM50V20191091,Northwind Trucks,Summit,2019,5.0 V8
+SUM50V20191092,Northwind Trucks,Summit,2019,5.0 V8
+SUM50V20221093,Northwind Trucks,Summit,2022,5.0 V8
+SUM50V20201094,Northwind Trucks,Summit,2020,5.0 V8
+SUM50V20221095,Northwind Trucks,Summit,2022,5.0 V8
+SUM50V20211096,Northwind Trucks,Summit,2021,5.0 V8
+SUM50V20191097,Northwind Trucks,Summit,2019,5.0 V8
+SUM50V20211098,Northwind Trucks,Summit,2021,5.0 V8
+SUM50V20201099,Northwind Trucks,Summit,2020,5.0 V8
+SUM62V20191100,Northwind Trucks,Summit,2019,6.2 V8
+SUM62V20191101,Northwind Trucks,Summit,2019,6.2 V8
+SUM62V20201102,Northwind Trucks,Summit,2020,6.2 V8
+SUM62V20231103,Northwind Trucks,Summit,2023,6.2 V8
+SUM62V20231104,Northwind Trucks,Summit,2023,6.2 V8
+SUM62V20201105,Northwind Trucks,Summit,2020,6.2 V8
+SUM62V20191106,Northwind Trucks,Summit,2019,6.2 V8
+SUM62V20211107,Northwind Trucks,Summit,2021,6.2 V8
+SUM62V20231108,Northwind Trucks,Summit,2023,6.2 V8
+SUM62V20201109,Northwind Trucks,Summit,2020,6.2 V8
+SUM62V20221110,Northwind Trucks,Summit,2022,6.2 V8
+SUM62V20231111,Northwind Trucks,Summit,2023,6.2 V8
+SUM62V20211112,Northwind Trucks,Summit,2021,6.2 V8
+SUM62V20191113,Northwind Trucks,Summit,2019,6.2 V8
+SUM62V20191114,Northwind Trucks,Summit,2019,6.2 V8
+SUM62V20231115,Northwind Trucks,Summit,2023,6.2 V8
+SUM62V20231116,Northwind Trucks,Summit,2023,6.2 V8
+SUM62V20211117,Northwind Trucks,Summit,2021,6.2 V8
+SUM62V20201118,Northwind Trucks,Summit,2020,6.2 V8
+SUM62V20191119,Northwind Trucks,Summit,2019,6.2 V8
+SUM62V20211120,Northwind Trucks,Summit,2021,6.2 V8
+SUM62V20211121,Northwind Trucks,Summit,2021,6.2 V8
+SUM62V20201122,Northwind Trucks,Summit,2020,6.2 V8
+SUM62V20191123,Northwind Trucks,Summit,2019,6.2 V8
+SUM62V20201124,Northwind Trucks,Summit,2020,6.2 V8
+SUM62V20211125,Northwind Trucks,Summit,2021,6.2 V8
+SUM62V20191126,Northwind Trucks,Summit,2019,6.2 V8
+SUM62V20231127,Northwind Trucks,Summit,2023,6.2 V8
+SUM62V20201128,Northwind Trucks,Summit,2020,6.2 V8
+SUM62V20191129,Northwind Trucks,Summit,2019,6.2 V8
+SUM62V20211130,Northwind Trucks,Summit,2021,6.2 V8
+SUM62V20221131,Northwind Trucks,Summit,2022,6.2 V8
+SUM62V20211132,Northwind Trucks,Summit,2021,6.2 V8
+SUM62V20201133,Northwind Trucks,Summit,2020,6.2 V8
+SUM62V20231134,Northwind Trucks,Summit,2023,6.2 V8
+SUM62V20211135,Northwind Trucks,Summit,2021,6.2 V8
+SUM62V20191136,Northwind Trucks,Summit,2019,6.2 V8
+SUM62V20201137,Northwind Trucks,Summit,2020,6.2 V8
+SUM62V20191138,Northwind Trucks,Summit,2019,6.2 V8
+SUM62V20221139,Northwind Trucks,Summit,2022,6.2 V8
+SUM62V20231140,Northwind Trucks,Summit,2023,6.2 V8
+SUM62V20221141,Northwind Trucks,Summit,2022,6.2 V8
+SUM62V20191142,Northwind Trucks,Summit,2019,6.2 V8
+SUM62V20221143,Northwind Trucks,Summit,2022,6.2 V8
+SUM62V20191144,Northwind Trucks,Summit,2019,6.2 V8
+SUM62V20221145,Northwind Trucks,Summit,2022,6.2 V8
+SUM62V20231146,Northwind Trucks,Summit,2023,6.2 V8
+SUM62V20201147,Northwind Trucks,Summit,2020,6.2 V8
+SUM62V20231148,Northwind Trucks,Summit,2023,6.2 V8
+SUM62V20191149,Northwind Trucks,Summit,2019,6.2 V8
+SUM62V20201150,Northwind Trucks,Summit,2020,6.2 V8
+SUM62V20221151,Northwind Trucks,Summit,2022,6.2 V8
+SUM62V20211152,Northwind Trucks,Summit,2021,6.2 V8
+SUM62V20221153,Northwind Trucks,Summit,2022,6.2 V8
+SUM62V20211154,Northwind Trucks,Summit,2021,6.2 V8
+SUM62V20211155,Northwind Trucks,Summit,2021,6.2 V8
+SUM62V20221156,Northwind Trucks,Summit,2022,6.2 V8
+SUM62V20191157,Northwind Trucks,Summit,2019,6.2 V8
+SUM62V20211158,Northwind Trucks,Summit,2021,6.2 V8
+SUM62V20231159,Northwind Trucks,Summit,2023,6.2 V8
+SUM62V20211160,Northwind Trucks,Summit,2021,6.2 V8
+SUM62V20221161,Northwind Trucks,Summit,2022,6.2 V8
+SUM62V20221162,Northwind Trucks,Summit,2022,6.2 V8
+SUM62V20191163,Northwind Trucks,Summit,2019,6.2 V8
+SUM62V20211164,Northwind Trucks,Summit,2021,6.2 V8
+SUM62V20201165,Northwind Trucks,Summit,2020,6.2 V8
+SUM62V20221166,Northwind Trucks,Summit,2022,6.2 V8
+SUM62V20221167,Northwind Trucks,Summit,2022,6.2 V8
+SUM62V20201168,Northwind Trucks,Summit,2020,6.2 V8
+SUM62V20191169,Northwind Trucks,Summit,2019,6.2 V8
+SUM62V20221170,Northwind Trucks,Summit,2022,6.2 V8
+SUM62V20201171,Northwind Trucks,Summit,2020,6.2 V8
+SUM62V20221172,Northwind Trucks,Summit,2022,6.2 V8
+SUM62V20191173,Northwind Trucks,Summit,2019,6.2 V8
+SUM62V20191174,Northwind Trucks,Summit,2019,6.2 V8
+SUM62V20221175,Northwind Trucks,Summit,2022,6.2 V8
+SUM62V20231176,Northwind Trucks,Summit,2023,6.2 V8
+SUM62V20211177,Northwind Trucks,Summit,2021,6.2 V8
+SUM62V20221178,Northwind Trucks,Summit,2022,6.2 V8
+SUM62V20201179,Northwind Trucks,Summit,2020,6.2 V8
+SUM62V20201180,Northwind Trucks,Summit,2020,6.2 V8
+SUM62V20191181,Northwind Trucks,Summit,2019,6.2 V8
+SUM62V20191182,Northwind Trucks,Summit,2019,6.2 V8
+SUM62V20231183,Northwind Trucks,Summit,2023,6.2 V8
+SUM62V20201184,Northwind Trucks,Summit,2020,6.2 V8
+SUM62V20221185,Northwind Trucks,Summit,2022,6.2 V8
+SUM62V20191186,Northwind Trucks,Summit,2019,6.2 V8
+SUM62V20231187,Northwind Trucks,Summit,2023,6.2 V8
+SUM62V20231188,Northwind Trucks,Summit,2023,6.2 V8
+SUM62V20211189,Northwind Trucks,Summit,2021,6.2 V8
+SUM62V20231190,Northwind Trucks,Summit,2023,6.2 V8
+SUM62V20201191,Northwind Trucks,Summit,2020,6.2 V8
+SUM62V20201192,Northwind Trucks,Summit,2020,6.2 V8
+SUM62V20211193,Northwind Trucks,Summit,2021,6.2 V8
+SUM62V20211194,Northwind Trucks,Summit,2021,6.2 V8
+SUM62V20201195,Northwind Trucks,Summit,2020,6.2 V8
+SUM62V20231196,Northwind Trucks,Summit,2023,6.2 V8
+SUM62V20201197,Northwind Trucks,Summit,2020,6.2 V8
+SUM62V20191198,Northwind Trucks,Summit,2019,6.2 V8
+SUM62V20191199,Northwind Trucks,Summit,2019,6.2 V8
+RID67T20221200,Northwind Trucks,Ridgeline HD,2022,6.7 TD
+RID67T20221201,Northwind Trucks,Ridgeline HD,2022,6.7 TD
+RID67T20201202,Northwind Trucks,Ridgeline HD,2020,6.7 TD
+RID67T20211203,Northwind Trucks,Ridgeline HD,2021,6.7 TD
+RID67T20201204,Northwind Trucks,Ridgeline HD,2020,6.7 TD
+RID67T20191205,Northwind Trucks,Ridgeline HD,2019,6.7 TD
+RID67T20221206,Northwind Trucks,Ridgeline HD,2022,6.7 TD
+RID67T20211207,Northwind Trucks,Ridgeline HD,2021,6.7 TD
+RID67T20191208,Northwind Trucks,Ridgeline HD,2019,6.7 TD
+RID67T20231209,Northwind Trucks,Ridgeline HD,2023,6.7 TD
+RID67T20221210,Northwind Trucks,Ridgeline HD,2022,6.7 TD
+RID67T20191211,Northwind Trucks,Ridgeline HD,2019,6.7 TD
+RID67T20231212,Northwind Trucks,Ridgeline HD,2023,6.7 TD
+RID67T20201213,Northwind Trucks,Ridgeline HD,2020,6.7 TD
+RID67T20201214,Northwind Trucks,Ridgeline HD,2020,6.7 TD
+RID67T20231215,Northwind Trucks,Ridgeline HD,2023,6.7 TD
+RID67T20221216,Northwind Trucks,Ridgeline HD,2022,6.7 TD
+RID67T20231217,Northwind Trucks,Ridgeline HD,2023,6.7 TD
+RID67T20201218,Northwind Trucks,Ridgeline HD,2020,6.7 TD
+RID67T20221219,Northwind Trucks,Ridgeline HD,2022,6.7 TD
+RID67T20201220,Northwind Trucks,Ridgeline HD,2020,6.7 TD
+RID67T20231221,Northwind Trucks,Ridgeline HD,2023,6.7 TD
+RID67T20201222,Northwind Trucks,Ridgeline HD,2020,6.7 TD
+RID67T20191223,Northwind Trucks,Ridgeline HD,2019,6.7 TD
+RID67T20221224,Northwind Trucks,Ridgeline HD,2022,6.7 TD
+RID67T20231225,Northwind Trucks,Ridgeline HD,2023,6.7 TD
+RID67T20201226,Northwind Trucks,Ridgeline HD,2020,6.7 TD
+RID67T20221227,Northwind Trucks,Ridgeline HD,2022,6.7 TD
+RID67T20211228,Northwind Trucks,Ridgeline HD,2021,6.7 TD
+RID67T20191229,Northwind Trucks,Ridgeline HD,2019,6.7 TD
+RID67T20201230,Northwind Trucks,Ridgeline HD,2020,6.7 TD
+RID67T20201231,Northwind Trucks,Ridgeline HD,2020,6.7 TD
+RID67T20201232,Northwind Trucks,Ridgeline HD,2020,6.7 TD
+RID67T20191233,Northwind Trucks,Ridgeline HD,2019,6.7 TD
+RID67T20231234,Northwind Trucks,Ridgeline HD,2023,6.7 TD
+RID67T20191235,Northwind Trucks,Ridgeline HD,2019,6.7 TD
+RID67T20211236,Northwind Trucks,Ridgeline HD,2021,6.7 TD
+RID67T20191237,Northwind Trucks,Ridgeline HD,2019,6.7 TD
+RID67T20221238,Northwind Trucks,Ridgeline HD,2022,6.7 TD
+RID67T20231239,Northwind Trucks,Ridgeline HD,2023,6.7 TD
+RID67T20221240,Northwind Trucks,Ridgeline HD,2022,6.7 TD
+RID67T20231241,Northwind Trucks,Ridgeline HD,2023,6.7 TD
+RID67T20211242,Northwind Trucks,Ridgeline HD,2021,6.7 TD
+RID67T20221243,Northwind Trucks,Ridgeline HD,2022,6.7 TD
+RID67T20211244,Northwind Trucks,Ridgeline HD,2021,6.7 TD
+RID67T20231245,Northwind Trucks,Ridgeline HD,2023,6.7 TD
+RID67T20201246,Northwind Trucks,Ridgeline HD,2020,6.7 TD
+RID67T20221247,Northwind Trucks,Ridgeline HD,2022,6.7 TD
+RID67T20221248,Northwind Trucks,Ridgeline HD,2022,6.7 TD
+RID67T20211249,Northwind Trucks,Ridgeline HD,2021,6.7 TD
+RID67T20221250,Northwind Trucks,Ridgeline HD,2022,6.7 TD
+RID67T20231251,Northwind Trucks,Ridgeline HD,2023,6.7 TD
+RID67T20221252,Northwind Trucks,Ridgeline HD,2022,6.7 TD
+RID67T20201253,Northwind Trucks,Ridgeline HD,2020,6.7 TD
+RID67T20191254,Northwind Trucks,Ridgeline HD,2019,6.7 TD
+RID67T20191255,Northwind Trucks,Ridgeline HD,2019,6.7 TD
+RID67T20231256,Northwind Trucks,Ridgeline HD,2023,6.7 TD
+RID67T20221257,Northwind Trucks,Ridgeline HD,2022,6.7 TD
+RID67T20221258,Northwind Trucks,Ridgeline HD,2022,6.7 TD
+RID67T20201259,Northwind Trucks,Ridgeline HD,2020,6.7 TD
+RID67T20221260,Northwind Trucks,Ridgeline HD,2022,6.7 TD
+RID67T20231261,Northwind Trucks,Ridgeline HD,2023,6.7 TD
+RID67T20221262,Northwind Trucks,Ridgeline HD,2022,6.7 TD
+RID67T20201263,Northwind Trucks,Ridgeline HD,2020,6.7 TD
+RID67T20221264,Northwind Trucks,Ridgeline HD,2022,6.7 TD
+RID67T20221265,Northwind Trucks,Ridgeline HD,2022,6.7 TD
+RID67T20191266,Northwind Trucks,Ridgeline HD,2019,6.7 TD
+RID67T20191267,Northwind Trucks,Ridgeline HD,2019,6.7 TD
+RID67T20201268,Northwind Trucks,Ridgeline HD,2020,6.7 TD
+RID67T20211269,Northwind Trucks,Ridgeline HD,2021,6.7 TD
+RID67T20221270,Northwind Trucks,Ridgeline HD,2022,6.7 TD
+RID67T20211271,Northwind Trucks,Ridgeline HD,2021,6.7 TD
+RID67T20191272,Northwind Trucks,Ridgeline HD,2019,6.7 TD
+RID67T20221273,Northwind Trucks,Ridgeline HD,2022,6.7 TD
+RID67T20231274,Northwind Trucks,Ridgeline HD,2023,6.7 TD
+RID67T20231275,Northwind Trucks,Ridgeline HD,2023,6.7 TD
+RID67T20191276,Northwind Trucks,Ridgeline HD,2019,6.7 TD
+RID67T20191277,Northwind Trucks,Ridgeline HD,2019,6.7 TD
+RID67T20201278,Northwind Trucks,Ridgeline HD,2020,6.7 TD
+RID67T20191279,Northwind Trucks,Ridgeline HD,2019,6.7 TD
+RID67T20211280,Northwind Trucks,Ridgeline HD,2021,6.7 TD
+RID67T20231281,Northwind Trucks,Ridgeline HD,2023,6.7 TD
+RID67T20191282,Northwind Trucks,Ridgeline HD,2019,6.7 TD
+RID67T20191283,Northwind Trucks,Ridgeline HD,2019,6.7 TD
+RID67T20231284,Northwind Trucks,Ridgeline HD,2023,6.7 TD
+RID67T20221285,Northwind Trucks,Ridgeline HD,2022,6.7 TD
+RID67T20201286,Northwind Trucks,Ridgeline HD,2020,6.7 TD
+RID67T20191287,Northwind Trucks,Ridgeline HD,2019,6.7 TD
+RID67T20191288,Northwind Trucks,Ridgeline HD,2019,6.7 TD
+RID67T20231289,Northwind Trucks,Ridgeline HD,2023,6.7 TD
+RID67T20191290,Northwind Trucks,Ridgeline HD,2019,6.7 TD
+RID67T20201291,Northwind Trucks,Ridgeline HD,2020,6.7 TD
+RID67T20201292,Northwind Trucks,Ridgeline HD,2020,6.7 TD
+RID67T20221293,Northwind Trucks,Ridgeline HD,2022,6.7 TD
+RID67T20211294,Northwind Trucks,Ridgeline HD,2021,6.7 TD
+RID67T20201295,Northwind Trucks,Ridgeline HD,2020,6.7 TD
+RID67T20201296,Northwind Trucks,Ridgeline HD,2020,6.7 TD
+RID67T20191297,Northwind Trucks,Ridgeline HD,2019,6.7 TD
+RID67T20211298,Northwind Trucks,Ridgeline HD,2021,6.7 TD
+RID67T20231299,Northwind Trucks,Ridgeline HD,2023,6.7 TD
+LUM1820211300,Aurora Auto,Lumen,2021,1.8
+LUM1820201301,Aurora Auto,Lumen,2020,1.8
+LUM1820211302,Aurora Auto,Lumen,2021,1.8
+LUM1820231303,Aurora Auto,Lumen,2023,1.8
+LUM1820211304,Aurora Auto,Lumen,2021,1.8
+LUM1820221305,Aurora Auto,Lumen,2022,1.8
+LUM1820201306,Aurora Auto,Lumen,2020,1.8
+LUM1820211307,Aurora Auto,Lumen,2021,1.8
+LUM1820231308,Aurora Auto,Lumen,2023,1.8
+LUM1820221309,Aurora Auto,Lumen,2022,1.8
+LUM1820201310,Aurora Auto,Lumen,2020,1.8
+LUM1820231311,Aurora Auto,Lumen,2023,1.8
+LUM1820211312,Aurora Auto,Lumen,2021,1.8
+LUM1820231313,Aurora Auto,Lumen,2023,1.8
+LUM1820231314,Aurora Auto,Lumen,2023,1.8
+LUM1820201315,Aurora Auto,Lumen,2020,1.8
+LUM1820211316,Aurora Auto,Lumen,2021,1.8
+LUM1820211317,Aurora Auto,Lumen,2021,1.8
+LUM1820191318,Aurora Auto,Lumen,2019,1.8
+LUM1820201319,Aurora Auto,Lumen,2020,1.8
+LUM1820201320,Aurora Auto,Lumen,2020,1.8
+LUM1820221321,Aurora Auto,Lumen,2022,1.8
+LUM1820201322,Aurora Auto,Lumen,2020,1.8
+LUM1820211323,Aurora Auto,Lumen,2021,1.8
+LUM1820211324,Aurora Auto,Lumen,2021,1.8
+LUM1820221325,Aurora Auto,Lumen,2022,1.8
+LUM1820201326,Aurora Auto,Lumen,2020,1.8
+LUM1820211327,Aurora Auto,Lumen,2021,1.8
+LUM1820191328,Aurora Auto,Lumen,2019,1.8
+LUM1820231329,Aurora Auto,Lumen,2023,1.8
+LUM1820191330,Aurora Auto,Lumen,2019,1.8
+LUM1820211331,Aurora Auto,Lumen,2021,1.8
+LUM1820221332,Aurora Auto,Lumen,2022,1.8
+LUM1820231333,Aurora Auto,Lumen,2023,1.8
+LUM1820231334,Aurora Auto,Lumen,2023,1.8
+LUM1820231335,Aurora Auto,Lumen,2023,1.8
+LUM1820191336,Aurora Auto,Lumen,2019,1.8
+LUM1820211337,Aurora Auto,Lumen,2021,1.8
+LUM1820231338,Aurora Auto,Lumen,2023,1.8
+LUM1820221339,Aurora Auto,Lumen,2022,1.8
+LUM1820211340,Aurora Auto,Lumen,2021,1.8
+LUM1820211341,Aurora Auto,Lumen,2021,1.8
+LUM1820221342,Aurora Auto,Lumen,2022,1.8
+LUM1820211343,Aurora Auto,Lumen,2021,1.8
+LUM1820231344,Aurora Auto,Lumen,2023,1.8
+LUM1820201345,Aurora Auto,Lumen,2020,1.8
+LUM1820211346,Aurora Auto,Lumen,2021,1.8
+LUM1820211347,Aurora Auto,Lumen,2021,1.8
+LUM1820191348,Aurora Auto,Lumen,2019,1.8
+LUM1820221349,Aurora Auto,Lumen,2022,1.8
+LUM1820201350,Aurora Auto,Lumen,2020,1.8
+LUM1820201351,Aurora Auto,Lumen,2020,1.8
+LUM1820231352,Aurora Auto,Lumen,2023,1.8
+LUM1820191353,Aurora Auto,Lumen,2019,1.8
+LUM1820211354,Aurora Auto,Lumen,2021,1.8
+LUM1820231355,Aurora Auto,Lumen,2023,1.8
+LUM1820211356,Aurora Auto,Lumen,2021,1.8
+LUM1820211357,Aurora Auto,Lumen,2021,1.8
+LUM1820231358,Aurora Auto,Lumen,2023,1.8
+LUM1820211359,Aurora Auto,Lumen,2021,1.8
+LUM1820191360,Aurora Auto,Lumen,2019,1.8
+LUM1820191361,Aurora Auto,Lumen,2019,1.8
+LUM1820201362,Aurora Auto,Lumen,2020,1.8
+LUM1820201363,Aurora Auto,Lumen,2020,1.8
+LUM1820211364,Aurora Auto,Lumen,2021,1.8
+LUM1820231365,Aurora Auto,Lumen,2023,1.8
+LUM1820221366,Aurora Auto,Lumen,2022,1.8
+LUM1820221367,Aurora Auto,Lumen,2022,1.8
+LUM1820231368,Aurora Auto,Lumen,2023,1.8
+LUM1820211369,Aurora Auto,Lumen,2021,1.8
+LUM1820191370,Aurora Auto,Lumen,2019,1.8
+LUM1820201371,Aurora Auto,Lumen,2020,1.8
+LUM1820221372,Aurora Auto,Lumen,2022,1.8
+LUM1820201373,Aurora Auto,Lumen,2020,1.8
+LUM1820231374,Aurora Auto,Lumen,2023,1.8
+LUM1820191375,Aurora Auto,Lumen,2019,1.8
+LUM1820191376,Aurora Auto,Lumen,2019,1.8
+LUM1820191377,Aurora Auto,Lumen,2019,1.8
+LUM1820191378,Aurora Auto,Lumen,2019,1.8
+LUM1820231379,Aurora Auto,Lumen,2023,1.8
+LUM1820211380,Aurora Auto,Lumen,2021,1.8
+LUM1820211381,Aurora Auto,Lumen,2021,1.8
+LUM1820191382,Aurora Auto,Lumen,2019,1.8
+LUM1820231383,Aurora Auto,Lumen,2023,1.8
+LUM1820211384,Aurora Auto,Lumen,2021,1.8
+LUM1820231385,Aurora Auto,Lumen,2023,1.8
+LUM1820201386,Aurora Auto,Lumen,2020,1.8
+LUM1820221387,Aurora Auto,Lumen,2022,1.8
+LUM1820231388,Aurora Auto,Lumen,2023,1.8
+LUM1820211389,Aurora Auto,Lumen,2021,1.8
+LUM1820231390,Aurora Auto,Lumen,2023,1.8
+LUM1820201391,Aurora Auto,Lumen,2020,1.8
+LUM1820201392,Aurora Auto,Lumen,2020,1.8
+LUM1820211393,Aurora Auto,Lumen,2021,1.8
+LUM1820231394,Aurora Auto,Lumen,2023,1.8
+LUM1820221395,Aurora Auto,Lumen,2022,1.8
+LUM1820201396,Aurora Auto,Lumen,2020,1.8
+LUM1820201397,Aurora Auto,Lumen,2020,1.8
+LUM1820191398,Aurora Auto,Lumen,2019,1.8
+LUM1820201399,Aurora Auto,Lumen,2020,1.8
+LUM20T20201400,Aurora Auto,Lumen,2020,2.0T
+LUM20T20221401,Aurora Auto,Lumen,2022,2.0T
+LUM20T20191402,Aurora Auto,Lumen,2019,2.0T
+LUM20T20191403,Aurora Auto,Lumen,2019,2.0T
+LUM20T20201404,Aurora Auto,Lumen,2020,2.0T
+LUM20T20211405,Aurora Auto,Lumen,2021,2.0T
+LUM20T20221406,Aurora Auto,Lumen,2022,2.0T
+LUM20T20211407,Aurora Auto,Lumen,2021,2.0T
+LUM20T20191408,Aurora Auto,Lumen,2019,2.0T
+LUM20T20191409,Aurora Auto,Lumen,2019,2.0T
+LUM20T20231410,Aurora Auto,Lumen,2023,2.0T
+LUM20T20211411,Aurora Auto,Lumen,2021,2.0T
+LUM20T20231412,Aurora Auto,Lumen,2023,2.0T
+LUM20T20231413,Aurora Auto,Lumen,2023,2.0T
+LUM20T20221414,Aurora Auto,Lumen,2022,2.0T
+LUM20T20231415,Aurora Auto,Lumen,2023,2.0T
+LUM20T20231416,Aurora Auto,Lumen,2023,2.0T
+LUM20T20221417,Aurora Auto,Lumen,2022,2.0T
+LUM20T20201418,Aurora Auto,Lumen,2020,2.0T
+LUM20T20201419,Aurora Auto,Lumen,2020,2.0T
+LUM20T20191420,Aurora Auto,Lumen,2019,2.0T
+LUM20T20191421,Aurora Auto,Lumen,2019,2.0T
+LUM20T20191422,Aurora Auto,Lumen,2019,2.0T
+LUM20T20231423,Aurora Auto,Lumen,2023,2.0T
+LUM20T20191424,Aurora Auto,Lumen,2019,2.0T
+LUM20T20221425,Aurora Auto,Lumen,2022,2.0T
+LUM20T20201426,Aurora Auto,Lumen,2020,2.0T
+LUM20T20201427,Aurora Auto,Lumen,2020,2.0T
+LUM20T20201428,Aurora Auto,Lumen,2020,2.0T
+LUM20T20191429,Aurora Auto,Lumen,2019,2.0T
+LUM20T20191430,Aurora Auto,Lumen,2019,2.0T
+LUM20T20191431,Aurora Auto,Lumen,2019,2.0T
+LUM20T20231432,Aurora Auto,Lumen,2023,2.0T
+LUM20T20231433,Aurora Auto,Lumen,2023,2.0T
+LUM20T20201434,Aurora Auto,Lumen,2020,2.0T
+LUM20T20201435,Aurora Auto,Lumen,2020,2.0T
+LUM20T20221436,Aurora Auto,Lumen,2022,2.0T
+LUM20T20201437,Aurora Auto,Lumen,2020,2.0T
+LUM20T20231438,Aurora Auto,Lumen,2023,2.0T
+LUM20T20231439,Aurora Auto,Lumen,2023,2.0T
+LUM20T20231440,Aurora Auto,Lumen,2023,2.0T
+LUM20T20221441,Aurora Auto,Lumen,2022,2.0T
+LUM20T20231442,Aurora Auto,Lumen,2023,2.0T
+LUM20T20201443,Aurora Auto,Lumen,2020,2.0T
+LUM20T20231444,Aurora Auto,Lumen,2023,2.0T
+LUM20T20211445,Aurora Auto,Lumen,2021,2.0T
+LUM20T20191446,Aurora Auto,Lumen,2019,2.0T
+LUM20T20211447,Aurora Auto,Lumen,2021,2.0T
+LUM20T20191448,Aurora Auto,Lumen,2019,2.0T
+LUM20T20221449,Aurora Auto,Lumen,2022,2.0T
+LUM20T20231450,Aurora Auto,Lumen,2023,2.0T
+LUM20T20191451,Aurora Auto,Lumen,2019,2.0T
+LUM20T20221452,Aurora Auto,Lumen,2022,2.0T
+LUM20T20221453,Aurora Auto,Lumen,2022,2.0T
+LUM20T20221454,Aurora Auto,Lumen,2022,2.0T
+LUM20T20191455,Aurora Auto,Lumen,2019,2.0T
+LUM20T20221456,Aurora Auto,Lumen,2022,2.0T
+LUM20T20201457,Aurora Auto,Lumen,2020,2.0T
+LUM20T20201458,Aurora Auto,Lumen,2020,2.0T
+LUM20T20191459,Aurora Auto,Lumen,2019,2.0T
+LUM20T20211460,Aurora Auto,Lumen,2021,2.0T
+LUM20T20201461,Aurora Auto,Lumen,2020,2.0T
+LUM20T20191462,Aurora Auto,Lumen,2019,2.0T
+LUM20T20191463,Aurora Auto,Lumen,2019,2.0T
+LUM20T20211464,Aurora Auto,Lumen,2021,2.0T
+LUM20T20211465,Aurora Auto,Lumen,2021,2.0T
+LUM20T20191466,Aurora Auto,Lumen,2019,2.0T
+LUM20T20211467,Aurora Auto,Lumen,2021,2.0T
+LUM20T20231468,Aurora Auto,Lumen,2023,2.0T
+LUM20T20221469,Aurora Auto,Lumen,2022,2.0T
+LUM20T20231470,Aurora Auto,Lumen,2023,2.0T
+LUM20T20211471,Aurora Auto,Lumen,2021,2.0T
+LUM20T20211472,Aurora Auto,Lumen,2021,2.0T
+LUM20T20201473,Aurora Auto,Lumen,2020,2.0T
+LUM20T20191474,Aurora Auto,Lumen,2019,2.0T
+LUM20T20231475,Aurora Auto,Lumen,2023,2.0T
+LUM20T20191476,Aurora Auto,Lumen,2019,2.0T
+LUM20T20201477,Aurora Auto,Lumen,2020,2.0T
+LUM20T20211478,Aurora Auto,Lumen,2021,2.0T
+LUM20T20201479,Aurora Auto,Lumen,2020,2.0T
+LUM20T20201480,Aurora Auto,Lumen,2020,2.0T
+LUM20T20201481,Aurora Auto,Lumen,2020,2.0T
+LUM20T20211482,Aurora Auto,Lumen,2021,2.0T
+LUM20T20201483,Aurora Auto,Lumen,2020,2.0T
+LUM20T20221484,Aurora Auto,Lumen,2022,2.0T
+LUM20T20211485,Aurora Auto,Lumen,2021,2.0T
+LUM20T20231486,Aurora Auto,Lumen,2023,2.0T
+LUM20T20201487,Aurora Auto,Lumen,2020,2.0T
+LUM20T20221488,Aurora Auto,Lumen,2022,2.0T
+LUM20T20231489,Aurora Auto,Lumen,2023,2.0T
+LUM20T20221490,Aurora Auto,Lumen,2022,2.0T
+LUM20T20221491,Aurora Auto,Lumen,2022,2.0T
+LUM20T20231492,Aurora Auto,Lumen,2023,2.0T
+LUM20T20191493,Aurora Auto,Lumen,2019,2.0T
+LUM20T20191494,Aurora Auto,Lumen,2019,2.0T
+LUM20T20221495,Aurora Auto,Lumen,2022,2.0T
+LUM20T20201496,Aurora Auto,Lumen,2020,2.0T
+LUM20T20231497,Aurora Auto,Lumen,2023,2.0T
+LUM20T20211498,Aurora Auto,Lumen,2021,2.0T
+LUM20T20201499,Aurora Auto,Lumen,2020,2.0T
+VEG2420221500,Aurora Auto,Vega,2022,2.4
+VEG2420231501,Aurora Auto,Vega,2023,2.4
+VEG2420231502,Aurora Auto,Vega,2023,2.4
+VEG2420191503,Aurora Auto,Vega,2019,2.4
+VEG2420231504,Aurora Auto,Vega,2023,2.4
+VEG2420201505,Aurora Auto,Vega,2020,2.4
+VEG2420201506,Aurora Auto,Vega,2020,2.4
+VEG2420191507,Aurora Auto,Vega,2019,2.4
+VEG2420191508,Aurora Auto,Vega,2019,2.4
+VEG2420191509,Aurora Auto,Vega,2019,2.4
+VEG2420191510,Aurora Auto,Vega,2019,2.4
+VEG2420231511,Aurora Auto,Vega,2023,2.4
+VEG2420201512,Aurora Auto,Vega,2020,2.4
+VEG2420211513,Aurora Auto,Vega,2021,2.4
+VEG2420201514,Aurora Auto,Vega,2020,2.4
+VEG2420191515,Aurora Auto,Vega,2019,2.4
+VEG2420191516,Aurora Auto,Vega,2019,2.4
+VEG2420191517,Aurora Auto,Vega,2019,2.4
+VEG2420201518,Aurora Auto,Vega,2020,2.4
+VEG2420191519,Aurora Auto,Vega,2019,2.4
+VEG2420191520,Aurora Auto,Vega,2019,2.4
+VEG2420191521,Aurora Auto,Vega,2019,2.4
+VEG2420191522,Aurora Auto,Vega,2019,2.4
+VEG2420231523,Aurora Auto,Vega,2023,2.4
+VEG2420211524,Aurora Auto,Vega,2021,2.4
+VEG2420201525,Aurora Auto,Vega,2020,2.4
+VEG2420231526,Aurora Auto,Vega,2023,2.4
+VEG2420191527,Aurora Auto,Vega,2019,2.4
+VEG2420221528,Aurora Auto,Vega,2022,2.4
+VEG2420191529,Aurora Auto,Vega,2019,2.4
+VEG2420201530,Aurora Auto,Vega,2020,2.4
+VEG2420201531,Aurora Auto,Vega,2020,2.4
+VEG2420201532,Aurora Auto,Vega,2020,2.4
+VEG2420191533,Aurora Auto,Vega,2019,2.4
+VEG2420191534,Aurora Auto,Vega,2019,2.4
+VEG2420191535,Aurora Auto,Vega,2019,2.4
+VEG2420191536,Aurora Auto,Vega,2019,2.4
+VEG2420211537,Aurora Auto,Vega,2021,2.4
+VEG2420221538,Aurora Auto,Vega,2022,2.4
+VEG2420191539,Aurora Auto,Vega,2019,2.4
+VEG2420201540,Aurora Auto,Vega,2020,2.4
+VEG2420191541,Aurora Auto,Vega,2019,2.4
+VEG2420201542,Aurora Auto,Vega,2020,2.4
+VEG2420211543,Aurora Auto,Vega,2021,2.4
+VEG2420211544,Aurora Auto,Vega,2021,2.4
+VEG2420211545,Aurora Auto,Vega,2021,2.4
+VEG2420221546,Aurora Auto,Vega,2022,2.4
+VEG2420211547,Aurora Auto,Vega,2021,2.4
+VEG2420191548,Aurora Auto,Vega,2019,2.4
+VEG2420211549,Aurora Auto,Vega,2021,2.4
+VEG2420211550,Aurora Auto,Vega,2021,2.4
+VEG2420211551,Aurora Auto,Vega,2021,2.4
+VEG2420191552,Aurora Auto,Vega,2019,2.4
+VEG2420211553,Aurora Auto,Vega,2021,2.4
+VEG2420211554,Aurora Auto,Vega,2021,2.4
+VEG2420231555,Aurora Auto,Vega,2023,2.4
+VEG2420231556,Aurora Auto,Vega,2023,2.4
+VEG2420221557,Aurora Auto,Vega,2022,2.4
+VEG2420211558,Aurora Auto,Vega,2021,2.4
+VEG2420231559,Aurora Auto,Vega,2023,2.4
+VEG2420191560,Aurora Auto,Vega,2019,2.4
+VEG2420221561,Aurora Auto,Vega,2022,2.4
+VEG2420191562,Aurora Auto,Vega,2019,2.4
+VEG2420221563,Aurora Auto,Vega,2022,2.4
+VEG2420231564,Aurora Auto,Vega,2023,2.4
+VEG2420191565,Aurora Auto,Vega,2019,2.4
+VEG2420211566,Aurora Auto,Vega,2021,2.4
+VEG2420221567,Aurora Auto,Vega,2022,2.4
+VEG2420191568,Aurora Auto,Vega,2019,2.4
+VEG2420231569,Aurora Auto,Vega,2023,2.4
+VEG2420231570,Aurora Auto,Vega,2023,2.4
+VEG2420201571,Aurora Auto,Vega,2020,2.4
+VEG2420191572,Aurora Auto,Vega,2019,2.4
+VEG2420231573,Aurora Auto,Vega,2023,2.4
+VEG2420211574,Aurora Auto,Vega,2021,2.4
+VEG2420201575,Aurora Auto,Vega,2020,2.4
+VEG2420221576,Aurora Auto,Vega,2022,2.4
+VEG2420191577,Aurora Auto,Vega,2019,2.4
+VEG2420231578,Aurora Auto,Vega,2023,2.4
+VEG2420201579,Aurora Auto,Vega,2020,2.4
+VEG2420211580,Aurora Auto,Vega,2021,2.4
+VEG2420191581,Aurora Auto,Vega,2019,2.4
+VEG2420191582,Aurora Auto,Vega,2019,2.4
+VEG2420211583,Aurora Auto,Vega,2021,2.4
+VEG2420221584,Aurora Auto,Vega,2022,2.4
+VEG2420191585,Aurora Auto,Vega,2019,2.4
+VEG2420221586,Aurora Auto,Vega,2022,2.4
+VEG2420201587,Aurora Auto,Vega,2020,2.4
+VEG2420221588,Aurora Auto,Vega,2022,2.4
+VEG2420231589,Aurora Auto,Vega,2023,2.4
+VEG2420211590,Aurora Auto,Vega,2021,2.4
+VEG2420231591,Aurora Auto,Vega,2023,2.4
+VEG2420211592,Aurora Auto,Vega,2021,2.4
+VEG2420231593,Aurora Auto,Vega,2023,2.4
+VEG2420201594,Aurora Auto,Vega,2020,2.4
+VEG2420211595,Aurora Auto,Vega,2021,2.4
+VEG2420201596,Aurora Auto,Vega,2020,2.4
+VEG2420201597,Aurora Auto,Vega,2020,2.4
+VEG2420221598,Aurora Auto,Vega,2022,2.4
+VEG2420201599,Aurora Auto,Vega,2020,2.4
+VEGEV120191600,Aurora Auto,Vega,2019,EV-180
+VEGEV120191601,Aurora Auto,Vega,2019,EV-180
+VEGEV120221602,Aurora Auto,Vega,2022,EV-180
+VEGEV120231603,Aurora Auto,Vega,2023,EV-180
+VEGEV120191604,Aurora Auto,Vega,2019,EV-180
+VEGEV120211605,Aurora Auto,Vega,2021,EV-180
+VEGEV120211606,Aurora Auto,Vega,2021,EV-180
+VEGEV120191607,Aurora Auto,Vega,2019,EV-180
+VEGEV120221608,Aurora Auto,Vega,2022,EV-180
+VEGEV120221609,Aurora Auto,Vega,2022,EV-180
+VEGEV120191610,Aurora Auto,Vega,2019,EV-180
+VEGEV120221611,Aurora Auto,Vega,2022,EV-180
+VEGEV120191612,Aurora Auto,Vega,2019,EV-180
+VEGEV120211613,Aurora Auto,Vega,2021,EV-180
+VEGEV120201614,Aurora Auto,Vega,2020,EV-180
+VEGEV120211615,Aurora Auto,Vega,2021,EV-180
+VEGEV120211616,Aurora Auto,Vega,2021,EV-180
+VEGEV120221617,Aurora Auto,Vega,2022,EV-180
+VEGEV120231618,Aurora Auto,Vega,2023,EV-180
+VEGEV120231619,Aurora Auto,Vega,2023,EV-180
+VEGEV120201620,Aurora Auto,Vega,2020,EV-180
+VEGEV120221621,Aurora Auto,Vega,2022,EV-180
+VEGEV120201622,Aurora Auto,Vega,2020,EV-180
+VEGEV120221623,Aurora Auto,Vega,2022,EV-180
+VEGEV120201624,Aurora Auto,Vega,2020,EV-180
+VEGEV120231625,Aurora Auto,Vega,2023,EV-180
+VEGEV120231626,Aurora Auto,Vega,2023,EV-180
+VEGEV120231627,Aurora Auto,Vega,2023,EV-180
+VEGEV120191628,Aurora Auto,Vega,2019,EV-180
+VEGEV120211629,Aurora Auto,Vega,2021,EV-180
+VEGEV120231630,Aurora Auto,Vega,2023,EV-180
+VEGEV120211631,Aurora Auto,Vega,2021,EV-180
+VEGEV120231632,Aurora Auto,Vega,2023,EV-180
+VEGEV120201633,Aurora Auto,Vega,2020,EV-180
+VEGEV120221634,Aurora Auto,Vega,2022,EV-180
+VEGEV120231635,Aurora Auto,Vega,2023,EV-180
+VEGEV120211636,Aurora Auto,Vega,2021,EV-180
+VEGEV120201637,Aurora Auto,Vega,2020,EV-180
+VEGEV120221638,Aurora Auto,Vega,2022,EV-180
+VEGEV120221639,Aurora Auto,Vega,2022,EV-180
+VEGEV120211640,Aurora Auto,Vega,2021,EV-180
+VEGEV120231641,Aurora Auto,Vega,2023,EV-180
+VEGEV120201642,Aurora Auto,Vega,2020,EV-180
+VEGEV120201643,Aurora Auto,Vega,2020,EV-180
+VEGEV120211644,Aurora Auto,Vega,2021,EV-180
+VEGEV120221645,Aurora Auto,Vega,2022,EV-180
+VEGEV120201646,Aurora Auto,Vega,2020,EV-180
+VEGEV120231647,Aurora Auto,Vega,2023,EV-180
+VEGEV120201648,Aurora Auto,Vega,2020,EV-180
+VEGEV120211649,Aurora Auto,Vega,2021,EV-180
+VEGEV120211650,Aurora Auto,Vega,2021,EV-180
+VEGEV120231651,Aurora Auto,Vega,2023,EV-180
+VEGEV120201652,Aurora Auto,Vega,2020,EV-180
+VEGEV120201653,Aurora Auto,Vega,2020,EV-180
+VEGEV120201654,Aurora Auto,Vega,2020,EV-180
+VEGEV120211655,Aurora Auto,Vega,2021,EV-180
+VEGEV120231656,Aurora Auto,Vega,2023,EV-180
+VEGEV120231657,Aurora Auto,Vega,2023,EV-180
+VEGEV120211658,Aurora Auto,Vega,2021,EV-180
+VEGEV120201659,Aurora Auto,Vega,2020,EV-180
+VEGEV120201660,Aurora Auto,Vega,2020,EV-180
+VEGEV120211661,Aurora Auto,Vega,2021,EV-180
+VEGEV120201662,Aurora Auto,Vega,2020,EV-180
+VEGEV120211663,Aurora Auto,Vega,2021,EV-180
+VEGEV120191664,Aurora Auto,Vega,2019,EV-180
+VEGEV120201665,Aurora Auto,Vega,2020,EV-180
+VEGEV120191666,Aurora Auto,Vega,2019,EV-180
+VEGEV120201667,Aurora Auto,Vega,2020,EV-180
+VEGEV120221668,Aurora Auto,Vega,2022,EV-180
+VEGEV120201669,Aurora Auto,Vega,2020,EV-180
+VEGEV120201670,Aurora Auto,Vega,2020,EV-180
+VEGEV120211671,Aurora Auto,Vega,2021,EV-180
+VEGEV120211672,Aurora Auto,Vega,2021,EV-180
+VEGEV120221673,Aurora Auto,Vega,2022,EV-180
+VEGEV120211674,Aurora Auto,Vega,2021,EV-180
+VEGEV120201675,Aurora Auto,Vega,2020,EV-180
+VEGEV120191676,Aurora Auto,Vega,2019,EV-180
+VEGEV120191677,Aurora Auto,Vega,2019,EV-180
+VEGEV120211678,Aurora Auto,Vega,2021,EV-180
+VEGEV120201679,Aurora Auto,Vega,2020,EV-180
+VEGEV120221680,Aurora Auto,Vega,2022,EV-180
+VEGEV120221681,Aurora Auto,Vega,2022,EV-180
+VEGEV120191682,Aurora Auto,Vega,2019,EV-180
+VEGEV120191683,Aurora Auto,Vega,2019,EV-180
+VEGEV120221684,Aurora Auto,Vega,2022,EV-180
+VEGEV120221685,Aurora Auto,Vega,2022,EV-180
+VEGEV120201686,Aurora Auto,Vega,2020,EV-180
+VEGEV120231687,Aurora Auto,Vega,2023,EV-180
+VEGEV120211688,Aurora Auto,Vega,2021,EV-180
+VEGEV120221689,Aurora Auto,Vega,2022,EV-180
+VEGEV120191690,Aurora Auto,Vega,2019,EV-180
+VEGEV120201691,Aurora Auto,Vega,2020,EV-180
+VEGEV120211692,Aurora Auto,Vega,2021,EV-180
+VEGEV120231693,Aurora Auto,Vega,2023,EV-180
+VEGEV120221694,Aurora Auto,Vega,2022,EV-180
+VEGEV120191695,Aurora Auto,Vega,2019,EV-180
+VEGEV120201696,Aurora Auto,Vega,2020,EV-180
+VEGEV120221697,Aurora Auto,Vega,2022,EV-180
+VEGEV120231698,Aurora Auto,Vega,2023,EV-180
+VEGEV120231699,Aurora Auto,Vega,2023,EV-180

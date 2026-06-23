@@ -1,0 +1,1079 @@
+{
+  "systems": [
+    "engine",
+    "ignition",
+    "fuel",
+    "emissions",
+    "cooling",
+    "brakes",
+    "abs",
+    "suspension",
+    "steering",
+    "electrical",
+    "charging",
+    "hvac",
+    "transmission",
+    "body"
+  ],
+  "models": [
+    {
+      "make": "Cascadia Motors",
+      "model": "Falcon",
+      "engines": [
+        "2.0T",
+        "1.6"
+      ]
+    },
+    {
+      "make": "Cascadia Motors",
+      "model": "Heron",
+      "engines": [
+        "2.5"
+      ]
+    },
+    {
+      "make": "Cascadia Motors",
+      "model": "Osprey",
+      "engines": [
+        "3.5 V6"
+      ]
+    },
+    {
+      "make": "Cascadia Motors",
+      "model": "Kestrel",
+      "engines": [
+        "1.5T",
+        "2.0 Hybrid"
+      ]
+    },
+    {
+      "make": "Cascadia Motors",
+      "model": "Harrier",
+      "engines": [
+        "3.0 TD",
+        "3.5 V6"
+      ]
+    },
+    {
+      "make": "Cascadia Motors",
+      "model": "Marlin EV",
+      "engines": [
+        "EV-150",
+        "EV-200"
+      ]
+    },
+    {
+      "make": "Northwind Trucks",
+      "model": "Summit",
+      "engines": [
+        "5.0 V8",
+        "6.2 V8"
+      ]
+    },
+    {
+      "make": "Northwind Trucks",
+      "model": "Ridgeline HD",
+      "engines": [
+        "6.7 TD"
+      ]
+    },
+    {
+      "make": "Aurora Auto",
+      "model": "Lumen",
+      "engines": [
+        "1.8",
+        "2.0T"
+      ]
+    },
+    {
+      "make": "Aurora Auto",
+      "model": "Vega",
+      "engines": [
+        "2.4",
+        "EV-180"
+      ]
+    }
+  ],
+  "dtcCodes": [
+    {
+      "code": "P0300",
+      "description": "Random or multiple cylinder misfire detected",
+      "system": "engine"
+    },
+    {
+      "code": "P0301",
+      "description": "Cylinder 1 misfire detected",
+      "system": "engine"
+    },
+    {
+      "code": "P0302",
+      "description": "Cylinder 2 misfire detected",
+      "system": "engine"
+    },
+    {
+      "code": "P0303",
+      "description": "Cylinder 3 misfire detected",
+      "system": "engine"
+    },
+    {
+      "code": "P0304",
+      "description": "Cylinder 4 misfire detected",
+      "system": "engine"
+    },
+    {
+      "code": "P0335",
+      "description": "Crankshaft position sensor A circuit malfunction",
+      "system": "engine"
+    },
+    {
+      "code": "P0340",
+      "description": "Camshaft position sensor A circuit malfunction",
+      "system": "engine"
+    },
+    {
+      "code": "P0011",
+      "description": "Camshaft position - timing over-advanced bank 1",
+      "system": "engine"
+    },
+    {
+      "code": "P0016",
+      "description": "Crankshaft/camshaft position correlation bank 1 sensor A",
+      "system": "engine"
+    },
+    {
+      "code": "P0351",
+      "description": "Ignition coil A primary/secondary circuit malfunction",
+      "system": "ignition"
+    },
+    {
+      "code": "P0352",
+      "description": "Ignition coil B primary/secondary circuit malfunction",
+      "system": "ignition"
+    },
+    {
+      "code": "P0171",
+      "description": "System too lean bank 1",
+      "system": "fuel"
+    },
+    {
+      "code": "P0172",
+      "description": "System too rich bank 1",
+      "system": "fuel"
+    },
+    {
+      "code": "P0087",
+      "description": "Fuel rail/system pressure too low",
+      "system": "fuel"
+    },
+    {
+      "code": "P0190",
+      "description": "Fuel rail pressure sensor circuit malfunction",
+      "system": "fuel"
+    },
+    {
+      "code": "P0201",
+      "description": "Injector 1 circuit malfunction",
+      "system": "fuel"
+    },
+    {
+      "code": "P0420",
+      "description": "Catalyst system efficiency below threshold",
+      "system": "emissions"
+    },
+    {
+      "code": "P0430",
+      "description": "Catalyst system efficiency below threshold bank 2",
+      "system": "emissions"
+    },
+    {
+      "code": "P0401",
+      "description": "Exhaust gas recirculation flow insufficient",
+      "system": "emissions"
+    },
+    {
+      "code": "P0455",
+      "description": "Evaporative emission system leak detected (large)",
+      "system": "emissions"
+    },
+    {
+      "code": "P0442",
+      "description": "Evaporative emission system leak detected (small)",
+      "system": "emissions"
+    },
+    {
+      "code": "P2002",
+      "description": "Diesel particulate filter efficiency below threshold bank 1",
+      "system": "emissions"
+    },
+    {
+      "code": "P0128",
+      "description": "Coolant thermostat below regulating temperature",
+      "system": "cooling"
+    },
+    {
+      "code": "P0480",
+      "description": "Cooling fan 1 control circuit malfunction",
+      "system": "cooling"
+    },
+    {
+      "code": "P0217",
+      "description": "Engine over-temperature condition",
+      "system": "cooling"
+    },
+    {
+      "code": "C0035",
+      "description": "Left front wheel speed sensor circuit",
+      "system": "abs"
+    },
+    {
+      "code": "C0040",
+      "description": "Right front wheel speed sensor circuit",
+      "system": "abs"
+    },
+    {
+      "code": "C0045",
+      "description": "Left rear wheel speed sensor circuit",
+      "system": "abs"
+    },
+    {
+      "code": "C0050",
+      "description": "Right rear wheel speed sensor circuit",
+      "system": "abs"
+    },
+    {
+      "code": "C0110",
+      "description": "ABS pump motor circuit malfunction",
+      "system": "abs"
+    },
+    {
+      "code": "C0561",
+      "description": "ABS/ESP system disabled - invalid configuration",
+      "system": "abs"
+    },
+    {
+      "code": "C0265",
+      "description": "EBCM relay circuit malfunction",
+      "system": "abs"
+    },
+    {
+      "code": "C1234",
+      "description": "Steering angle sensor signal fault",
+      "system": "steering"
+    },
+    {
+      "code": "C1556",
+      "description": "Electric power steering torque sensor fault",
+      "system": "steering"
+    },
+    {
+      "code": "P0562",
+      "description": "System voltage low",
+      "system": "charging"
+    },
+    {
+      "code": "P0563",
+      "description": "System voltage high",
+      "system": "charging"
+    },
+    {
+      "code": "P0620",
+      "description": "Generator control circuit malfunction",
+      "system": "charging"
+    },
+    {
+      "code": "U0121",
+      "description": "Lost communication with ABS control module",
+      "system": "abs"
+    },
+    {
+      "code": "U0100",
+      "description": "Lost communication with ECM/PCM A",
+      "system": "electrical"
+    },
+    {
+      "code": "U0140",
+      "description": "Lost communication with body control module",
+      "system": "electrical"
+    },
+    {
+      "code": "U0155",
+      "description": "Lost communication with instrument panel cluster",
+      "system": "electrical"
+    },
+    {
+      "code": "P0700",
+      "description": "Transmission control system malfunction",
+      "system": "transmission"
+    },
+    {
+      "code": "P0741",
+      "description": "Torque converter clutch circuit performance/stuck off",
+      "system": "transmission"
+    },
+    {
+      "code": "P0868",
+      "description": "Transmission fluid pressure low",
+      "system": "transmission"
+    },
+    {
+      "code": "B1318",
+      "description": "Battery voltage low (body control)",
+      "system": "body"
+    },
+    {
+      "code": "B1352",
+      "description": "HVAC blower motor circuit malfunction",
+      "system": "hvac"
+    },
+    {
+      "code": "B2477",
+      "description": "Module configuration failure",
+      "system": "body"
+    },
+    {
+      "code": "P0533",
+      "description": "A/C refrigerant pressure sensor circuit high",
+      "system": "hvac"
+    }
+  ],
+  "parts": [
+    {
+      "partNumber": "IC-2042-A",
+      "name": "Ignition coil (original)",
+      "system": "ignition",
+      "supersededBy": "IC-2042-B"
+    },
+    {
+      "partNumber": "IC-2042-B",
+      "name": "Ignition coil (revised)",
+      "system": "ignition",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "SP-1108",
+      "name": "Spark plug set",
+      "system": "ignition",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "BP-7720",
+      "name": "Front brake pad kit",
+      "system": "brakes",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "BR-7731",
+      "name": "Front brake rotor pair",
+      "system": "brakes",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "BH-7745",
+      "name": "Front brake hose",
+      "system": "brakes",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "WSS-3300",
+      "name": "Wheel speed sensor",
+      "system": "abs",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "BAT-1200",
+      "name": "AGM battery 70Ah",
+      "system": "charging",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "ALT-8810",
+      "name": "Alternator 180A",
+      "system": "charging",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "CAT-5500",
+      "name": "Catalytic converter",
+      "system": "emissions",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "ECM-9901",
+      "name": "Engine control module",
+      "system": "electrical",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "IC-2044-A",
+      "name": "Ignition coil (Heron 2.5)",
+      "system": "ignition",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "IC-2050-A",
+      "name": "Ignition coil (Osprey 3.5 V6)",
+      "system": "ignition",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "SP-1110",
+      "name": "Spark plug set (iridium, long-life)",
+      "system": "ignition",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "SP-1112",
+      "name": "Spark plug set (Osprey V6)",
+      "system": "ignition",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "GP-1304",
+      "name": "Glow plug set (diesel)",
+      "system": "ignition",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "TB-3320",
+      "name": "Timing belt kit",
+      "system": "engine",
+      "supersededBy": "TB-3322"
+    },
+    {
+      "partNumber": "TB-3322",
+      "name": "Timing belt kit (revised tensioner)",
+      "system": "engine",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "TC-3340",
+      "name": "Timing chain kit",
+      "system": "engine",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "VVT-3360",
+      "name": "Variable valve timing solenoid",
+      "system": "engine",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "CPS-3380",
+      "name": "Crankshaft position sensor",
+      "system": "engine",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "CMP-3382",
+      "name": "Camshaft position sensor",
+      "system": "engine",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "VCG-3401",
+      "name": "Valve cover gasket",
+      "system": "engine",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "OFK-3420",
+      "name": "Oil filter and drain plug kit",
+      "system": "engine",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "ENM-3450",
+      "name": "Engine mount (front)",
+      "system": "engine",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "TBO-3470",
+      "name": "Turbocharger assembly (2.0T)",
+      "system": "engine",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "PCV-3490",
+      "name": "PCV valve",
+      "system": "engine",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "FP-4100",
+      "name": "Fuel pump assembly (in-tank)",
+      "system": "fuel",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "HPFP-4120",
+      "name": "High-pressure fuel pump (GDI)",
+      "system": "fuel",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "INJ-4140",
+      "name": "Fuel injector set",
+      "system": "fuel",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "FF-4160",
+      "name": "Fuel filter",
+      "system": "fuel",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "FRS-4180",
+      "name": "Fuel rail pressure sensor",
+      "system": "fuel",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "O2U-5100",
+      "name": "Oxygen sensor (upstream)",
+      "system": "emissions",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "O2D-5120",
+      "name": "Oxygen sensor (downstream)",
+      "system": "emissions",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "EGR-5140",
+      "name": "EGR valve",
+      "system": "emissions",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "EVP-5160",
+      "name": "EVAP purge valve",
+      "system": "emissions",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "DPF-5180",
+      "name": "Diesel particulate filter",
+      "system": "emissions",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "CAT-5520",
+      "name": "Catalytic converter (Osprey V6 bank 2)",
+      "system": "emissions",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "TSTAT-6100",
+      "name": "Thermostat assembly",
+      "system": "cooling",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "WP-6120",
+      "name": "Water pump",
+      "system": "cooling",
+      "supersededBy": "WP-6122"
+    },
+    {
+      "partNumber": "WP-6122",
+      "name": "Water pump (revised seal)",
+      "system": "cooling",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "RAD-6140",
+      "name": "Radiator assembly",
+      "system": "cooling",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "FAN-6160",
+      "name": "Cooling fan module",
+      "system": "cooling",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "RHOSE-6180",
+      "name": "Upper radiator hose",
+      "system": "cooling",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "BP-7722",
+      "name": "Rear brake pad kit",
+      "system": "brakes",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "BR-7733",
+      "name": "Rear brake rotor pair",
+      "system": "brakes",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "BCAL-7760",
+      "name": "Front brake caliper",
+      "system": "brakes",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "BMC-7780",
+      "name": "Brake master cylinder",
+      "system": "brakes",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "BF-7790",
+      "name": "Brake fluid DOT 4 (1L)",
+      "system": "brakes",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "EBCM-8100",
+      "name": "ABS/EBCM control module",
+      "system": "abs",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "ABSP-8120",
+      "name": "ABS hydraulic pump assembly",
+      "system": "abs",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "WSS-3302",
+      "name": "Wheel speed sensor (rear)",
+      "system": "abs",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "STRT-8500",
+      "name": "Front strut assembly",
+      "system": "suspension",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "SHK-8520",
+      "name": "Rear shock absorber",
+      "system": "suspension",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "CARM-8540",
+      "name": "Lower control arm",
+      "system": "suspension",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "SBL-8560",
+      "name": "Sway bar link",
+      "system": "suspension",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "WHB-8580",
+      "name": "Wheel hub bearing assembly",
+      "system": "suspension",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "TROD-8700",
+      "name": "Outer tie rod end",
+      "system": "steering",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "RACK-8720",
+      "name": "Steering rack assembly",
+      "system": "steering",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "EPS-8740",
+      "name": "Electric power steering motor",
+      "system": "steering",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "SAS-8760",
+      "name": "Steering angle sensor",
+      "system": "steering",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "ALT-8812",
+      "name": "Alternator 220A (V6/diesel)",
+      "system": "charging",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "BAT-1210",
+      "name": "AGM battery 80Ah",
+      "system": "charging",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "STM-9300",
+      "name": "Starter motor",
+      "system": "charging",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "BCM-9920",
+      "name": "Body control module",
+      "system": "electrical",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "TCM-9940",
+      "name": "Transmission control module",
+      "system": "electrical",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "HARN-9960",
+      "name": "Engine wiring harness",
+      "system": "electrical",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "FUSE-9980",
+      "name": "Underhood fuse box assembly",
+      "system": "electrical",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "BLW-7200",
+      "name": "HVAC blower motor",
+      "system": "hvac",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "ACMP-7220",
+      "name": "A/C compressor",
+      "system": "hvac",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "ACND-7240",
+      "name": "A/C condenser",
+      "system": "hvac",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "HCOR-7260",
+      "name": "Heater core",
+      "system": "hvac",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "CABF-7280",
+      "name": "Cabin air filter",
+      "system": "hvac",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "TFLT-9500",
+      "name": "Transmission fluid filter kit",
+      "system": "transmission",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "TSOL-9520",
+      "name": "Transmission shift solenoid pack",
+      "system": "transmission",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "TMNT-9540",
+      "name": "Transmission mount",
+      "system": "transmission",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "CLU-9560",
+      "name": "Clutch kit (manual)",
+      "system": "transmission",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "WIPM-7000",
+      "name": "Wiper motor assembly",
+      "system": "body",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "HLMP-7020",
+      "name": "Headlamp assembly (LED)",
+      "system": "body",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "DRMR-7040",
+      "name": "Door mirror assembly (heated)",
+      "system": "body",
+      "supersededBy": ""
+    },
+    {
+      "partNumber": "WSHLD-7060",
+      "name": "Windshield washer pump",
+      "system": "body",
+      "supersededBy": ""
+    }
+  ],
+  "procedures": [
+    {
+      "procedureId": "PROC-IGN-COIL",
+      "name": "Ignition coil replacement",
+      "system": "ignition"
+    },
+    {
+      "procedureId": "PROC-MISFIRE-DIAG",
+      "name": "Misfire diagnosis",
+      "system": "engine"
+    },
+    {
+      "procedureId": "PROC-BRAKE-FR",
+      "name": "Front brake pad and rotor service",
+      "system": "brakes"
+    },
+    {
+      "procedureId": "PROC-BRAKE-PAD",
+      "name": "Front brake pad replacement",
+      "system": "brakes"
+    },
+    {
+      "procedureId": "PROC-BRAKE-HOSE",
+      "name": "Brake hose replacement",
+      "system": "brakes"
+    },
+    {
+      "procedureId": "PROC-WSS",
+      "name": "Wheel speed sensor replacement",
+      "system": "abs"
+    },
+    {
+      "procedureId": "PROC-ABS-DIAG",
+      "name": "ABS module diagnosis",
+      "system": "abs"
+    },
+    {
+      "procedureId": "PROC-CHG-DIAG",
+      "name": "Charging system diagnosis",
+      "system": "charging"
+    },
+    {
+      "procedureId": "PROC-BATT",
+      "name": "Battery replacement",
+      "system": "charging"
+    },
+    {
+      "procedureId": "PROC-ALT",
+      "name": "Alternator replacement",
+      "system": "charging"
+    },
+    {
+      "procedureId": "PROC-CAT",
+      "name": "Catalytic converter replacement",
+      "system": "emissions"
+    },
+    {
+      "procedureId": "PROC-ECM-FLASH",
+      "name": "ECM software update",
+      "system": "electrical"
+    },
+    {
+      "procedureId": "PROC-OIL",
+      "name": "Oil and filter service",
+      "system": "engine"
+    },
+    {
+      "procedureId": "PROC-SPARK-PLUG",
+      "name": "Spark plug replacement",
+      "system": "ignition"
+    },
+    {
+      "procedureId": "PROC-TIMING-BELT",
+      "name": "Timing belt and tensioner replacement",
+      "system": "engine"
+    },
+    {
+      "procedureId": "PROC-VVT-SOL",
+      "name": "Variable valve timing solenoid replacement",
+      "system": "engine"
+    },
+    {
+      "procedureId": "PROC-CPS-CMP",
+      "name": "Crankshaft/camshaft position sensor replacement",
+      "system": "engine"
+    },
+    {
+      "procedureId": "PROC-TURBO",
+      "name": "Turbocharger replacement",
+      "system": "engine"
+    },
+    {
+      "procedureId": "PROC-FUEL-PUMP",
+      "name": "Fuel pump replacement",
+      "system": "fuel"
+    },
+    {
+      "procedureId": "PROC-INJECTOR",
+      "name": "Fuel injector replacement",
+      "system": "fuel"
+    },
+    {
+      "procedureId": "PROC-FUEL-DIAG",
+      "name": "Fuel trim and pressure diagnosis",
+      "system": "fuel"
+    },
+    {
+      "procedureId": "PROC-O2-SENSOR",
+      "name": "Oxygen sensor replacement",
+      "system": "emissions"
+    },
+    {
+      "procedureId": "PROC-EGR",
+      "name": "EGR valve service",
+      "system": "emissions"
+    },
+    {
+      "procedureId": "PROC-EVAP-DIAG",
+      "name": "EVAP leak diagnosis",
+      "system": "emissions"
+    },
+    {
+      "procedureId": "PROC-DPF-REGEN",
+      "name": "Diesel particulate filter forced regeneration",
+      "system": "emissions"
+    },
+    {
+      "procedureId": "PROC-COOLANT",
+      "name": "Coolant flush and refill",
+      "system": "cooling"
+    },
+    {
+      "procedureId": "PROC-WATER-PUMP",
+      "name": "Water pump replacement",
+      "system": "cooling"
+    },
+    {
+      "procedureId": "PROC-THERMOSTAT",
+      "name": "Thermostat replacement",
+      "system": "cooling"
+    },
+    {
+      "procedureId": "PROC-RAD",
+      "name": "Radiator replacement",
+      "system": "cooling"
+    },
+    {
+      "procedureId": "PROC-BRAKE-RR",
+      "name": "Rear brake pad and rotor service",
+      "system": "brakes"
+    },
+    {
+      "procedureId": "PROC-BRAKE-FLUID",
+      "name": "Brake fluid flush and bleed",
+      "system": "brakes"
+    },
+    {
+      "procedureId": "PROC-CALIPER",
+      "name": "Brake caliper replacement",
+      "system": "brakes"
+    },
+    {
+      "procedureId": "PROC-STRUT",
+      "name": "Front strut replacement",
+      "system": "suspension"
+    },
+    {
+      "procedureId": "PROC-CONTROL-ARM",
+      "name": "Control arm replacement",
+      "system": "suspension"
+    },
+    {
+      "procedureId": "PROC-HUB-BEARING",
+      "name": "Wheel hub bearing replacement",
+      "system": "suspension"
+    },
+    {
+      "procedureId": "PROC-ALIGN",
+      "name": "Four-wheel alignment",
+      "system": "steering"
+    },
+    {
+      "procedureId": "PROC-TIE-ROD",
+      "name": "Tie rod end replacement",
+      "system": "steering"
+    },
+    {
+      "procedureId": "PROC-EPS-DIAG",
+      "name": "Electric power steering diagnosis",
+      "system": "steering"
+    },
+    {
+      "procedureId": "PROC-STARTER",
+      "name": "Starter motor replacement",
+      "system": "charging"
+    },
+    {
+      "procedureId": "PROC-BCM-CONFIG",
+      "name": "Body control module configuration",
+      "system": "electrical"
+    },
+    {
+      "procedureId": "PROC-COMMS-DIAG",
+      "name": "Network communication (CAN bus) diagnosis",
+      "system": "electrical"
+    },
+    {
+      "procedureId": "PROC-AC-RECHARGE",
+      "name": "A/C evacuate and recharge",
+      "system": "hvac"
+    },
+    {
+      "procedureId": "PROC-AC-COMP",
+      "name": "A/C compressor replacement",
+      "system": "hvac"
+    },
+    {
+      "procedureId": "PROC-BLOWER",
+      "name": "HVAC blower motor replacement",
+      "system": "hvac"
+    },
+    {
+      "procedureId": "PROC-CABIN-FILTER",
+      "name": "Cabin air filter replacement",
+      "system": "hvac"
+    },
+    {
+      "procedureId": "PROC-TRANS-SERVICE",
+      "name": "Transmission fluid and filter service",
+      "system": "transmission"
+    },
+    {
+      "procedureId": "PROC-TRANS-DIAG",
+      "name": "Transmission fault diagnosis",
+      "system": "transmission"
+    },
+    {
+      "procedureId": "PROC-SHIFT-SOL",
+      "name": "Shift solenoid pack replacement",
+      "system": "transmission"
+    },
+    {
+      "procedureId": "PROC-HEADLAMP",
+      "name": "Headlamp assembly replacement",
+      "system": "body"
+    },
+    {
+      "procedureId": "PROC-WIPER",
+      "name": "Wiper motor replacement",
+      "system": "body"
+    }
+  ]
+}

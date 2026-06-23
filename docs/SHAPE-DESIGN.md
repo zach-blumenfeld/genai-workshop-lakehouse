@@ -13,19 +13,24 @@ has one incoming `HAS`; tree walks are `[:HAS*]`.
 ```
 (:Library {uri, name, displayName})                       // bucket root: technical-library
   -[:HAS]-> (:Folder {uri, name, displayName})            // gcs prefixes: manuals/ bulletins/ recalls/
-    -[:HAS]-> (:Document {uri, id, name, displayName,     // one PDF; id = printed doc code (TSB-21-114)
-                          docType, model, published}      //   + secondary label :Manual|:Bulletin|:RecallNotice
+    -[:HAS]-> (:Document {uri, id, name, displayName,     // one PDF; id = doc slug (tsb-21-114); area = folder
+                          area})
       -[:HAS]-> (:Section {uri, name, displayName,
                            headingLevel, content})        // content = Rule 1: own body + `uri:` child pointers
         -[:HAS]-> (:Section ...)                          // nested headings
 
 (:Section)-[:NEXT_SECTION]->(:Section)                    // DFS reading order per document
-(:Section)-[:REFERENCES_PART]->(:Part {partNumber})       // extracted against the parts catalog
-(:Section)-[:REFERENCES_CODE]->(:DTC {code})              // OBD-II regex
-(:Section)-[:LINKS_TO {citation:true}]->(:Document)       // explicit: "per recall RC-2021-04"
-(:Section)-[:LINKS_TO {derived:true,                      // derived: sections in different docs
-            sharedKeys, strength}]->(:Section)            //   sharing a part or code
+(:Section)-[:LINKS_TO]->(:Document|:Section)              // real cross-references the author wrote
+(:Section)-[:LINKS_TO {external:true}]->(:Document)       //   outbound URLs become stub Documents
 ```
+
+**Domain-agnostic by design.** There are no `Part`/`DTC` entity nodes, no
+`REFERENCES_*`, and no shared-key derivation — the same loader works on any
+document estate. Part numbers and trouble codes live only in the warehouse
+(BigQuery) and in the section *text*; the finale federates by full-text search
+plus reading identifiers from the prose. `LINKS_TO` edges are the document
+author's actual cross-references (rendered into the PDF as link annotations and
+read back by the parser), not links inferred from shared keys.
 
 URIs are hierarchical and slugified, so prefix matching scopes any subtree:
 
@@ -38,12 +43,13 @@ technical-library/manuals/man-fal-3.pdf#engine/ignition-coil-replacement
 ```
 
 Section URI fragments are the **full heading path** (ki rule), with `-1`/`-2`
-disambiguation for duplicate headings under one parent. `Document.id` keeps
-the printed document code (`TSB-21-114`) because the warehouse and the
-judgment tools key on it; `uri` is the containment identity.
+disambiguation for duplicate headings under one parent. `Document.id` is the
+document slug (`tsb-21-114`); `uri` is the containment identity.
 
-The warehouse half (Vehicle / WorkOrder / Part / Procedure / DTC) is
-unchanged — it still merges onto Part/DTC by shared key.
+The warehouse half (vehicles / work_orders / parts / procedures / dtc_codes)
+lives in **BigQuery** and is never migrated — the finale federates against it
+with live SQL, joining on identifiers (part numbers, codes) that appear in both
+the warehouse rows and the document text.
 
 ## The three shapes (spec → reasoning → query)
 
@@ -80,19 +86,18 @@ FOR (n:Document|Section) ON EACH [n.displayName, n.content, n.uri]
 ### 3. Themes — `skill/scripts/themes.py`
 
 - **Spec:** `docs/theme-format.md` — header that reconciles
-  (`N docs · G grouped into K themes by shared parts and codes · U ungrouped`),
+  (`N docs · G grouped into K themes by shared cross-references · U ungrouped`),
   one block per theme: cohesion word, top shared targets
-  (`[IC-2042-A] in 4 docs`), most-linked docs as outline rows,
+  (`[Ignition Coil Replacement] in 4 docs`), most-linked docs as outline rows,
   `links into T<j> via` crossover rows. ki rule kept: **the tool never
   names a theme** — it ships the evidence; the agent names it.
-- **Reasoning (ki's glue-node insight, mapped):** Part and DTC nodes are
-  the glue — two documents that both reference `IC-2042-A` should cluster
-  even if neither cites the other (co-citation). Project a doc-level
-  graph: collapse section-level REFERENCES and LINKS_TO to owning
-  documents (`split(uri,'#')[0]`), docs + glue nodes, undirected,
-  weight = mention count. Leiden **mutate** → per-community conductance
-  (cohesion word) → write `themeId` to Documents → renderer queries →
-  drop projection. Pure driver + Cypher `CALL gds.*` — no extra client
+- **Reasoning:** with no glue nodes, documents cluster purely by their
+  cross-reference links. Project a doc-level graph: collapse both ends of every
+  `(:Section)-[:LINKS_TO]->` to their owning documents (`split(uri,'#')[0]`),
+  undirected, weight = link count. Leiden **mutate** → per-community conductance
+  (cohesion word) → write `themeId` to Documents → renderer queries → drop
+  projection. "What holds a theme together" is the set of link targets the most
+  members converge on. Pure driver + Cypher `CALL gds.*` — no extra client
   dependency.
 - `themeId` lives on `Document` (doc-level themes), is producer-owned,
   regenerated per run; theme numbers are stable only within a run —
@@ -100,15 +105,19 @@ FOR (n:Document|Section) ON EACH [n.displayName, n.content, n.uri]
 
 ## Sources
 
+- The corpus is authored as markdown in `corpus/<area>/<id>.md` and rendered to
+  PDFs by `tools/render_corpus.py` (numbered headings for parse-time heading
+  detection; cross-references embedded as real PDF link annotations).
 - PDFs live in GCS: `gs://<bucket>/technical-library/{manuals,bulletins,recalls}/*.pdf`
-  (prefixes materialize the Folder nodes). `load/parse_pdfs.py` reads local
-  `sources/pdfs/` by default; `PDF_SOURCE=gcs` + `GCS_BUCKET` reads the
-  bucket (lazy google-cloud-storage import).
-- PDFs carry printed numbered headings (no synthetic ref codes) and real
-  citation sentences ("as described in safety recall RC-2021-04") — the
-  parser extracts citations against the document-id vocabulary the same way
-  parts are extracted against the catalog.
-- Warehouse stays CSV → `WAREHOUSE_SOURCE=databricks` later, unchanged.
+  (prefixes materialize the Folder nodes). `load/parse_corpus.py` reads local
+  `sources/pdfs/` by default; `PDF_SOURCE=gcs` + `GCS_BUCKET` reads the bucket
+  (lazy google-cloud-storage import).
+- The parser reads structure from the numbered headings and cross-reference
+  edges from the PDFs' own link annotations (`doc://<id>#<frag>` portable refs →
+  `LINKS_TO`; external URLs → stub Documents). No text-scraped citations, no
+  shared-key derivation.
+- Warehouse rows live in BigQuery (CSV exports in `sources/warehouse/` regenerated
+  by `tools/generate_warehouse.py` from `tools/catalog.frozen.json`).
 
 ## Course mapping (shape-first pedagogy)
 

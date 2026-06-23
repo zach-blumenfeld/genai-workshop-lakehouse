@@ -35,12 +35,15 @@ the SQL from them.
   - `Section.content` is the section's own text plus `uri:` pointers to its
     children - deeper content exists wherever you see a `uri:` line
   - `(Section)-[:NEXT_SECTION]->(Section)` threads reading order
-  - `(Section)-[:REFERENCES_PART]->(Part)` and `-[:REFERENCES_CODE]->(DTC)`
-  - `(Section)-[:LINKS_TO {citation:true}]->(Document)` - explicit citations
-  - `(Section)-[:LINKS_TO {derived:true, sharedKeys, strength}]->(Section)` -
-    sections in different documents sharing a part or code
-  - `Document.id` is the printed code (`TSB-21-114`); `Document.themeId` is
-    set by themes.py and is only stable within one run
+  - `(Section)-[:LINKS_TO]->(Document|Section)` - real cross-references the
+    document's author wrote (a bulletin pointing into a manual procedure, a
+    recall, etc.). `{external:true}` targets are stub Documents for outbound URLs.
+    **There are no Part or DTC entity nodes** - the model is domain-agnostic.
+    Part numbers and trouble codes live only in the warehouse and in the section
+    *text*; you find them by full-text search and read them from the prose.
+  - `Document.id` is the document's slug (`tsb-21-114`, `rc-2021-04`); recall
+    notices are Documents in the `recalls/` folder. `Document.themeId` is set by
+    themes.py and is only stable within one run
 - Connections — the warehouse's *metadata* (built by neocarta from BigQuery; the
   rows themselves stay in BigQuery and are queried with SQL):
   `(:Database)-[:HAS_SCHEMA]->(:Schema)-[:HAS_TABLE]->(:Table)-[:HAS_COLUMN]->(:Column)`,
@@ -82,8 +85,11 @@ warehouse fact:
 1. **Schema from the `connections` MCP.** Call `get_full_metadata_schema` (or
    `list_tables_by_schema`) to get the tables, columns, and **foreign-key
    references** - the join paths. Never guess a join; read it from the graph.
-2. **Ground in the document graph (Neo4j).** Use the shapes + `neo4j-cli query`
-   to find the documents and parts that apply, with grounding section URIs.
+2. **Ground in the document graph (Neo4j).** There are no Part/DTC nodes, so
+   ground by **full-text search**: `search.py "<code>"` (or `neo4j-cli` calling
+   `db.index.fulltext.queryNodes('content_search', ...)`) finds the sections that
+   mention the code, and you **read the part numbers out of those sections' text**.
+   The matched section URIs are your grounding.
 3. **Write the SQL and run it** with `python skill/scripts/run_sql.py '<SQL>'`,
    joining along the FK refs from step 1.
 4. **Join + rank in your reasoning**, then act and record.
@@ -92,8 +98,9 @@ Two judgment flows you run this way:
 
 **Evidence-ranked fix** - "what fixed `<code>` on vehicles like `<vin>`?"
 
-- Neo4j: documents that cover `<code>` and the parts they reference - candidate
-  parts, each with its guidance (document titles) and grounding section URIs.
+- Neo4j: full-text the `<code>` -> the sections that mention it; read the part
+  numbers from that prose. Those are the candidate parts, each with its guidance
+  (the owning document titles) and grounding section URIs.
 - BigQuery: the vin's model and engine; then for those candidate parts, on
   same-model+engine vehicles whose work orders are diagnosed with `<code>`,
   `COUNT(DISTINCT wo_id) AS timesUsed` and `COUNTIF(comeback) AS comebacks`
@@ -104,11 +111,12 @@ Two judgment flows you run this way:
 
 **Recall exposure** - "what open recall has this `<vin>` not had?"
 
-- BigQuery: the vin's model. Neo4j: RecallNotices for that model and the remedy
-  parts their sections reference, with grounding section URIs.
-- BigQuery: drop remedies that are superseded (`parts.superseded_by IS NOT NULL`)
-  or that this vin has already had replaced. Return recalls in scope and not yet
-  applied. Empty result = no exposure.
+- BigQuery: the vin's model. Neo4j: full-text the model name scoped to the
+  `recalls/` folder -> recall-notice sections that name the model; read the remedy
+  part numbers from their text, with grounding section URIs.
+- BigQuery: drop remedies that are superseded (`parts.superseded_by` set) or that
+  this vin has already had replaced. Return recalls in scope and not yet applied.
+  Empty result = no exposure.
 
 Deterministic Python versions of both flows are in `solutions/scripts/`
 (`what_fixed_this.py`, `recall_exposure.py`) if you want to see the federation as
@@ -125,8 +133,9 @@ Two actions have fixed contracts, so they are scripts you run, not SQL you write
 - `write_recommendation.py <event_file> <action> <summary> [--part P] [--recall R]
   [--grounding URI1,URI2] [--order-id PO]` - record the decision in the graph
   idempotently: MERGE the WorkOrder + Vehicle, CREATE the `Recommendation`
-  (`<wo_id>-R1`, action `repair` or `escalate`), and link `RECOMMENDS_PART`,
-  `BUNDLES_RECALL`, `GROUNDED_IN` (Section by uri), `PLACED_ORDER`. The audit trail.
+  (`<wo_id>-R1`, action `repair` or `escalate`) with the recommended part and
+  code as properties, and link `BUNDLES_RECALL` (to the recall Document),
+  `GROUNDED_IN` (Section by uri), `PLACED_ORDER`. The audit trail.
 
 ## Working shape-first
 

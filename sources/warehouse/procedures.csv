@@ -1,14 +1,51 @@
 procedure_id,name,labor_hours
-PROC-IGN-COIL,Ignition coil replacement,1.2
-PROC-MISFIRE-DIAG,Misfire diagnosis,0.8
-PROC-BRAKE-FR,Front brake pad and rotor service,1.5
-PROC-BRAKE-PAD,Front brake pad replacement,1.0
-PROC-BRAKE-HOSE,Brake hose replacement,0.9
-PROC-WSS,Wheel speed sensor replacement,0.7
-PROC-ABS-DIAG,ABS module diagnosis,0.9
-PROC-CHG-DIAG,Charging system diagnosis,0.6
-PROC-BATT,Battery replacement,0.4
-PROC-ALT,Alternator replacement,1.8
-PROC-CAT,Catalytic converter replacement,2.4
-PROC-ECM-FLASH,ECM software update,0.5
-PROC-OIL,Oil and filter service,0.5
+PROC-IGN-COIL,Ignition coil replacement,2.1
+PROC-MISFIRE-DIAG,Misfire diagnosis,0.9
+PROC-BRAKE-FR,Front brake pad and rotor service,1.3
+PROC-BRAKE-PAD,Front brake pad replacement,0.5
+PROC-BRAKE-HOSE,Brake hose replacement,0.3
+PROC-WSS,Wheel speed sensor replacement,1.1
+PROC-ABS-DIAG,ABS module diagnosis,1.8
+PROC-CHG-DIAG,Charging system diagnosis,1.4
+PROC-BATT,Battery replacement,1.1
+PROC-ALT,Alternator replacement,0.6
+PROC-CAT,Catalytic converter replacement,2.0
+PROC-ECM-FLASH,ECM software update,1.4
+PROC-OIL,Oil and filter service,0.9
+PROC-SPARK-PLUG,Spark plug replacement,1.7
+PROC-TIMING-BELT,Timing belt and tensioner replacement,2.5
+PROC-VVT-SOL,Variable valve timing solenoid replacement,2.1
+PROC-CPS-CMP,Crankshaft/camshaft position sensor replacement,0.4
+PROC-TURBO,Turbocharger replacement,1.6
+PROC-FUEL-PUMP,Fuel pump replacement,1.1
+PROC-INJECTOR,Fuel injector replacement,1.9
+PROC-FUEL-DIAG,Fuel trim and pressure diagnosis,1.2
+PROC-O2-SENSOR,Oxygen sensor replacement,1.5
+PROC-EGR,EGR valve service,0.3
+PROC-EVAP-DIAG,EVAP leak diagnosis,1.2
+PROC-DPF-REGEN,Diesel particulate filter forced regeneration,2.2
+PROC-COOLANT,Coolant flush and refill,1.0
+PROC-WATER-PUMP,Water pump replacement,0.6
+PROC-THERMOSTAT,Thermostat replacement,0.8
+PROC-RAD,Radiator replacement,1.9
+PROC-BRAKE-RR,Rear brake pad and rotor service,2.5
+PROC-BRAKE-FLUID,Brake fluid flush and bleed,0.3
+PROC-CALIPER,Brake caliper replacement,1.7
+PROC-STRUT,Front strut replacement,1.5
+PROC-CONTROL-ARM,Control arm replacement,2.0
+PROC-HUB-BEARING,Wheel hub bearing replacement,2.4
+PROC-ALIGN,Four-wheel alignment,0.6
+PROC-TIE-ROD,Tie rod end replacement,0.5
+PROC-EPS-DIAG,Electric power steering diagnosis,1.3
+PROC-STARTER,Starter motor replacement,0.8
+PROC-BCM-CONFIG,Body control module configuration,1.4
+PROC-COMMS-DIAG,Network communication (CAN bus) diagnosis,0.3
+PROC-AC-RECHARGE,A/C evacuate and recharge,0.6
+PROC-AC-COMP,A/C compressor replacement,0.8
+PROC-BLOWER,HVAC blower motor replacement,1.0
+PROC-CABIN-FILTER,Cabin air filter replacement,0.8
+PROC-TRANS-SERVICE,Transmission fluid and filter service,1.1
+PROC-TRANS-DIAG,Transmission fault diagnosis,1.2
+PROC-SHIFT-SOL,Shift solenoid pack replacement,0.9
+PROC-HEADLAMP,Headlamp assembly replacement,0.8
+PROC-WIPER,Wiper motor replacement,1.1

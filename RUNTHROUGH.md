@@ -29,10 +29,10 @@ locally if it shows "Coming Soon" — don't commit.)
 
 ## What the flow looks like now (so nothing surprises you)
 
-- **Module 1 (Setup):** wire BigQuery (read) + Neo4j in `.env`; `python load/load_graph.py`
+- **Module 1 (Setup):** wire BigQuery (read) + Neo4j in `.env`; `python load/load_documents.py`
   loads **documents only** (warehouse rows stay in BigQuery). Start the API:
   `uvicorn api.parts_api:app --port 8800`. Smoke test in `claude`.
-- **Module 2 (Connections):** `python connections/build_connections.py` runs
+- **Module 2 (Connections):** `python load/build_connections.py` runs
   neocarta over BigQuery -> the metadata graph + the `connections` MCP. Approve the
   MCP in your agent, then ask it a warehouse question and watch it retrieve schema
   and write Text2SQL (executed with `python skill/scripts/run_sql.py`).
