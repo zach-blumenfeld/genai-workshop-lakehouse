@@ -40,7 +40,7 @@ The pipeline is source-agnostic by design:
 - **Warehouse:** the rows live in BigQuery and are never migrated; the finale
   federates against them with live SQL. Point a different connector at your own
   warehouse and the same shapes work (the connections graph is built by neocarta
-  from the information schema — see `connections/build_connections.py`)
+  from the information schema — see `load/build_connections.py`)
 - **Documents:** point `load/parse_corpus.py:iter_pdf_paths()` at your storage
   (`PDF_SOURCE=gcs` reads the same folder layout from a bucket)
 - Everything downstream — graph model, skill, tools, policy — is unchanged

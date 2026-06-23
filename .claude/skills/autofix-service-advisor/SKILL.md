@@ -155,8 +155,12 @@ Read a section's full text with
 Apply these rules in order when handling a work order event:
 
 1. **Ground first.** Identify applicable documents for the code (or the
-   complaint's theme when there is no code). A recommendation with no
-   `GROUNDED_IN` section is invalid.
+   complaint's theme when there is no code). When grounding by complaint,
+   **scope to the vehicle's model** - the same symptom appears in several
+   models' manuals, so prefer the docs for this vehicle's model (their ids
+   carry the model, e.g. `man-marlin-ev-brakes`) over a higher-ranked hit
+   from another model. A recommendation with no `GROUNDED_IN` section is
+   invalid.
 2. **Evidence beats guidance.** When documents disagree (a manual predates a
    bulletin), rank candidate parts by real outcomes: zero comebacks wins.
    Cite the newer document.

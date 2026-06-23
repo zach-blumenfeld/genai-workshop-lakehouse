@@ -7,19 +7,19 @@ it ships evidence (shared targets, member titles); the agent does the naming.
 ## The shape
 
 ```
-THEMES  AutoFix Technical Library   10 docs · 9 grouped into 4 themes by shared parts and codes · 1 ungrouped
+THEMES  AutoFix Technical Library   183 docs · 183 grouped into 13 themes by shared cross-references · 0 ungrouped
 
-T1  3 docs (30%) · moderately interlinked
-    top shared targets   [WSS-3300] in 3 docs · [C0035] in 2 docs · [U0121] in 2 docs
-    most-linked docs     Intermittent Wheel Speed Sensor Faults ..... D   technical-library/bulletins/tsb-20-087.pdf
-                         Heron Service Manual (2nd Edition) ......... D   technical-library/manuals/man-her-2.pdf
-                         (+1 more docs)
-    links into T2 via    Heron Service Manual (2nd Edition) ......... D   technical-library/manuals/man-her-2.pdf
+T1  20 docs (11%) · moderately interlinked
+    top shared targets   [CAN Bus Communication Diagnosis Procedure] in 11 docs · [Lost Communication with BCM and Cluster] in 11 docs
+    most-linked docs     Falcon Service Manual (3rd Edition) ........ D   technical-library/manuals/man-falcon-electrical.pdf
+                         Body Control Module Communication Faults ... D   technical-library/bulletins/tsb-23-118.pdf
+                         (+18 more docs)
+    links into T2 via    Falcon Service Manual (3rd Edition) ........ D   technical-library/manuals/man-falcon-electrical.pdf
 ```
 
 Rules (self-explanatory like outline — every count carries its unit):
 
-- **Header always reconciles:** `N docs · G grouped into K themes by <method> · U ungrouped`,
+- **Header always reconciles:** `N docs · G grouped into K themes by shared cross-references · U ungrouped`,
   with `N = G + U`. Ungrouped always prints, even at 0 — it stops the agent
   overclaiming coverage.
 - **Theme line:** `T<id>  <docs> docs (<pct>%) · <cohesion>`. Theme ids are
@@ -28,9 +28,9 @@ Rules (self-explanatory like outline — every count carries its unit):
 - **Cohesion is a word, not a number:** `tightly / moderately / loosely
   interlinked`. Backed by per-community conductance; the thresholds live in
   the producer, only the three phrases are the contract.
-- **`top shared targets`** — the parts and codes most referenced by the
-  theme's documents (`[IC-2042-A] in 3 docs`). These are the naming
-  evidence.
+- **`top shared targets`** — the link targets (sections/documents) the
+  theme's documents most converge on (`[Front Brake Pad and Rotor Service
+  Procedure] in 8 docs`). These are the naming evidence.
 - **`most-linked docs`** — member documents by within-theme link count, in
   outline row shape (dots, `D`, full URI), followed by `(+N more docs)`
   whenever membership exceeds the rows shown — counts always reconcile.
@@ -39,12 +39,12 @@ Rules (self-explanatory like outline — every count carries its unit):
 
 ## The reasoning to derive
 
-Documents rarely link each other directly — but two documents that both
-reference `IC-2042-A` are about the same thing. Parts and codes are **glue
-nodes**: project a document-level graph where section-level references and
-links are collapsed to their owning documents (`split(uri,'#')[0]` — no
-tree walk needed), documents and glue nodes together, undirected, weight =
-mention count. Then:
+The library has no Part/DTC entity nodes — documents are tied together
+purely by their **cross-reference links** (`LINKS_TO`). Two documents land
+in the same theme because they link to each other or converge on the same
+targets. Project a document-level graph: take every `MATCH (s:Section)-[:LINKS_TO]->(tgt)`,
+collapse **both** ends to their owning document (`split(uri,'#')[0]` — no
+tree walk needed), undirected, weight = link count. Then:
 
 1. **Leiden (mutate)** assigns `themeId` in the in-memory projection —
    `gamma` is the granularity dial (higher = more, finer themes)
@@ -56,6 +56,7 @@ mention count. Then:
 5. Drop the projection
 
 Community detection on arbitrary links gives arbitrary clusters. Here every
-edge exists because two documents touch the same physical part or fault
-code — so dense clusters are real repair themes, found without anyone
-naming them.
+edge exists because two documents cross-reference the same sections and
+documents — so dense clusters are real repair themes, found without anyone
+naming them. What holds a theme together is its **shared link targets**:
+the sections and documents its members most often cite in common.
