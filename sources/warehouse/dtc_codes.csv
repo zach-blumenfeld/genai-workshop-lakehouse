@@ -1,7 +1,49 @@
 code,description
 P0300,Random or multiple cylinder misfire detected
 P0301,Cylinder 1 misfire detected
+P0302,Cylinder 2 misfire detected
+P0303,Cylinder 3 misfire detected
+P0304,Cylinder 4 misfire detected
+P0335,Crankshaft position sensor A circuit malfunction
+P0340,Camshaft position sensor A circuit malfunction
+P0011,Camshaft position - timing over-advanced bank 1
+P0016,Crankshaft/camshaft position correlation bank 1 sensor A
+P0351,Ignition coil A primary/secondary circuit malfunction
+P0352,Ignition coil B primary/secondary circuit malfunction
+P0171,System too lean bank 1
+P0172,System too rich bank 1
+P0087,Fuel rail/system pressure too low
+P0190,Fuel rail pressure sensor circuit malfunction
+P0201,Injector 1 circuit malfunction
 P0420,Catalyst system efficiency below threshold
-P0562,System voltage low
+P0430,Catalyst system efficiency below threshold bank 2
+P0401,Exhaust gas recirculation flow insufficient
+P0455,Evaporative emission system leak detected (large)
+P0442,Evaporative emission system leak detected (small)
+P2002,Diesel particulate filter efficiency below threshold bank 1
+P0128,Coolant thermostat below regulating temperature
+P0480,Cooling fan 1 control circuit malfunction
+P0217,Engine over-temperature condition
 C0035,Left front wheel speed sensor circuit
+C0040,Right front wheel speed sensor circuit
+C0045,Left rear wheel speed sensor circuit
+C0050,Right rear wheel speed sensor circuit
+C0110,ABS pump motor circuit malfunction
+C0561,ABS/ESP system disabled - invalid configuration
+C0265,EBCM relay circuit malfunction
+C1234,Steering angle sensor signal fault
+C1556,Electric power steering torque sensor fault
+P0562,System voltage low
+P0563,System voltage high
+P0620,Generator control circuit malfunction
 U0121,Lost communication with ABS control module
+U0100,Lost communication with ECM/PCM A
+U0140,Lost communication with body control module
+U0155,Lost communication with instrument panel cluster
+P0700,Transmission control system malfunction
+P0741,Torque converter clutch circuit performance/stuck off
+P0868,Transmission fluid pressure low
+B1318,Battery voltage low (body control)
+B1352,HVAC blower motor circuit malfunction
+B2477,Module configuration failure
+P0533,A/C refrigerant pressure sensor circuit high

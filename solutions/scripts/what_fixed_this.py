@@ -1,9 +1,12 @@
 """SOLUTION: Evidence-ranked fixes for a code on vehicles like this one.
 
-Federated: the document grounding comes from Neo4j, the repair outcomes come
-from live BigQuery SQL, and the two are joined here.
+Federated, and domain-agnostic: the document graph has no Part/DTC entity nodes.
+Grounding comes from full-text search over the document sections (the code is a
+token in the prose); candidate parts are read from those grounding sections'
+text and matched against the live parts catalog; the repair outcomes come from
+live BigQuery SQL. The two are joined here.
 
-Usage: python solutions/scripts/what_fixed_this.py CM-FAL-2020-0451 P0301
+Usage: python solutions/scripts/what_fixed_this.py <VIN> <CODE>
 """
 
 import json
@@ -14,23 +17,43 @@ from bq import bq_query, table
 
 vin, code = sys.argv[1], sys.argv[2]
 
-# Step 1 - Neo4j: documents that cover the code, and the parts they reference.
-# These are the candidate fixes, each with its guidance and grounding sections.
+# Step 1 - Neo4j: sections that mention the code (full-text), with their owning
+# document title and full text. No entity traversal - the code is just a token.
 NEO = """
-MATCH (doc:Document)-[:HAS*]->(:Section)-[:REFERENCES_CODE]->(:DTC {code: $code})
-MATCH (doc)-[:HAS*]->(gs:Section)-[:REFERENCES_PART]->(part:Part)
-RETURN part.partNumber AS partNumber, part.name AS name,
-       collect(DISTINCT doc.title) AS guidance,
-       collect(DISTINCT gs.uri) AS grounding
+CALL db.index.fulltext.queryNodes('content_search', $code) YIELD node, score
+WHERE node:Section
+MATCH (doc:Document)-[:HAS*]->(node)
+RETURN node.uri AS uri, node.content AS content, doc.title AS guidance
+ORDER BY score DESC LIMIT 25
 """
-candidates = {r["partNumber"]: r for r in query(NEO, code=code)}
+sections = query(NEO, code=code)
+if not sections:
+    print("[]")
+    sys.exit()
+
+# Candidate parts = parts whose number appears in the grounding text. The parts
+# catalog lives in BigQuery (never migrated); read the section prose for them.
+all_parts = bq_query(f"SELECT part_number, name FROM {table('parts')}")
+candidates = {}
+for p in all_parts:
+    pn = p["part_number"]
+    hits = [s for s in sections if pn in (s["content"] or "")]
+    if hits:
+        candidates[pn] = {
+            "partNumber": pn, "name": p["name"],
+            "guidance": sorted({s["guidance"] for s in hits}),
+            "grounding": [s["uri"] for s in hits],
+        }
 if not candidates:
     print("[]")
     sys.exit()
 
-# Step 2 - BigQuery: the vehicle's model/engine, then real outcomes for those
-# parts on similar vehicles with the same code (live rows, never migrated).
+# Step 2 - BigQuery: the vin's model/engine, then real outcomes for those
+# candidate parts on similar vehicles with the same code (live rows).
 veh = bq_query(f"SELECT model, engine FROM {table('vehicles')} WHERE vin = @vin", {"vin": vin})
+if not veh:
+    print("[]")
+    sys.exit()
 model, engine = veh[0]["model"], veh[0]["engine"]
 
 SQL = f"""

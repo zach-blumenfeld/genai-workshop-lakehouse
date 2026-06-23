@@ -1,10 +1,11 @@
 """SOLUTION: Open recalls this vehicle is in scope for but never received.
 
-Federated: the recall and its remedy part come from the Neo4j document graph;
-the vehicle's model, the supersession check, and the repair history come from
-live BigQuery rows.
+Federated, domain-agnostic: the recall documents and their remedy parts come
+from the Neo4j document graph (full-text grounding - no RecallNotice/Part entity
+nodes); the vehicle's model, the supersession check, and the repair history come
+from live BigQuery rows.
 
-Usage: python solutions/scripts/recall_exposure.py CM-FAL-2020-0451
+Usage: python solutions/scripts/recall_exposure.py <VIN>
 """
 
 import json
@@ -22,23 +23,46 @@ if not veh:
     sys.exit()
 model = veh[0]["model"]
 
-# Neo4j: recalls for this model, and every part their sections reference.
+# Neo4j: recall-notice sections that name this model (full-text, scoped to the
+# recalls folder). Read the remedy part numbers from the recall prose.
 NEO = """
-MATCH (r:RecallNotice {model: $model})-[:HAS*]->(sec:Section)-[:REFERENCES_PART]->(remedy:Part)
-RETURN r.id AS recall, r.title AS title, remedy.partNumber AS remedyPart,
-       collect(DISTINCT sec.uri) AS grounding
+CALL db.index.fulltext.queryNodes('content_search', $model) YIELD node, score
+WHERE node:Section AND node.uri STARTS WITH 'technical-library/recalls/'
+MATCH (doc:Document)-[:HAS*]->(node)
+RETURN doc.id AS recall, doc.title AS title, node.uri AS uri, node.content AS content
 """
-candidates = query(NEO, model=model)
+sections = query(NEO, model=model)
+if not sections:
+    print("[]")
+    sys.exit()
+
+all_parts = [p["part_number"] for p in bq_query(f"SELECT part_number FROM {table('parts')}")]
+
+# Per recall: the parts its sections mention, with grounding section URIs.
+recalls = {}
+for s in sections:
+    r = recalls.setdefault(s["recall"], {"recall": s["recall"], "title": s["title"],
+                                         "parts": set(), "grounding": set()})
+    found = [pn for pn in all_parts if pn in (s["content"] or "")]
+    if found:
+        r["parts"].update(found)
+        r["grounding"].add(s["uri"])
+
+# Candidate remedies: (recall, part) pairs.
+candidates = [{"recall": r["recall"], "title": r["title"], "remedyPart": pn,
+               "grounding": sorted(r["grounding"])}
+              for r in recalls.values() for pn in r["parts"]]
 if not candidates:
     print("[]")
     sys.exit()
 parts = list({c["remedyPart"] for c in candidates})
 
-# BigQuery: which of those parts are superseded (not a current remedy), and
-# which this vehicle has already received.
+# BigQuery: drop parts that are superseded (not the current remedy) and parts
+# this vehicle has already received.
 superseded = {r["part_number"] for r in bq_query(
     f"SELECT part_number FROM {table('parts')} "
-    "WHERE part_number IN UNNEST(@parts) AND superseded_by IS NOT NULL", {"parts": parts})}
+    "WHERE part_number IN UNNEST(@parts) AND superseded_by IS NOT NULL AND superseded_by != ''",
+    {"parts": parts})}
 applied = {r["part_number"] for r in bq_query(
     f"SELECT DISTINCT wop.part_number FROM {table('work_orders')} wo "
     f"JOIN {table('work_order_parts')} wop ON wop.wo_id = wo.wo_id "

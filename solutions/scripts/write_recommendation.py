@@ -37,11 +37,10 @@ query(
     e=event,
 )
 if event.get("dtc_code"):
+    # The code is a warehouse value (no :DTC node in the domain-agnostic graph);
+    # record it as a property on the work order.
     query(
-        """
-        MATCH (w:WorkOrder {id: $wo}), (c:DTC {code: $code})
-        MERGE (w)-[:DIAGNOSED]->(c)
-        """,
+        "MATCH (w:WorkOrder {id: $wo}) SET w.dtc_code = $code",
         wo=event["wo_id"],
         code=event["dtc_code"],
     )
@@ -59,14 +58,17 @@ query(
     summary=args.summary,
 )
 if args.part:
+    # The part is a warehouse value (no :Part node in the graph) - store it on
+    # the recommendation.
     query(
-        "MATCH (r:Recommendation {id: $rec}), (p:Part {partNumber: $part}) "
-        "MERGE (r)-[:RECOMMENDS_PART]->(p)",
+        "MATCH (r:Recommendation {id: $rec}) SET r.part = $part",
         rec=rec_id, part=args.part,
     )
 if args.recall:
+    # Recalls are recall-notice Documents in the library; bundle by id.
     query(
-        "MATCH (r:Recommendation {id: $rec}), (rc:RecallNotice {id: $recall}) "
+        "MATCH (r:Recommendation {id: $rec}) "
+        "MATCH (rc:Document {area: 'recalls'}) WHERE toLower(rc.id) = toLower($recall) "
         "MERGE (r)-[:BUNDLES_RECALL]->(rc)",
         rec=rec_id, recall=args.recall,
     )
@@ -89,12 +91,11 @@ trail = query(
     """
     MATCH (v:Vehicle)-[:HAS_WORK_ORDER]->(w:WorkOrder {id: $wo})
           -[:HAS_RECOMMENDATION]->(r:Recommendation)
-    OPTIONAL MATCH (r)-[:RECOMMENDS_PART]->(p:Part)
-    OPTIONAL MATCH (r)-[:BUNDLES_RECALL]->(rc:RecallNotice)
+    OPTIONAL MATCH (r)-[:BUNDLES_RECALL]->(rc:Document)
     OPTIONAL MATCH (r)-[:GROUNDED_IN]->(s:Section)
     OPTIONAL MATCH (r)-[:PLACED_ORDER]->(o:PartsOrder)
     RETURN v.vin AS vin, r.action AS action, r.summary AS summary,
-           p.partNumber AS part, rc.id AS recall,
+           r.part AS part, rc.id AS recall,
            collect(DISTINCT s.uri) AS grounding, o.id AS order
     """,
     wo=event["wo_id"],

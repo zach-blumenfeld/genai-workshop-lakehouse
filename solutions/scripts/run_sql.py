@@ -1,4 +1,4 @@
-"""Run a BigQuery SQL statement using the workshop's auth.
+r"""Run a BigQuery SQL statement using the workshop's auth.
 
 The agent writes Text2SQL grounded by the `connections` MCP schema, then runs it
 here. Auth comes from bq.py: the read-only key in BIGQUERY_SA_KEY_B64 if set,

@@ -4,18 +4,18 @@ Usage: python skill/scripts/themes.py [--gamma G] [--min-docs N]
 
 The shape (spec: docs/theme-format.md): a header that reconciles
 (N docs / grouped / ungrouped), then one evidence block per theme - cohesion
-word, the shared parts and codes that hold it together, the most-linked
+word, the shared link targets the members converge on, the most-linked
 member documents as outline rows, and crossover documents into other themes.
 The tool never names a theme; it ships the evidence and the agent names it.
 
-Reasoning (ki's glue-node insight): Part and DTC nodes are glue - two
-documents that both reference IC-2042-A cluster by co-citation even if
-neither cites the other. Pipeline: project a doc-level graph (documents +
-glue, section edges collapsed to owning docs, undirected, weighted) ->
-Leiden mutate themeId -> per-community conductance (cohesion) -> write
-themeId -> renderer queries -> drop projection. themeId is producer-owned
-and regenerated per run; theme numbers are stable only within a run -
-store URIs, never T<id>.
+Reasoning (domain-agnostic): the library has no Part/DTC entity nodes -
+documents are tied together purely by their cross-reference links (LINKS_TO).
+Two documents land in the same theme because they link to each other or
+converge on the same targets. Pipeline: project a doc-level graph (Section
+links collapsed to owning documents, undirected, weighted) -> Leiden mutate
+themeId -> per-community conductance (cohesion) -> write themeId -> renderer
+queries -> drop projection. themeId is producer-owned and regenerated per run;
+theme numbers are stable only within a run - store URIs, never T<id>.
 """
 
 import sys
@@ -26,12 +26,10 @@ GRAPH = "autofix-themes"
 
 PROJECT = """
 // ================================================== BUILD FROM SPEC =====
-// docs/theme-format.md "The reasoning to derive": project a doc-level
-// graph of documents + glue (Part/DTC) nodes.
-//   - match (s:Section)-[:REFERENCES_PART|REFERENCES_CODE|LINKS_TO]->(tgt)
-//   - collapse s to its owning Document via split(s.uri, '#')[0]
-//   - collapse Section targets the same way (OPTIONAL MATCH + coalesce);
-//     Part/DTC targets stay as themselves - they are the glue
+// docs/theme-format.md "The reasoning to derive": project a doc-level graph
+// from the cross-reference links (no Part/DTC glue nodes - they do not exist).
+//   - match (s:Section)-[:LINKS_TO]->(tgt)
+//   - collapse BOTH ends to their owning Document via split(uri, '#')[0]
 //   - drop self-pairs, count(*) per pair AS weight
 //   - RETURN gds.graph.project($graph, d, t,
 //       { relationshipProperties: { weight: weight } },
@@ -67,10 +65,9 @@ REMOVE n.themeId
 """
 
 MEMBERS = """
-MATCH (s:Section)-[:REFERENCES_PART|REFERENCES_CODE|LINKS_TO]->(tgt)
+MATCH (s:Section)-[:LINKS_TO]->(tgt)
 MATCH (d:Document {uri: split(s.uri, '#')[0]})
-OPTIONAL MATCH (tdoc:Document {uri: split(tgt.uri, '#')[0]})
-WITH d, coalesce(tdoc, tgt) AS t
+MATCH (t:Document {uri: split(tgt.uri, '#')[0]})
 WHERE d <> t AND d.themeId IS NOT NULL AND d.themeId = t.themeId
 WITH d, count(*) AS withinThemeLinks
 RETURN d.themeId AS theme, d.uri AS uri, d.displayName AS displayName,
@@ -78,12 +75,15 @@ RETURN d.themeId AS theme, d.uri AS uri, d.displayName AS displayName,
 ORDER BY theme, withinThemeLinks DESC, uri
 """
 
+# What holds a theme together: the link targets the most member documents
+# converge on (the sections/documents they cite in common).
 TOP_TARGETS = """
-MATCH (s:Section)-[:REFERENCES_PART|REFERENCES_CODE]->(k)
-MATCH (d:Document {uri: split(s.uri, '#')[0]})
+MATCH (src:Section)-[:LINKS_TO]->(tgt)
+MATCH (d:Document {uri: split(src.uri, '#')[0]})
 WHERE d.themeId IS NOT NULL
-WITH d.themeId AS theme, coalesce(k.partNumber, k.code) AS key,
-     count(DISTINCT d) AS docs
+WITH d.themeId AS theme, tgt,
+     coalesce(tgt.displayName, tgt.uri) AS key, count(DISTINCT d) AS docs
+WHERE docs > 1
 ORDER BY theme, docs DESC, key
 WITH theme, collect({key: key, docs: docs})[..5] AS targets
 RETURN theme, targets
@@ -92,9 +92,8 @@ RETURN theme, targets
 CROSSOVERS = """
 MATCH (src:Section)-[:LINKS_TO]->(tgt)
 MATCH (s:Document {uri: split(src.uri, '#')[0]})
-OPTIONAL MATCH (tdoc:Document {uri: split(tgt.uri, '#')[0]})
-WITH s, coalesce(tdoc, tgt) AS t
-WHERE t:Document AND s.themeId IS NOT NULL AND t.themeId IS NOT NULL
+MATCH (t:Document {uri: split(tgt.uri, '#')[0]})
+WHERE s.themeId IS NOT NULL AND t.themeId IS NOT NULL
   AND s.themeId <> t.themeId
 WITH s.themeId AS theme, t.themeId AS otherTheme, s, count(*) AS crossLinks
 ORDER BY theme, otherTheme, crossLinks DESC, s.uri
@@ -149,7 +148,7 @@ def main():
 
     total, grouped = header["totalDocs"], header["groupedDocs"]
     print(f"THEMES  AutoFix Technical Library   {total} docs · {grouped} grouped "
-          f"into {len(ordered)} themes by shared parts and codes · {total - grouped} ungrouped")
+          f"into {len(ordered)} themes by shared cross-references · {total - grouped} ungrouped")
     for theme, docs in ordered:
         pct = round(100 * len(docs) / total)
         print(f"\n{tid[theme]}  {len(docs)} docs ({pct}%) · {coh.get(theme, 'loosely interlinked')}")
