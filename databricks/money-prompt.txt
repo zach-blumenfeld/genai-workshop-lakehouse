@@ -127,3 +127,96 @@ Takeaways
 - Biggest exposure is the cross-model patterns -- BCM-comm/fuse-box and front-brake
   each touch 400 cars across two model lines.
 [=> the graph SHAPE enumerated + clustered ALL 112 docs -> ~14 modes; full coverage.]
+
+
+================================================================================
+OUTLINE-DRIVEN MONEY PROMPT (coverage over the whole manual structure x warehouse)
+Persona: OEM Service Engineering / Quality analyst.
+
+  outline (breadth) -> enumerate ALL documented procedures/codes across the manuals
+                       (vector SAMPLES the structure; the graph ENUMERATES it)
+  connections       -> join to work_orders: which codes/procedures actually occur
+  answer = the GAP  -> field problems with no documented procedure, and documented
+                       procedures that never get used
+================================================================================
+
+
+--- DATABRICKS ARM ---
+Use the Databricks AI Search docs and the Genie warehouse. Are there mismatches
+between our documented procedures and the actual problems in the field? What
+documentation is missing, and what documentation isn't used?
+
+--- GRAPH / COURSE ARM ---
+Use the connections graph. Are there mismatches between our documented procedures
+and the actual problems in the field? What documentation is missing, and what
+documentation isn't used?
+
+
+================================================================================
+HYPOTHETICAL (not used today -- needs deeper docs): the "full job quote"
+================================================================================
+
+PROMPT (outline-DEPTH driven):
+  "Quote the complete timing job on a Falcon 2.0T -- every procedure and
+   sub-procedure involved, with the parts and total labor hours."
+
+WHY IT'S PARKED: our manuals are shallow (2-3 levels; a job chains only ~3-4
+linked procedures that share vocabulary), so a similarity arm can rebuild it with
+a couple of searches. Not enough structure to miss -> no clean failure. (Same
+"too-shallow" trap as the single-car misfire.)
+
+HOW IT WOULD WORK WITH REALISTIC DOCS: real OEM service manuals nest deeply and
+cross-reference heavily -- a major job (timing belt on an interference engine)
+fans out into 10-20 sub-procedures across the manual: drain coolant, remove
+accessory drive belt, support the engine / drop the mount, remove covers, lock
+cam/crank, replace tensioner + idlers + water pump, reseal, refill, VVT relearn --
+each its own section with its own parts and labor line, reached only by following
+"remove X to access Y" cross-references.
+
+At that depth the shapes separate cleanly:
+  - outline (DEPTH) -> traverse the full procedure tree and assemble EVERY
+    sub-step in order. Similarity SAMPLES the obvious "timing" chunks and misses
+    the linked sub-procedures (different vocabulary: "engine mount", "accessory
+    belt") -> the quote UNDERCOUNTS parts + labor, and the agent can't know what
+    cross-references it didn't follow.
+  - connections -> join each PROC-* node to warehouse labor_hours + part numbers
+    (incl. supersession) and total it.
+  - failure = a materially WRONG estimate (missing sub-steps) vs a complete,
+    auditable one. Visceral and measurable.
+
+To enable later: deepen the manual outline (nested sub-procedures + explicit
+"remove X to access Y" LINKS_TO chains, 8+ deep) for a few flagship jobs. Then the
+depth-driven outline failure becomes as clean as the breadth-driven coverage one.
+
+
+================================================================================
+OUTLINE-DRIVEN OBSERVED RESULT (coverage/absence -- a lack-of-SHAPE failure mode)
+================================================================================
+Prompt: "Are there mismatches between our documented procedures and the actual
+problems in the field? What documentation is missing, and what documentation
+isn't used?"
+
+VERIFIED AGAINST THE GRAPH: codes P0335 (crank sensor) and P0340 (cam sensor) are
+high-comeback (~21%, ~240 work orders each) and have ZERO documentation -- 0 of 183
+docs mention them (scanned every section's content + title).
+
+WITHOUT THE SHAPE (similarity retrieval) gave a CONFIDENT WRONG answer:
+  - Returned nearest chunks (vaguely-related misfire sections in the engine
+    manuals) and concluded P0335/P0340 are "documented but buried," then built its
+    headline on it: "the gap is application, not authorship."
+  - That's false. Similarity can't tell "not retrieved" from "not there" -- it
+    always returns something, so it cannot prove a negative (absence).
+
+WITH THE SHAPE (graph) was correct:
+  - Enumerated all 183 docs and cross-referenced against the field codes ->
+    P0335/P0340 = "0 library hits" -> correctly named the genuine doc gap.
+
+THE POINT: "what's MISSING / what's UNUSED" is a coverage/absence question. Proving
+absence requires covering the whole structure (the graph enumerates it); similarity
+retrieval samples and will hallucinate coverage. This is STRONGER than the themes
+result -- there the no-shape arm ADMITTED its gaps; here it ASSERTED a false
+coverage claim and reasoned from it.
+
+(Both arms handled the field comeback numbers fine -- the warehouse half. The split
+is entirely the doc-coverage/absence claim. Vendor-neutral: any similarity stack
+has this limit.)
