@@ -7,7 +7,7 @@ copy-pasteable URIs on the right, `→` rows for outbound links. Spec:
 docs/outline-format.md. Re-run rooted at any URI from the output to drill.
 """
 
-import sys
+import argparse
 
 from db import query
 
@@ -27,7 +27,7 @@ RETURN length(path) AS depth,
             WHEN n:Document THEN 'Document' ELSE 'Section' END AS label,
        n.name AS name, n.displayName AS displayName, n.uri AS uri,
        CASE WHEN length(path) = 0 THEN NULL ELSE chain[-2].uri END AS parent_uri,
-       n.sortPos AS sort_pos
+       n.sort_pos AS sort_pos
 """
 
 LINKS = """
@@ -113,13 +113,13 @@ def render(rows):
 
 
 def main():
-    args = [a for a in sys.argv[1:] if not a.startswith("--")]
-    root = args[0] if args else None
-    depth = 25
-    if "--depth" in sys.argv:
-        depth = int(sys.argv[sys.argv.index("--depth") + 1])
-    rows = order(collect(root, depth))
-    print(render(rows) if rows else f"(nothing found at {root or 'any library'})")
+    p = argparse.ArgumentParser(description="Render the technical library as a table of contents.")
+    p.add_argument("root", nargs="?", default=None,
+                   help="root URI to drill into (default: the whole library)")
+    p.add_argument("--depth", type=int, default=25, help="max HAS-tree depth to render")
+    a = p.parse_args()
+    rows = order(collect(a.root, a.depth))
+    print(render(rows) if rows else f"(nothing found at {a.root or 'any library'})")
 
 
 if __name__ == "__main__":

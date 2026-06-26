@@ -37,13 +37,20 @@ Snowflake, Databricks, or anywhere your data lives.
 
 ---
 
-**Source of truth.** Update this doc when goals, architecture, or outline change.
-Actionable work lives in **GitHub issues prefixed `lakehouse-workshop:`** (label
-`lakehouse-workshop`), not in this file — see [Work tracking](#work-tracking).
+**Scope.** This doc is the durable plan for the **build environment** — pipeline, skill, scripts,
+build state, work tracking. The **course design** (thesis, architecture, document/connections/recommendation
+models, module structure, story spine, the 3 finale events, learning outcomes, verification) is owned by
+**`asciidoc/courses/workshop-lakehouse/WORKSHOP-PLAN.md`** in `neo4j-graphacademy/courses`. Keep the two
+consistent; do not duplicate WORKSHOP-PLAN here — cross-reference it. Actionable work lives in **GitHub
+issues prefixed `lakehouse-workshop:`** (label `lakehouse-workshop`), not in this file — see
+[Work tracking](#work-tracking).
 
-- **Course content:** `neo4j-graphacademy/courses` → `asciidoc/courses/workshop-lakehouse/` (live, `:status: draft`, prod URL serves it)
+- **Course content (design authority):** `neo4j-graphacademy/courses` → `asciidoc/courses/workshop-lakehouse/`
+  (`:status: draft`; content aligned & verified end-to-end). Design plan: `WORKSHOP-PLAN.md`.
 - **Build environment:** `zach-blumenfeld/genai-workshop-lakehouse` (this repo — Codespace, pipeline, skill, specs)
-- **Status:** shape-first version shipped (`v1.47.12`); **neocarta/BigQuery restructure built on branch `lakehouse-connections-m2` (federated finale, runnable) - pending review/merge**
+- **Status:** shape-first version shipped (`v1.47.12`); **neocarta/BigQuery restructure + domain-agnostic
+  rework SHIPPED** — federated finale runnable, full Codespace runthrough green. Remaining items are infra/release
+  only (BigQuery read-auth in Codespace, artwork, prod release, `:status: active`).
 
 ---
 
@@ -60,26 +67,37 @@ Baseline: `~/Documents/content-research-wiki/outputs/lakehouse-workshop-usecase-
 - Finale is no longer "multi-hop Cypher + take-home" — it's an **agent that decides *and acts***:
   orders parts through a mock API, writes an auditable `Recommendation` trail, **escalates when
   evidence is thin**
-- Data model matured to the **ki-style containment graph**: `Library → Folder → Document → Section`,
-  single `HAS` type, hierarchical URIs, `NEXT_SECTION` reading order, content with `uri:` child
-  pointers, `LINKS_TO` split into citations vs. derived shared-key links
 - **Shape-first became the explicit method**: read the spec (`docs/outline-format.md`,
   `docs/theme-format.md`) → derive the graph reasoning → build. Added a **search** shape-tool
   (hierarchical fulltext + agent-side semantic expansion) not in the baseline
 - **Louvain → Leiden** (conductance-backed cohesion words, `gamma` granularity dial)
 
-### This restructure — neocarta + federation (in progress)
+### Shipped — neocarta + federation + domain-agnostic rework (done)
 
-- **Module reorder:** connections/paths moves from **last → first**. New order:
-  connections → trees → themes → finale → wrap
-- **neocarta added** as the connections tool, over **BigQuery** (Databricks deferred until its
-  connector lands)
-- **Architecture reversal — no structured-data migration.** The baseline said *"load the Delta
-  warehouse via Data Importer, merge on the shared key."* That is **removed.** Warehouse rows stay
-  in BigQuery; only neocarta's **metadata graph** migrates; the finale **federates** (live BigQuery
-  SQL + Neo4j grounding). See [Architecture](#architecture).
-- **New second axis to the thesis:** not just *what* shape, but *where it lives* — derive vs. federate
-- **neo4j-cli optional section** for general graph reasoning; **6 modules + optional**, not 5
+This restructure is **complete and verified end-to-end** (full Codespace runthrough green).
+The course-design detail lives in `WORKSHOP-PLAN.md` ("Drift fixed — 2026-06"); the build-env-relevant
+changes are:
+
+- **Module reorder shipped:** connections/paths moved from **last → first**. Order is now
+  connections → trees → themes → federated finale → wrap (+ optional neo4j-cli in M4).
+- **neocarta is the connections tool**, over **BigQuery** (Databricks/Snowflake are portability targets only).
+  Exposed via the `connections` MCP server (wired in `.mcp.json`).
+- **Architecture is federate, not migrate.** The baseline's *"load the Delta warehouse via Data Importer,
+  merge on the shared key"* is **removed.** Warehouse rows stay in BigQuery; only neocarta's connections
+  metadata graph loads; the finale federates (live BigQuery SQL + Neo4j full-text grounding). See
+  [Architecture](#architecture).
+- **Document model went domain-agnostic** (superseding the earlier ki-style/shared-key model). Now
+  `Library → Folder → Document → Section`, single `HAS` type, `NEXT_SECTION` reading order, and `LINKS_TO`
+  = the author's *real* cross-references (with `{external:true}` URL stubs). **No** `:Part`/`:DTC`/
+  `:Bulletin`/`:Manual`/`:RecallNotice`, **no** `REFERENCES_PART`/`REFERENCES_CODE`, **no** `HAS_SECTION`
+  (it's `HAS`), **no** `docType`/`citation`/`derived`/`sharedKeys`. Part numbers & DTC codes live in
+  section **text** + BigQuery, found by full-text. `Document.id` = slug, `Document.area` = folder.
+- **Corpus rebuilt and scaled** from a hand-authored ~10-doc set to a **183-doc** generated corpus.
+- **Dead v1 pipeline removed:** `load_graph.py`, `parse_pdfs.py`, `tools/warehouse_source.py`,
+  `tools/data_def.py`, `tools/generate_sources.py`. `build_connections.py` moved `connections/` → `load/`.
+- **Integrated-sandbox path dropped (Option A):** the `data/` CSV dataset that loaded the warehouse *into*
+  Neo4j contradicted federation. Removed; **Codespace + BigQuery is the only path.**
+- **New second axis to the thesis:** not just *what* shape, but *where it lives* — derive vs. federate.
 
 ### Carried forward (still valid)
 
@@ -117,6 +135,9 @@ Each maps to one layer of Sam's wall:
 
 ## Architecture
 
+*The full course-design treatment — graph models, the recommendation/audit graph, the finale steps —
+lives in `WORKSHOP-PLAN.md`. Summarized here for build-env context.*
+
 **Principle:** migrate only what passes the four-pains test (sync, performance, modeling, security);
 federate the rest.
 
@@ -128,12 +149,13 @@ federate the rest.
 | **Recommendations** (the agent's decisions) | **Neo4j** | the reasoning trail *is* a graph; auditable |
 
 **The finale federates.** A judgment tool (e.g. `what_fixed_this`) runs in three steps:
-1. **Neo4j** — which documents cover the code, which parts do they reference → candidate parts + grounding sections
+1. **Neo4j** — full-text the code → the sections that mention it → read candidate part numbers from
+   that section text (grounding). Part numbers / codes are **text**, not nodes.
 2. **BigQuery SQL** — for those parts, on same-model/engine vehicles with the code, count uses and comebacks
 3. **Python** — join + rank
 
 neocarta's connections graph is what lets the agent write step 2's SQL correctly (it reads the FK
-join paths). Shape 1 powers the finale.
+join paths). The document tree/themes shapes power step 1's grounding.
 
 **Security knob to name honestly:** neocarta can pull sample column values (`HAS_VALUE`). For AutoFix
 these are benign (part numbers, models) and help routing — include them, but call out that they are
@@ -189,7 +211,9 @@ where the course fits. Handle it in **one framing**, then move on — do **not**
 
 ---
 
-## Module outline (2 hr, target)
+## Module outline (2 hr)
+
+*Authoritative module/lesson breakdown is in `WORKSHOP-PLAN.md`. Build-env summary:*
 
 | M | Module | Shape | Mode | ~min |
 |---|--------|-------|------|------|
@@ -197,12 +221,45 @@ where the course fits. Handle it in **one framing**, then move on — do **not**
 | 2 | **Connections** — neocarta over BigQuery | paths | hands-on (use tool, read its shape) | 25 |
 | 3 | Navigate the Documents | trees | hands-on (build-from-spec) | 25 |
 | 4 | Surface Themes | communities | hands-on (build-from-spec) | 25 |
-| 5 | **Put It Together** — judgment tools, THE RUN, decide & act | all (federated) | hands-on (build-from-spec) | 25 |
+| 5 | **Put It Together** — federated finale, THE RUN, decide & act | all (federated) | hands-on (build-from-spec) | 25 |
 | 6 | Wrap Up — derive vs. federate, port the pattern | — | talk + quiz | 5 |
-| opt | **General graph reasoning with neo4j-cli** | — | optional | ~10 |
+| opt | **General graph reasoning with neo4j-cli** | — | optional (in M4) | ~10 |
 
-Setup (M1) connects the Codespace to **both BigQuery (read) and a Neo4j sandbox**. The graph
-import in M3 is **documents only**.
+Setup (M1) connects the Codespace to **both BigQuery (read) and a Neo4j sandbox** and starts the parts
+API — the sandbox starts **empty**. M2 loads the **connections** metadata graph
+(`load/build_connections.py`); M3 then loads the **document graph** (`load/load_documents.py`, documents
+only — the warehouse is never loaded into Neo4j) at the point the documents become the subject, and shows
+it live in the sandbox. The two loaders write disjoint labels (`:Table`/`:Column` vs.
+`:Library`/`:Folder`/`:Document`/`:Section`); `load_documents.py` scopes its wipe to the document half, so
+running it in M3 leaves M2's connections graph intact.
+
+---
+
+## Pipeline (build env — this repo)
+
+`tools/catalog.frozen.json` is the **single source of truth** for *both* halves, so corpus and warehouse
+always agree. Two pipelines, both under `load/`:
+
+- **Corpus (documents → Neo4j):** authored markdown in `corpus/<area>/<id>.md` (**183 docs**) →
+  `tools/render_corpus.py` (markdown → PDFs, cross-references embedded as real PDF link annotations) →
+  `load/parse_corpus.py` (headings → sections; link annotations → `LINKS_TO`; URLs → stub Documents) →
+  `load/load_documents.py` (renamed from `load_graph.py`; **documents only** — wipes + loads the document
+  graph: **183 docs / 985 sections / 1306 `LINKS_TO`**).
+- **Warehouse (→ BigQuery, never Neo4j):** `tools/generate_warehouse.py` builds CSVs from the catalog
+  (~1,700 vehicles / ~12.3k work_orders); loaded via `bigquery/setup.sh`.
+- **Connections (neocarta → Neo4j):** `load/build_connections.py` (moved from `connections/`) reads the
+  BigQuery schema → **6 tables / 5 REFERENCES**; exposed via the `connections` MCP server (`.mcp.json`).
+- **Events:** `tools/generate_events.py` → `events/wo-2026-011{7,8,9}.json`.
+- **Themes:** Leiden over `LINKS_TO` collapsed to Documents (no glue nodes) → ~**13 themes** by shared
+  cross-references.
+
+**Skill** (`.claude/skills/autofix-service-advisor/`): `SKILL.md` + `scripts/` (`outline.py`, `search.py`,
+`themes.py` are build-from-spec in M3–4; `run_sql.py`, `bq.py`, `db.py`, `order_part.py`,
+`write_recommendation.py` given). Complete reference impls in `solutions/scripts/` (incl. the M5
+`what_fixed_this.py` / `recall_exposure.py` / `path_query.py`).
+
+**Removed v1 dead code:** `load_graph.py`, `parse_pdfs.py`, `tools/warehouse_source.py`, `tools/data_def.py`,
+`tools/generate_sources.py`, and the `data/` integrated-sandbox CSV dataset.
 
 ---
 
@@ -211,13 +268,15 @@ import in M3 is **documents only**.
 | Piece | State |
 |-------|-------|
 | Shape-first version (trees, themes, skill, Codespace) | **shipped** `v1.47.12` |
-| BigQuery warehouse + DDL/access (`bigquery/`) | **done**, pushed (env repo) |
-| M2 Connections (neocarta `build_connections.py` + agentic `connections` MCP) | **done**, on branch + env repo |
-| Docs-only pipeline (warehouse load removed) | **done** |
-| Federated finale (`what_fixed_this`/`recall_exposure` over Neo4j+BigQuery) | **done**, validated |
+| Domain-agnostic document model + 183-doc corpus + docs-only pipeline | **done / shipped** |
+| BigQuery warehouse (expanded) + DDL/access (`bigquery/`) | **done / shipped** |
+| M2 Connections (neocarta `load/build_connections.py` + `connections` MCP) | **done / shipped** |
+| Federated finale (`what_fixed_this`/`recall_exposure` over Neo4j+BigQuery) | **done**, validated end-to-end |
 | Module reorder + M1/M5/M6 reframe + optional neo4j-cli | **done**, QA green |
-| BigQuery read auth in Codespace (shared SA key) | **remaining** — #581 |
-| PR, prod release, org move, artwork, reviews, `:status: active` | **deferred** |
+| Integrated-sandbox path removed (`data/` deleted; Codespace+BigQuery only) | **done** |
+| Content aligned & verified end-to-end (full Codespace runthrough) | **green** (2026-06; see WORKSHOP-PLAN verification) |
+| BigQuery read auth in Codespace (shared SA key) | **remaining** — the one infra item gating self-serve |
+| Artwork, prod release, org move, reviews, `:status: draft → active` | **deferred** |
 
 ---
 

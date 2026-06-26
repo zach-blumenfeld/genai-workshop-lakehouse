@@ -1,0 +1,259 @@
+================================================================================
+MONEY PROMPT (LOCKED) — Persona: OEM Recall & Warranty analyst.
+Simple question that forces all three shapes and can't collapse to SQL.
+
+  themes      -> "common patterns" = cluster ALL the notices (cover, don't sample)
+  outline     -> read what the bulletins/recalls actually say
+  connections -> "how many of our cars" = warehouse fleet count per pattern
+================================================================================
+
+
+--- DATABRICKS ARM ---
+Use the Databricks AI Search docs and the Genie warehouse. Common patterns across
+our bulletins and recalls? How many of our cars does each affect?
+
+--- GRAPH / COURSE ARM ---
+Use the connections graph. Common patterns across our bulletins and recalls? How
+many of our cars does each affect?
+
+
+================================================================================
+OBSERVED RESULT  (a lack-of-SHAPE failure mode -- NOT a Databricks shortcoming)
+================================================================================
+
+Framing: this is NOT "Databricks is worse." The modern stack did the doc + table
+work well. The difference is the SHAPE. The same gap shows up with ANY similarity-
+retrieval setup that has no graph over the documents -- it's about structure, not
+vendor.
+
+WITHOUT THE SHAPE (similarity retrieval), the answer is SAMPLED:
+  - Returned ~7 patterns.
+  - It flagged its own coverage gaps: "three recall docs only returned index stub
+    chunks ... not classified" and "the search index didn't return the year-range
+    lines."
+  - Top-k retrieval returns the most-similar chunks, so it can't know what it didn't
+    surface. That's inherent to vector search -- not specific to Databricks.
+
+WITH THE SHAPE (graph), the answer COVERS the whole set:
+  - Enumerated and clustered ALL 112 docs (76 bulletins + 36 recalls, 2020-2025)
+    -> ~14 recurring failure modes ("they aren't 112 unique problems").
+  - Full coverage, because it traverses the structure instead of sampling it.
+
+THE POINT: "patterns across ALL our bulletins and recalls" asks you to COVER and
+CLUSTER the whole set -- a graph/themes operation. Similarity retrieval samples; a
+structured layer over the docs is what makes coverage + clustering reliable. (The
+question also can't collapse to SQL -- the warehouse has no doc text.)
+
+HONEST CAVEAT: the car counts are soft in BOTH arms -- each inferred scope from the
+uniform 100-per-variant fleet; neither did the real recall-exposure join
+(work_orders x work_order_parts, who hasn't had the remedy). Lean the narrative on
+COVERAGE + CLUSTERING, not the counts.
+
+
+================================================================================
+RAW RESPONSES (captured verbatim)
+================================================================================
+
+------------------------------ RESULT A = DATABRICKS (AI Search + Genie) -------
+I've now mapped the bulletins and recalls against the fleet. Here's what emerges.
+
+How the two sources fit together
+- Bulletins & recalls live in the AI Search doc index (recalls/rc-*.pdf,
+  bulletins/tsb-*.pdf) -- there is no recall/bulletin table in Genie.
+- The fleet lives in Genie (autofix_service.vehicles). It's perfectly uniform:
+  exactly 100 cars per model+engine variant (1,700 vehicles total). So car counts
+  below come straight from which model/engine each document scopes to.
+
+A key meta-pattern first: recalls and bulletins repeatedly describe the same
+failing part and DTC, just at different severities. The recall is the safety-defect
+version (free replacement, superseded part); the bulletin is the high-mileage
+wear-out version of the identical component. You see this on the fuel pump, water
+pump, EPS, and ignition coil. Three failure families also share a leak-to-fire
+mechanism (fuel, coolant, wiring), and almost every one ships a superseded part
+(WP-6120->6122, FP-4100 redesigned, HPFP-4120 revised seal, IC-2044-A revised winding).
+
+Common patterns and how many cars each affects
+ # | Pattern (part / DTCs)                                   | Recalls                      | Bulletins                       | Affected model.engine     | Cars
+ 1 | Fuel-pump failure -> stall/no-start/fire (FP-4100;HPFP-4120; P0087/P0190) | rc-2021-03, rc-2022-11, rc-2023-11 | tsb-24-102, tsb-25-303 | Falcon 2.0T; Summit V8; +GDI | 100 up to 200
+ 2 | Water-pump seal leak -> overheat -> fire (WP-6120/6122; P0217) | rc-2021-05, rc-2022-09 | tsb-20-505, tsb-23-139, tsb-24-104, tsb-26-105 | Harrier 3.0 TD | 100 (up to 200)
+ 3 | EPS loss of assist (EPS-8740 / torque sensor; C1556)    | rc-2021-09, rc-2022-03, rc-2023-07 | tsb-23-156, tsb-24-106, tsb-26-109 | Lumen 2.0T | 100 (up to 200)
+ 4 | ABS/EBCM module failure (EBCM-8100; C0265/U0121/C0561)  | rc-2021-07, rc-2022-02, rc-2023-05 | -- (recall-only) | Summit V8 | up to 200
+ 5 | Ignition-coil breakdown -> misfire/stall/fire (IC-2044-A; P0351/P0300/P0302/P0352) | rc-2021-01, rc-2021-02, rc-2022-07, rc-2023-02 | tsb-24-101, tsb-25-302 | Heron 2.5 | 100
+ 6 | Transmission TCC stuck off (TSOL-9520; P0741)           | -- (bulletin-only) | tsb-22-385, tsb-23-191, tsb-24-109, tsb-26-113 | Osprey 3.5 V6 | 100
+ 7 | Engine wiring-harness chafing -> fire (HARN-9960; B1318) | rc-2021-10 | -- | Vega/Kestrel (shared harness) | 200-400
+
+The standouts
+- Lumen and Summit are highest-exposure (Summit: fuel + ABS; Lumen: steering).
+- Patterns 1-3 and 5 are the true "both-sources" patterns -- recall AND bulletin on
+  the same part, strongest signal for proactive inspection.
+
+COVERAGE CAVEAT (in A's own words): three recall docs (rc-2022-01, rc-2022-04,
+rc-2023-10) only returned index stub chunks ("Area: recalls") with no retrievable
+body, so they aren't classified above. Also the search index didn't return the
+year-range lines. [=> similarity retrieval samples; inherent to vector, not dbx.]
+
+
+------------------------------ RESULT B = GRAPH (connections) ------------------
+The library is 76 bulletins + 36 recalls over 2020-2025, and they aren't 112 unique
+problems -- they're ~12 recurring failure modes, each re-issued almost every
+model-year as a fresh TSB, with the worst ones escalating into a safety recall.
+Bulletins and recalls are the same patterns at two severities. Each pattern is tied
+to one model line (occasionally two), so "cars affected" is that line's fleet.
+
+Fleet: 1,700 cars, 100 per model+engine (Falcon/Harrier/Kestrel/Lumen/Marlin EV/
+Summit/Vega = 200 each across two engines; Heron/Osprey/Ridgeline HD = 100).
+
+Recurring patterns and cars affected
+ Pattern (DTC)                                   | Bull | Recalls                      | Model -> engine scope         | Cars
+ Ignition-coil failure -> misfire (P0351/P0352)  | ~8 | rc-21-01/02, 22-07, 23-02      | Heron 2.5 (+ Falcon 2.0T)     | 200
+ Alternator / low system voltage (P0562)         | ~6 | rc-21-11, 22-05, 23-09         | Falcon -- both 1.6 & 2.0T     | 200
+ EPS torque-sensor / steering-motor (C1556)      | ~5 | rc-21-09, 22-03, 23-07         | Lumen -- model-wide           | 200
+ Wheel-speed-sensor / ABS-EBCM (C0035/C0040)     | ~6 | rc-21-07, 22-02, 23-05         | Summit -- model-wide          | 200
+ Lost comm w/ BCM + fuse-box intrusion (U0140)   | ~5 | rc-22-10, 23-08                | Vega + Kestrel                | 400
+ Front-brake judder/hose/master-cyl              | ~6 | rc-21-06, 22-01/08, 23-04/12   | Marlin EV + Vega              | 400
+ HVAC blower-motor circuit (B1352)               | ~6 | rc-22-12                       | Heron + Marlin EV             | 300
+ Suspension: control-arm / strut / tie-rod       | ~5 | rc-21-08, 22-06, 23-06/10      | Ridgeline HD + Heron + Osprey | 300
+ High-pressure fuel-pump / low rail (P0087)      | ~6 | rc-21-03, 22-04, 23-03         | Osprey 3.5 V6                 | 100
+ Catalyst efficiency / EGR (P0420)               | ~6 | --                             | Kestrel 1.5T                  | 100
+ Engine overheat / water-pump seal (P0128/P0217) | ~5 | rc-21-05, 22-09                | Harrier 3.0 TD                | 100
+ Timing-chain/belt / VVT cam-correlation (P0016) | ~5 | rc-23-01                       | Falcon 2.0T                   | 100
+ Transmission TCC / shift-solenoid (P0700/P0741) | ~5 | rc-21-12                       | Osprey                        | 100
+ Diesel particulate filter                       | 2  | --                             | Ridgeline HD 6.7 TD           | 100
+
+Takeaways
+- Two severity tiers of one problem set: almost every recall has matching bulletins
+  (the bulletin documents the repair, the recall makes it a safety obligation).
+- Engine scope matters for the count (model-wide systems = 200; engine-specific = 100).
+- Biggest exposure is the cross-model patterns -- BCM-comm/fuse-box and front-brake
+  each touch 400 cars across two model lines.
+[=> the graph SHAPE enumerated + clustered ALL 112 docs -> ~14 modes; full coverage.]
+
+
+================================================================================
+OUTLINE-DRIVEN MONEY PROMPT (coverage over the whole manual structure x warehouse)
+Persona: OEM Service Engineering / Quality analyst.
+
+  outline (breadth) -> enumerate ALL documented procedures/codes across the manuals
+                       (vector SAMPLES the structure; the graph ENUMERATES it)
+  connections       -> join to work_orders: which codes/procedures actually occur
+  answer = the GAP  -> field problems with no documented procedure, and documented
+                       procedures that never get used
+================================================================================
+
+
+--- DATABRICKS ARM ---
+Use the Databricks AI Search docs and the Genie warehouse. Are there mismatches
+between our documented procedures and the actual problems in the field? What
+documentation is missing, and what documentation isn't used?
+
+--- GRAPH / COURSE ARM ---
+Use the connections graph. Are there mismatches between our documented procedures
+and the actual problems in the field? What documentation is missing, and what
+documentation isn't used?
+
+
+================================================================================
+HYPOTHETICAL (not used today -- needs deeper docs): the "full job quote"
+================================================================================
+
+PROMPT (outline-DEPTH driven):
+  "Quote the complete timing job on a Falcon 2.0T -- every procedure and
+   sub-procedure involved, with the parts and total labor hours."
+
+WHY IT'S PARKED: our manuals are shallow (2-3 levels; a job chains only ~3-4
+linked procedures that share vocabulary), so a similarity arm can rebuild it with
+a couple of searches. Not enough structure to miss -> no clean failure. (Same
+"too-shallow" trap as the single-car misfire.)
+
+HOW IT WOULD WORK WITH REALISTIC DOCS: real OEM service manuals nest deeply and
+cross-reference heavily -- a major job (timing belt on an interference engine)
+fans out into 10-20 sub-procedures across the manual: drain coolant, remove
+accessory drive belt, support the engine / drop the mount, remove covers, lock
+cam/crank, replace tensioner + idlers + water pump, reseal, refill, VVT relearn --
+each its own section with its own parts and labor line, reached only by following
+"remove X to access Y" cross-references.
+
+At that depth the shapes separate cleanly:
+  - outline (DEPTH) -> traverse the full procedure tree and assemble EVERY
+    sub-step in order. Similarity SAMPLES the obvious "timing" chunks and misses
+    the linked sub-procedures (different vocabulary: "engine mount", "accessory
+    belt") -> the quote UNDERCOUNTS parts + labor, and the agent can't know what
+    cross-references it didn't follow.
+  - connections -> join each PROC-* node to warehouse labor_hours + part numbers
+    (incl. supersession) and total it.
+  - failure = a materially WRONG estimate (missing sub-steps) vs a complete,
+    auditable one. Visceral and measurable.
+
+To enable later: deepen the manual outline (nested sub-procedures + explicit
+"remove X to access Y" LINKS_TO chains, 8+ deep) for a few flagship jobs. Then the
+depth-driven outline failure becomes as clean as the breadth-driven coverage one.
+
+
+================================================================================
+OUTLINE-DRIVEN OBSERVED RESULT (coverage/absence -- a lack-of-SHAPE failure mode)
+================================================================================
+Prompt: "Are there mismatches between our documented procedures and the actual
+problems in the field? What documentation is missing, and what documentation
+isn't used?"
+
+VERIFIED AGAINST THE GRAPH: codes P0335 (crank sensor) and P0340 (cam sensor) are
+high-comeback (~21%, ~240 work orders each) and have ZERO documentation -- 0 of 183
+docs mention them (scanned every section's content + title).
+
+WITHOUT THE SHAPE (similarity retrieval) gave a CONFIDENT WRONG answer:
+  - Returned nearest chunks (vaguely-related misfire sections in the engine
+    manuals) and concluded P0335/P0340 are "documented but buried," then built its
+    headline on it: "the gap is application, not authorship."
+  - That's false. Similarity can't tell "not retrieved" from "not there" -- it
+    always returns something, so it cannot prove a negative (absence).
+
+WITH THE SHAPE (graph) was correct:
+  - Enumerated all 183 docs and cross-referenced against the field codes ->
+    P0335/P0340 = "0 library hits" -> correctly named the genuine doc gap.
+
+THE POINT: "what's MISSING / what's UNUSED" is a coverage/absence question. Proving
+absence requires covering the whole structure (the graph enumerates it); similarity
+retrieval samples and will hallucinate coverage. This is STRONGER than the themes
+result -- there the no-shape arm ADMITTED its gaps; here it ASSERTED a false
+coverage claim and reasoned from it.
+
+(Both arms handled the field comeback numbers fine -- the warehouse half. The split
+is entirely the doc-coverage/absence claim. Vendor-neutral: any similarity stack
+has this limit.)
+
+
+================================================================================
+CONNECTIONS-SHAPE FAILURE SCENARIO (text-to-SQL on large / ambiguous schemas)
+General -- NOT an AutoFix result (our 6-table schema is too small to show it; this
+failure only appears at enterprise scale).
+================================================================================
+
+THE SETTING: a real warehouse has hundreds of tables, many near-identical, often
+very wide (hundreds of columns each). The full schema is far larger than a prompt
+can hold.
+
+WITHOUT THE SHAPE (text-to-SQL over the raw schema):
+  - The model can't fit the schema, so it brute-forces metadata at query time:
+    list tables -> inspect columns -> guess -> retry. On ambiguous, look-alike
+    tables it picks the wrong one, loops, and on cheaper models often gives up
+    with no answer after many calls.
+  - Even when it eventually lands the right table, it drags bulky schema metadata
+    (mostly empty/null column fields) into context and re-sends it every turn ->
+    high, repeated token cost.
+  - Net: unreliable schema-linking AND expensive.
+
+WITH THE SHAPE (a semantic layer / graph over the schema -- "connections"):
+  - Retrieves the RIGHT table + columns by MEANING before generating SQL (semantic
+    search over the schema graph), so the model never has to scan the haystack.
+  - Holds the join paths explicitly (foreign keys as edges) -- multi-hop joins are
+    given, not guessed.
+  - Returns a COMPACT, relevant slice (table + the needed columns/types), not the
+    whole schema or a bulky metadata envelope re-sent each turn.
+  - Net: cheap models become reliable (right table on the first pass) AND much
+    cheaper (no brute-force crawl, no schema re-sent every turn).
+
+THE POINT (connections shape): the warehouse schema is itself a structure --
+tables, columns, FK relationships as a navigable graph. Retrieve the relevant
+sub-structure instead of dumping the whole schema or letting the model guess. That
+is what lets text-to-SQL scale to large, ambiguous schemas where a raw-schema
+approach is both unreliable and costly.
