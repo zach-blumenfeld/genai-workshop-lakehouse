@@ -14,7 +14,9 @@ by full-text search - not by graph entities.
 External link targets (URLs) become stub :Document nodes (metadata only).
 
 Run: .venv/bin/python load/load_documents.py
-WARNING: wipes the target database (data, constraints, indexes) and rebuilds.
+Wipes and rebuilds only the document half (Library/Folder/Document/Section and
+their indexes); any connections graph (:Table/:Column from build_connections.py)
+is left untouched, so the two loaders can run in either order.
 """
 
 import os
@@ -104,11 +106,23 @@ SET r.external = true, r.embed = row.embed
 
 
 def wipe(session):
-    for rec in session.run("SHOW CONSTRAINTS YIELD name RETURN name"):
-        session.run(f"DROP CONSTRAINT {rec['name']} IF EXISTS")
-    for rec in session.run("SHOW INDEXES YIELD name RETURN name"):
-        session.run(f"DROP INDEX {rec['name']} IF EXISTS")
-    session.run("MATCH (n) DETACH DELETE n")
+    """Clear only the document half - Library/Folder/Document/Section nodes
+    (and, by DETACH, their HAS/NEXT_SECTION/LINKS_TO edges) plus the doc-specific
+    constraints and full-text index. The connections graph (:Table/:Column) is a
+    disjoint set of labels, so it survives - load_documents.py and
+    build_connections.py write into the same sandbox without clobbering."""
+    for name in ("document_uri", "section_uri"):
+        session.run(f"DROP CONSTRAINT {name} IF EXISTS")
+    session.run("DROP INDEX content_search IF EXISTS")
+    # Batch the delete with CALL { ... } IN TRANSACTIONS so each chunk commits
+    # separately - a single DETACH DELETE of a large library holds every change
+    # in one transaction and can OOM. See:
+    # https://neo4j.com/docs/cypher-manual/current/subqueries/subqueries-in-transactions/#delete-with-call-in-transactions
+    # (Requires an auto-commit transaction, which session.run provides.)
+    session.run(
+        "MATCH (n) WHERE n:Library OR n:Folder OR n:Document OR n:Section "
+        "CALL (n) { DETACH DELETE n } IN TRANSACTIONS OF 10000 ROWS"
+    ).consume()
 
 
 def main():
