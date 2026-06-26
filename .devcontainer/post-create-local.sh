@@ -18,8 +18,15 @@ echo "--- Neo4j CLI + agent skills"
 if curl -sSfL https://neo4j.sh/install.sh -o /tmp/n4jcli-install.sh && NEO4J_CLI_AUTO_INSTALL_SKILL=0 bash /tmp/n4jcli-install.sh < /dev/null; then
   export PATH="$HOME/.local/bin:$PATH"
   echo 'export PATH="$HOME/.local/bin:$PATH"' >> "$HOME/.bashrc"
+  # Self-skill (the neo4j-cli skill itself) ...
   neo4j-cli skill install --agent claude-code --rw \
     || echo "WARN: skill install failed - run: neo4j-cli skill install --agent claude-code --rw"
+  # ... plus the catalog skills the workshop leans on: neo4j-cypher-skill (write
+  # Cypher from a spec, Modules 3-5) and neo4j-gds-skill (Leiden, Module 4).
+  for s in neo4j-cypher-skill neo4j-gds-skill; do
+    neo4j-cli skill install "$s" --agent claude-code --rw \
+      || echo "WARN: $s install failed - run: neo4j-cli skill install $s --agent claude-code --rw"
+  done
 else
   echo "WARN: neo4j-cli install failed - run: curl -sSfL https://neo4j.sh/install.sh | bash"
 fi
@@ -34,7 +41,9 @@ echo ""
 echo "Setup check:"
 command -v neo4j-cli >/dev/null && echo "  neo4j-cli:    OK" || echo "  neo4j-cli:    MISSING"
 command -v claude >/dev/null && echo "  claude:       OK" || echo "  claude:       MISSING"
-[ -d "$HOME/.claude/skills/neo4j-cli" ] && echo "  neo4j skills: OK" || echo "  neo4j skills: MISSING"
+for s in neo4j-cli neo4j-cypher-skill neo4j-gds-skill; do
+  [ -d "$HOME/.claude/skills/$s" ] && echo "  $s: OK" || echo "  $s: MISSING"
+done
 echo ""
 echo "Next steps (from the workshop lesson):"
 echo "  1. Paste your Neo4j sandbox credentials into .env (BigQuery is pre-wired)"
