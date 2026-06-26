@@ -1,0 +1,72 @@
+================================================================================
+DANI TEST PROMPTS — copy-paste one at a time into the coding agent (Databricks arm).
+Paste only the prompt between the ----- lines. The AREAS / WATCH note is for you.
+
+AREAS:  O = outline/backlinks  ·  X = cross-model links  ·  C = connections/Genie
+================================================================================
+
+
+#####  #1  —  O + X + C  (widest net)  #########################################
+# WATCH: full procedure + the CROSS-MODEL brake bulletins (tsb-24-111 → Kestrel/
+#        Marlin-EV/Vega) + REAL comeback data — or just the Vega chunk?
+--------------------------------------------------------------------------------
+Use the Databricks AI Search docs and the Genie warehouse to work this bay complaint.
+Give me the actual fix and the exact parts to install (current part #s, not superseded),
+what's held up vs come back on cars like this, and anything I should know first — bulletins
+that affect the procedure, or known patterns on related models.
+
+"Vega 2.4 - C/S brake shudder slowing from highway, pulsation in pedal n wheel"
+--------------------------------------------------------------------------------
+
+
+#####  #2  —  X + C  (cross-model)  ############################################
+# WATCH: does it surface the OTHER models' brake docs (tsb-21-207, pad BP-7720)
+#        or miss them on model-name mismatch?
+--------------------------------------------------------------------------------
+Use the Databricks AI Search docs and the Genie warehouse to work this bay complaint.
+Give me the actual fix and the exact parts to install (current part #s, not superseded),
+what's held up vs come back on cars like this, and anything I should know first — bulletins
+that affect the procedure, or known patterns on related models.
+
+"Marlin EV front pads shot at 18k, rotors scored bad - normal?"
+--------------------------------------------------------------------------------
+
+
+#####  #3  —  O + C  ###########################################################
+# WATCH: links into the engine-manual TIMING sections (cause = TB-3322 tensioner)
+#        + comeback evidence, assembled.
+--------------------------------------------------------------------------------
+Use the Databricks AI Search docs and the Genie warehouse to work this bay complaint.
+Give me the actual fix and the exact parts to install (current part #s, not superseded),
+what's held up vs come back on cars like this, and anything I should know first — bulletins
+that affect the procedure, or known patterns on related models.
+
+"Falcon 2.0T no-start when hot, rough idle cold, P0016 stored"
+--------------------------------------------------------------------------------
+
+
+#####  #4  —  C  (+O)  — RUN 5x for determinism  ###############################
+# WATCH: run five times. Do the comeback numbers / denominators stay put, or drift
+#        (last time Run 1 broadened P0301 -> P0300+P0301 and changed the rates)?
+--------------------------------------------------------------------------------
+Use the Databricks AI Search docs and the Genie warehouse to work this bay complaint.
+Give me the actual fix and the exact parts to install (current part #s, not superseded),
+what's held up vs come back on cars like this, and anything I should know first — bulletins
+that affect the procedure, or known patterns on related models.
+
+"Falcon 2.0T cyl 1 miss under load, P0301"
+--------------------------------------------------------------------------------
+
+
+#####  #5  —  O  (backlinks, clean probe)  #####################################
+# WATCH: "bulletins that affect this procedure" is a BACKLINK set (hub brake manual
+#        is referenced by many TSBs). Vector has no anchor for "what points at this";
+#        Genie has no doc links. Does it produce the set, or miss/guess?
+--------------------------------------------------------------------------------
+Use the Databricks AI Search docs and the Genie warehouse to work this bay complaint.
+Give me the actual fix and the exact parts to install (current part #s, not superseded),
+what's held up vs come back on cars like this, and anything I should know first — bulletins
+that affect the procedure, or known patterns on related models.
+
+"Doing front pads n rotors on a Vega 2.4 - anything on this one first?"
+--------------------------------------------------------------------------------
