@@ -27,7 +27,7 @@ RETURN length(path) AS depth,
             WHEN n:Document THEN 'Document' ELSE 'Section' END AS label,
        n.name AS name, n.displayName AS displayName, n.uri AS uri,
        CASE WHEN length(path) = 0 THEN NULL ELSE chain[-2].uri END AS parent_uri,
-       n.sortPos AS sort_pos
+       n.sort_pos AS sort_pos
 """
 
 LINKS = """

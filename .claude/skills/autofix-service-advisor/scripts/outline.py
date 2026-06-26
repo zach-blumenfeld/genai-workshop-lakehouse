@@ -24,7 +24,7 @@ WIRE = """
 //   depth, label, name, displayName, uri, parent_uri, sort_pos
 // Hints: MATCH path = (root)-[:HAS*0..%d]->(n); depth = length(path);
 //        parent_uri = nodes(path)[-2].uri (NULL at depth 0);
-//        sort_pos = n.sortPos
+//        sort_pos = n.sort_pos
 RETURN 0 AS depth, 'Library' AS label, '' AS name, '' AS displayName,
        '' AS uri, NULL AS parent_uri, NULL AS sort_pos   // <-- replace
 // =========================================================================
