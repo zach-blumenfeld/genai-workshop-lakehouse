@@ -220,3 +220,40 @@ coverage claim and reasoned from it.
 (Both arms handled the field comeback numbers fine -- the warehouse half. The split
 is entirely the doc-coverage/absence claim. Vendor-neutral: any similarity stack
 has this limit.)
+
+
+================================================================================
+CONNECTIONS-SHAPE FAILURE SCENARIO (text-to-SQL on large / ambiguous schemas)
+General -- NOT an AutoFix result (our 6-table schema is too small to show it; this
+failure only appears at enterprise scale).
+================================================================================
+
+THE SETTING: a real warehouse has hundreds of tables, many near-identical, often
+very wide (hundreds of columns each). The full schema is far larger than a prompt
+can hold.
+
+WITHOUT THE SHAPE (text-to-SQL over the raw schema):
+  - The model can't fit the schema, so it brute-forces metadata at query time:
+    list tables -> inspect columns -> guess -> retry. On ambiguous, look-alike
+    tables it picks the wrong one, loops, and on cheaper models often gives up
+    with no answer after many calls.
+  - Even when it eventually lands the right table, it drags bulky schema metadata
+    (mostly empty/null column fields) into context and re-sends it every turn ->
+    high, repeated token cost.
+  - Net: unreliable schema-linking AND expensive.
+
+WITH THE SHAPE (a semantic layer / graph over the schema -- "connections"):
+  - Retrieves the RIGHT table + columns by MEANING before generating SQL (semantic
+    search over the schema graph), so the model never has to scan the haystack.
+  - Holds the join paths explicitly (foreign keys as edges) -- multi-hop joins are
+    given, not guessed.
+  - Returns a COMPACT, relevant slice (table + the needed columns/types), not the
+    whole schema or a bulky metadata envelope re-sent each turn.
+  - Net: cheap models become reliable (right table on the first pass) AND much
+    cheaper (no brute-force crawl, no schema re-sent every turn).
+
+THE POINT (connections shape): the warehouse schema is itself a structure --
+tables, columns, FK relationships as a navigable graph. Retrieve the relevant
+sub-structure instead of dumping the whole schema or letting the model guess. That
+is what lets text-to-SQL scale to large, ambiguous schemas where a raw-schema
+approach is both unreliable and costly.
