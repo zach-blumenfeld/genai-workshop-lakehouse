@@ -2,7 +2,7 @@
 
 Reference tables (parts, dtc_codes, procedures) come straight from
 tools/catalog.frozen.json. The fleet (vehicles) and repair history
-(work_orders, work_order_parts) are synthesized so the M5 finale's evidence
+(work_orders, work_order_parts) are synthesized so the finale's evidence
 ranking works:
 
 - Which parts fix which code is derived from the CORPUS: parts and codes
@@ -88,8 +88,8 @@ def fix_proc_for(code, fps):
 
 # ---- 2. fleet: vehicles per model x engine ----
 # Large fleet so each vehicle's service history is sparse (a few parts, not most
-# of the catalog) - otherwise every car looks like it had every recall remedy and
-# recall_exposure never finds anything. Per-(model,engine,code) evidence for the
+# of the catalog) - otherwise every car looks like it had every fix and the
+# evidence ranking is meaningless. Per-(model,engine,code) evidence for the
 # finale is an aggregate over the whole fleet, so it is unaffected by fleet size.
 YEARS = [2019, 2020, 2021, 2022, 2023]
 VEH_PER_COMBO = 100
