@@ -30,8 +30,7 @@ locally if it shows "Coming Soon" — don't commit.)
 ## What the flow looks like now (so nothing surprises you)
 
 - **Module 1 (Setup):** wire BigQuery (read) + Neo4j in `.env`; `python load/load_documents.py`
-  loads **documents only** (warehouse rows stay in BigQuery). Start the API:
-  `uvicorn api.parts_api:app --port 8800`. Smoke test in `claude`.
+  loads **documents only** (warehouse rows stay in BigQuery). Smoke test in `claude`.
 - **Module 2 (Connections):** `python load/build_connections.py` runs
   neocarta over BigQuery -> the metadata graph + the `connections` MCP. Approve the
   MCP in your agent, then ask it a warehouse question and watch it retrieve schema
@@ -40,10 +39,12 @@ locally if it shows "Coming Soon" — don't commit.)
   `skill/scripts/outline.py` and `search.py`. Test `python skill/scripts/outline.py`.
 - **Module 4 (Themes):** read `docs/theme-format.md`; fill `skill/scripts/themes.py`;
   run it, then `--gamma 2.0` for the dial. Optional: the neo4j-cli lesson.
-- **Module 5 (Finale):** build the four judgment/action tools from the specs in
-  `skill/SKILL.md` - the two judgment tools **federate** (Neo4j grounding +
-  BigQuery SQL via `bq.py`). Then: `Work order event: events/wo-2026-0117.json.
-  Handle it per the skill.` Second event (`wo-2026-0118.json`) must escalate.
+- **Module 6 (Finale):** the shapes are built; now answer the questions. Warm up
+  on Dani's car (`For VIN FAL20T20220002 with code P0301: what fixed this on
+  similar vehicles?`) - the agent grounds in the documents and reads the warehouse
+  via the `connections` MCP + `python skill/scripts/run_sql.py`. Then the estate
+  questions: documentation gaps (prove the absence - `P0335`/`P0340` have zero
+  docs) and the common patterns across all bulletins and recalls.
 - Check Database buttons verify your local sandbox throughout.
 
 ## If a lesson page 404s
