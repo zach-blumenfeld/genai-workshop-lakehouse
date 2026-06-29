@@ -27,10 +27,10 @@ Readable by humans (names left) and agents (URIs right). Rules:
   Names truncate with `…` at the column cap; URIs never do.
 - **Folders render with a trailing `/`**; Documents and Sections render
   `displayName` (title / heading text), not the slug.
-- **`→` rows** are outbound `LINKS_TO` edges (citations and derived
-  shared-key links), rendered as children of their source, one extra
-  indent. A `→` row **never expands its target's subtree** — to follow a
-  link, re-run outline rooted at its URI.
+- **`→` rows** are outbound `LINKS_TO` edges (the cross-references the
+  document's author wrote, plus external-URL stubs), rendered as children
+  of their source, one extra indent. A `→` row **never expands its target's
+  subtree** — to follow a link, re-run outline rooted at its URI.
 - **Sibling order:** Folders and Documents alphabetical by name; Sections
   in `NEXT_SECTION` reading order (never alphabetical); `→` rows last,
   alphabetical by target URI.
