@@ -1,6 +1,6 @@
 """Parse the AutoFix PDFs and build a Databricks AI Search (Vector Search) index.
 
-The document half of the failure-mode demo, the modern Databricks way:
+Builds the document half of the AutoFix data on Databricks:
   1. ai_parse_document() over the PDFs in the UC Volume   -> doc_parsed
   2. explode the parsed output into search-ready chunks    -> doc_chunks (CDF on)
   3. create an AI/Vector Search endpoint (if needed)
