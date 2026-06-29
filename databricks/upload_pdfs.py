@@ -1,9 +1,9 @@
 """Upload the AutoFix PDF library into a Unity Catalog Volume.
 
 Creates a managed Volume `{CATALOG}.{SCHEMA}.{VOLUME}` and uploads every PDF
-under sources/pdfs/<area>/*.pdf, preserving the area/ prefix. This is the
-document half of the Databricks failure-mode demo (the PDFs that AI Search
-indexes). Idempotent: CREATE VOLUME IF NOT EXISTS + overwrite uploads.
+under sources/pdfs/<area>/*.pdf, preserving the area/ prefix. These are the
+PDFs that AI Search indexes (the document half of the AutoFix data on
+Databricks). Idempotent: CREATE VOLUME IF NOT EXISTS + overwrite uploads.
 
 Env (a .env is loaded if present; same vars as load_databricks.py):
   DATABRICKS_SERVER_HOSTNAME   e.g. dbc-xxxx.cloud.databricks.com  (no https://)

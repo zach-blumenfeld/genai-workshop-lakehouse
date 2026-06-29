@@ -1,35 +1,21 @@
-# Databricks failure-mode demo — walkthrough
+# Set up AutoFix on Databricks (Genie + AI Search)
 
-Stand up the AutoFix data on Databricks and run the **failure mode**: a frontier
-coding agent, given Databricks' *best* managed tools, can't reliably answer the
-canonical cross-boundary question — while the **same agent** over the graph does
-it in one deterministic, auditable traversal.
+The workshop's default backend is BigQuery (warehouse) + Neo4j (graph). This
+folder is an **optional alternative**: it stands the same AutoFix data up on
+**Databricks** and exposes it to a coding agent through Databricks' managed MCP -
+**Genie** over the warehouse tables and **AI Search** over the document PDFs.
 
-> **The experiment — hold the agent constant, swap the substrate.**
-> The course uses **Claude Code** throughout. So we use Claude Code for *both* arms
-> and change only the data shape:
-> - **Databricks arm:** Claude Code → Databricks **managed MCP** (Genie space + AI Search index).
-> - **Graph arm:** Claude Code → the Neo4j graph + BigQuery federation (the course skill).
->
-> Same agent, same MCP mechanism, different shape. That isolates the variable to *the
-> shape* (the thesis) and is robust to "you used a weak agent" (it's frontier) and
-> "you didn't build it the Databricks way" (it's Genie + AI Search via Databricks'
-> own managed MCP). We deliberately do **not** use Databricks Agent Bricks as the
-> orchestrator — that would conflate agent quality with substrate.
-
-**Why it fails / positioning / deep detail:** see **`databricks-failure-mode-demo.md`**
-(the canonical query needs the doc↔table boundary crossed on a shared key — a part
-number that is *text in a PDF*, not a column — and Genie + AI Search are two
-*probabilistic* retrievers that don't cross it reliably).
+Use it if you would rather run the AutoFix data on Databricks, or to see how the
+pattern ports to another lakehouse.
 
 ---
 
 ## Prereqs
 
 - **Project venv** with: `databricks-sql-connector`, `databricks-sdk`,
-  `databricks-ai-search` (aka `databricks-vectorsearch`), `python-dotenv` (and
-  `openai` only if you use the optional bespoke loop). All already installed here.
-- **`.env`** (the scripts read these internally — never commit it):
+  `databricks-ai-search` (aka `databricks-vectorsearch`), `python-dotenv`
+  (all installed by the workshop setup).
+- **`.env`** (the scripts read these internally - never commit it):
   ```
   DATABRICKS_SERVER_HOSTNAME=dbc-xxxx.cloud.databricks.com   # no https://
   DATABRICKS_HTTP_PATH=/sql/1.0/warehouses/<id>             # a SQL warehouse
@@ -39,48 +25,39 @@ number that is *text in a PDF*, not a column — and Genie + AI Search are two
   # optional: DATABRICKS_VOLUME=pdfs  DATABRICKS_VS_ENDPOINT=autofix-search  DATABRICKS_EMBED_ENDPOINT=databricks-gte-large-en
   ```
 - **Workspace features:** Unity Catalog; a running **SQL warehouse**; **AI Search**
-  enabled; an embedding endpoint (`databricks-gte-large-en`); **managed MCP**
-  (Public Preview); and — for the table tool — a **Genie space**. A served chat
-  model exists for Genie/agents (e.g. `databricks-claude-sonnet-4-5`).
+  enabled with an embedding endpoint (`databricks-gte-large-en`); **managed MCP**
+  (Public Preview); and a **Genie space** for the table tool. A served chat model
+  for Genie/agents (e.g. `databricks-claude-sonnet-4-5`).
 
 > If `DATABRICKS_CATALOG` isn't in `.env`, the scripts default to `autofix`; prepend
 > it inline, e.g. `DATABRICKS_CATALOG=lakehouse-workshop python databricks/load_databricks.py`.
 
 ---
 
-## Part A — Build the data (terminal scripts)
+## Part A - Build the data
 
-Run from the repo root. (`test_connection.ipynb` is a quick `.env` smoke test if unsure.)
+Run from the repo root. (`test_connection.ipynb` is a quick `.env` connection
+smoke test if you want to confirm credentials first.)
 
 | Step | Command | Result |
 |---|---|---|
 | 1 | `python databricks/load_databricks.py` | 6 Delta tables in `{catalog}.{schema}` with PK/FK constraints (idempotent). |
-| 2 | `python databricks/upload_pdfs.py` | UC Volume `{catalog}.{schema}.pdfs` + 183 PDFs uploaded. |
-| 3 | `python databricks/build_doc_index.py` | `ai_parse_document` → `doc_chunks` (CDF, 30-day retention) → **AI Search endpoint + Delta Sync index** (embeds via `databricks-gte-large-en`). **Provisions infra, ~10–20 min, billed.** |
-
-**Sanity-check the raw tools** (not the demo — just proves SQL + AI Search return):
-```
-python databricks/run_failure_demo.py
-```
-It prints the deterministic 4-table SQL answer (the **grading oracle**:
-`IC-2042-B`, 0 comebacks) next to raw AI Search hits.
+| 2 | `python databricks/upload_pdfs.py` | UC Volume `{catalog}.{schema}.pdfs` + the AutoFix PDFs uploaded. |
+| 3 | `python databricks/build_doc_index.py` | `ai_parse_document` → `doc_chunks` (CDF) → **AI Search endpoint + Delta Sync index** (embeds via `databricks-gte-large-en`). **Provisions infra, ~10-20 min, billed.** |
 
 ---
 
-## Part B — Expose Databricks' tools as managed MCP
+## Part B - Expose the tools as managed MCP
 
 The agent reaches these over Databricks managed MCP (`/api/2.0/mcp/...`, Public Preview).
 
-1. **AI Search MCP** — ready now (the index is live). URL:
+1. **AI Search MCP** - ready once the index is live. URL:
    ```
    https://<host>/api/2.0/mcp/ai-search/lakehouse-workshop/autofix_service/doc_chunks_idx
    ```
-2. **Genie Space MCP** *(you, in the UI)* — create a **Genie space** scoped to the
-   **6 warehouse tables only**: `vehicles`, `work_orders`, `work_order_parts`,
-   `parts`, `procedures`, `dtc_codes`. **Do _not_ add `doc_chunks` / `doc_parsed`** —
-   documents belong to the AI Search MCP; keeping them out preserves the doc↔table
-   boundary the demo is about. (Steelman it: add a **Metric View** for the work-order
-   metrics and connect the **Genie Ontology**.) Copy its `space_id`:
+2. **Genie Space MCP** *(create in the UI)* - a **Genie space** scoped to the
+   **6 warehouse tables**: `vehicles`, `work_orders`, `work_order_parts`,
+   `parts`, `procedures`, `dtc_codes`. Copy its `space_id`:
    ```
    https://<host>/api/2.0/mcp/genie/<space_id>
    ```
@@ -88,10 +65,9 @@ The agent reaches these over Databricks managed MCP (`/api/2.0/mcp/...`, Public 
 
 ---
 
-## Part C — Wire the tools into Claude Code (the course agent)
+## Part C - Wire the tools into your coding agent
 
-User-scoped so the token never lands in the repo (per the course's `.mcp.json`
-pattern for the Neo4j `connections` MCP). Replace `<host>`, `<space_id>`, `<PAT>`:
+User-scoped so the token never lands in the repo. Replace `<host>`, `<space_id>`, `<PAT>`:
 
 ```
 claude mcp add --transport http databricks-aisearch \
@@ -102,44 +78,9 @@ claude mcp add --transport http databricks-genie \
   https://<host>/api/2.0/mcp/genie/<space_id> \
   --header "Authorization: Bearer <PAT>"
 ```
-Then start Claude Code and **approve** both servers when prompted. (OAuth is the
-preferred managed-MCP auth; a PAT bearer is simplest for a demo. Don't commit the token.)
 
----
-
-## Part D — Run the failure mode
-
-Give Claude Code this prompt (use **only** the Databricks MCP tools), in a **fresh
-session**, **3–5 times**:
-
-> *A 2021 Falcon with the 2.0T engine is in the shop with diagnostic trouble code
-> P0301 (cylinder-1 misfire), VIN `FAL20T20220002`. Using only the AI Search service
-> documents and the Genie warehouse, recommend the specific replacement part with the
-> best real-world repair outcomes for this code on cars like this, justify it with the
-> repair history (comebacks), and tell me whether this vehicle has any open safety
-> recall it has not received. Cite your evidence.*
-
-**Capture per run:** the SQL Genie generates; whether the 4-table join + comeback
-ranking is correct; whether it ever ties the bulletin's part (`IC-2042-A → IC-2042-B`)
-to the warehouse `part_number`; and whether the recommendation is **consistent across runs**.
-
-**Grading oracle (correct answer):** part **`IC-2042-B`** (18 uses, **0 comebacks**);
-open recall **`rc-2021-11`** (alternator stall, `ALT-8810`) this VIN hasn't received.
-The deterministic SQL that produces it is in `run_failure_demo.py`.
-
-**Expected failures** (detail in `databricks-failure-mode-demo.md` §4): AI Search ranks
-a near-miss bulletin above the right one and never ties applicability to *this* VIN;
-Genie's multi-table join is non-deterministic / sometimes wrong; the part↔row boundary
-is crossed (if at all) only by the LLM guessing in prose — no single auditable path.
-
----
-
-## Part E — The contrast (the course finale)
-
-Same prompt to Claude Code with the **Neo4j graph + federation skill** (the course's
-`autofix-service-advisor`): one deterministic traversal grounds the code in the
-documents, reads the live repair outcomes from BigQuery on the shared key, and returns
-`IC-2042-B` + the recall — **the same, inspectable answer every run.**
+Then start your agent and **approve** both servers when prompted. (OAuth is the
+preferred managed-MCP auth; a PAT bearer is simplest to get going. Don't commit the token.)
 
 ---
 
@@ -166,6 +107,4 @@ tables, Volume, parsed/chunk tables). Remove the MCP servers with
 | `load_databricks.py` | warehouse → 6 Delta tables |
 | `upload_pdfs.py` | PDFs → UC Volume |
 | `build_doc_index.py` | parse → chunks → AI Search endpoint + index |
-| `run_failure_demo.py` | raw-tool sanity check + grading oracle (not the demo) |
-| `databricks-failure-mode-demo.md` | positioning brief + the modern-stack detail + what to capture |
-| `README.md` | this walkthrough |
+| `README.md` | this guide |
