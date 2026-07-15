@@ -41,7 +41,7 @@ Then add your credentials to `.env` (the setup script copies it from
 - **Neo4j** — a sandbox with the Graph Data Science library (a
   [GDS blank sandbox](https://sandbox.neo4j.com) works). Paste `NEO4J_URI`,
   `NEO4J_USERNAME`, `NEO4J_PASSWORD`, `NEO4J_DATABASE`.
-- **BigQuery** — the workshop dataset is read-only; paste the one-line
+- **BigQuery** — the workshop dataset is read-only; use the one-line
   `BIGQUERY_SA_KEY_B64` from the workshop, or use your own `gcloud` login. To
   provision your own copy of the warehouse, see [`bigquery/`](bigquery/).
 - **Anthropic** — set `ANTHROPIC_API_KEY`, or leave it blank to use your Claude
