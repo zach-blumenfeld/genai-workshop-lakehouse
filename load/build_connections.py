@@ -21,7 +21,9 @@ Run:  python load/build_connections.py
 import base64
 import json
 import os
+import types
 
+import pandas as pd
 from dotenv import load_dotenv
 from google.cloud import bigquery
 from neo4j import GraphDatabase
@@ -56,12 +58,31 @@ def main():
 
     print(f"Reading {PROJECT}.{DATASET} metadata -> Neo4j ({database})...")
     # Schema only — no embeddings (the FK graph is the join map; the warehouse has six tables.
-    BigQuerySchemaConnector(
+    connector = BigQuerySchemaConnector(
         client=client,
         project_id=PROJECT,
         neo4j_driver=driver,
         database_name=database,
-    ).ingest(dataset_id=DATASET)
+    )
+
+    # Skip a sub-step the workshop key can't run without project-wide metadata permissions.
+    def _bypass_extract_schema_info(self, dataset_id=None, cache=True):
+        """
+        Bypass project-wide metaDataViewer permissions in GCP. BQ roles for demos and workshops are dataset specific,
+        but schema info extraction in GCP now requires broader project-wide permissions.
+        """
+        dataset_id = self._get_dataset_id(dataset_id)
+        df = pd.DataFrame([{"project_id": self.project_id, "dataset_id": dataset_id,
+                            "description": "AutoFix Group service warehouse (workshop sample)", }])
+        if cache: self._cache["schema_info"] = df
+        return df
+
+    connector.extractor.extract_schema_info = types.MethodType(
+        _bypass_extract_schema_info, connector.extractor
+    )
+
+    # Run neocarta ingest
+    connector.ingest(dataset_id=DATASET)
 
     with driver.session(database=database) as s:
         refs = s.run("MATCH (:Column)-[r:REFERENCES]->(:Column) RETURN count(r) AS n").single()["n"]
